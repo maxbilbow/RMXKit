@@ -576,12 +576,15 @@ extension GLKVector3 {
 
 let PI: RMFloat = 3.14159265358979323846
 let PIf = Float(PI)
+let PI_CG = CGFloat(PI)
 let TWO_PI: RMFloat = 2 * PI
 let TWO_PIf = Float(TWO_PI)
 let PI_OVER_2: RMFloat = PI / 2
 let PI_OVER_2f = Float(PI_OVER_2)
-let PI_OVER_180: RMFloat = PI / 180
+let PI_OVER_2_CG = CGFloat(PI_OVER_2)
+let PI_OVER_180: RMFloat = PI / 18
 let PI_OVER_180f = Float(PI_OVER_180)
+let PI_OVER_180_CG = CGFloat(PI_OVER_180)
 
 
 func RMXVector3MultiplyScalar(v: RMXVector3, s: RMFloat) -> RMXVector3{

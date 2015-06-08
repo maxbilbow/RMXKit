@@ -320,14 +320,7 @@ extension CGVector {
     var print: String {
         return "\(dx.toData()) \(dy.toData())"
     }
-    
-    var x: Float {
-        return Float(dx)
-    }
-    
-    var y: Float {
-        return Float(dy)
-    }
+
 }
 
 
@@ -358,4 +351,18 @@ extension CGPoint {
         return "\(x.toData()) \(y.toData())"
     }
     
+}
+
+
+extension CGRect {
+    var print: String {
+        return "size: width: \(width.print) by height: \(height.print) at \(origin.print)"
+    }
+}
+
+
+extension CGSize {
+    var print: String {
+        return "size: width: \(width.print) by height: \(height.print)"
+    }
 }
