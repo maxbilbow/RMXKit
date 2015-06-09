@@ -11,7 +11,7 @@ import Foundation
 enum PoppyState: Int32 { case IDLE = 1, READY_TO_CHASE , CHASING, FETCHING }
 enum RMXSpriteType: Int { case  AI = 0, PLAYER, BACKGROUND, PASSIVE, ABSTRACT, KINEMATIC, CAMERA }
 
-
+@available(OSX 10.10, *)
 public struct RMX {
 
     static var COUNT: Int = 0
@@ -32,9 +32,11 @@ protocol RMXObject {
     import UIKit
     typealias RMButton = UIButton
     typealias RMView = UIView
+    typealias RMColor = UIColor
 #elseif OSX
     import AppKit
     typealias RMButton = NSButton
     typealias RMView = NSView
+    typealias RMColor = NSColor
 #endif
 

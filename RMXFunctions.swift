@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
     
+@available(OSX 10.10, *)
 extension RMX {
  
     #if iOS
@@ -40,7 +41,7 @@ extension RMX {
     
     static func randomColor() -> RMColor {
         //float rCol[4];
-        var rCol = RMColor(
+        let rCol = RMColor(
             red: CGFloat(random() % 10)/10,
             green: CGFloat(random() % 10)/10,
             blue: CGFloat(random() % 10)/10,

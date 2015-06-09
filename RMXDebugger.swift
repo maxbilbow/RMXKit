@@ -9,18 +9,21 @@
 import Foundation
 import SceneKit
 
+
+@available(OSX 10.10, *)
 extension RMXLog {
     static let isDebugging: Bool = false
 
 }
 
+@available(OSX 10.10, *)
 extension RMX {
     
     
-    static var log: [RMXLogEntry] = [ RMXLogEntry(sender: nil, function: __FUNCTION__, filename: (__FILE__ as String).lastPathComponent, line: "\(__LINE__)", id: RMXLog.DEBUG) ]
+    static var log: [RMXLogEntry] = [ RMXLogEntry(sender: nil, function: "", filename: "\(__FILE__)", line: "\(__LINE__)", id: RMXLog.DEBUG) ]
 }
 
-
+@available(OSX 10.10,*)
 class RMXLogEntry {
     var senderID, message: String?
     var function, filename: String
@@ -59,12 +62,12 @@ class RMXLogEntry {
         }
     }
     
-    func add(_ message: AnyObject? = "", sender: RMXObject? = nil, function: String = __FUNCTION__, file: String = __FILE__, line: String = "\(__LINE__)") -> Bool? {
+    func add(message: AnyObject? = "", sender: RMXObject? = nil, function: String, file: String, line: String) -> Bool? {
         if let message = message?.description {
             if message.isEmpty {
                 return false
             } else {
-                var title: NSString = "\n\(file.lastPathComponent)/\(function)/ on line \(line):: "
+                let title: NSString = "\n\(file.lastPathComponent)/\(function)/ on line \(line):: "
                 let spacer = String(count: title.length - 1, repeatedValue: (" " as Character))
                 var msg = "***\(message)"
                 msg = msg.stringByReplacingOccurrencesOfString("\n", withString: "\n***\(spacer)", options: NSStringCompareOptions.LiteralSearch)
@@ -79,9 +82,10 @@ class RMXLogEntry {
     
 }
 
-
+@available(OSX 10.10,*)
 typealias RMXDebugCallback = (AnyObject?, sender: RMXObject?, String, String, Int) -> Bool?
 
+@available(OSX 10.10,*)
 class RMXLog {// : NSObject {
     static let DEBUG = "DEBUG"//classForCoder().description()
     
@@ -126,7 +130,7 @@ class RMXLog {// : NSObject {
     static func printAndFlush() {
         #if DEBUG
         if let data = self.data {
-            println("\n\(data)")
+            print("\n\(data)")
         }
         self.flush()
         #endif
@@ -172,7 +176,8 @@ class RMXLog {// : NSObject {
 }
 
 
-func RMLog(_ message: AnyObject? = "", sender: RMXObject? = nil, id: String = RMXLog.DEBUG, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
+@available(OSX 10.10, *)
+func RMLog(message: AnyObject? = "", sender: RMXObject? = nil, id: String = RMXLog.DEBUG, function: String = "", file: String = __FILE__, line: Int = __LINE__) -> Bool? {//, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
     #if DEBUG
     if RMXLog.isDebugging {
         if id == RMX.log[RMXLog.current].logID { //Array(RMX.log.keys)[RMXLog.current] {
@@ -183,7 +188,7 @@ func RMLog(_ message: AnyObject? = "", sender: RMXObject? = nil, id: String = RM
             entry.add(message, sender: sender, function: "\(function)", file: "\(file)", line: "\(line)")
         } else {
             let entry = RMXLogEntry(sender: sender, function: "\(function)", filename: "\(file)".lastPathComponent, line: "\(line)", id: id)
-            let key = sender?.uniqueID ?? RMXLog.DEBUG
+//            let key = sender?.uniqueID ?? RMXLog.DEBUG
             entry.append(message)
             RMX.log.append(entry)
         }

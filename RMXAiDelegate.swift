@@ -8,8 +8,10 @@
 
 import Foundation
 
+
 enum AiState { case MOVING, TURNING, IDLE }
 
+@available(OSX 10.10, *)
 protocol RMXAiDelegate : NSObjectProtocol {
     var state: String? { get }
     var args: [RMXSpriteType] { get }
@@ -20,7 +22,7 @@ protocol RMXAiDelegate : NSObjectProtocol {
     func getTarget(args: RMXSpriteType ...) -> RMXSprite?
 }
 
-
+@available(OSX 10.10, *)
 class RMXAi : NSObject, RMXAiDelegate {
     
     private var _state: String?

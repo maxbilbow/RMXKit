@@ -9,7 +9,6 @@
 import Foundation
 import SceneKit
 
-
 protocol RMInputKeyValue {
     
 }
@@ -18,12 +17,13 @@ protocol SCNLocatable3 {
     func getPosition() -> SCNVector3
 }
 
+@available(OSX 10.10,*)
 extension String : RMInputKeyValue {
     
 }
 
 
-
+@available(OSX 10.10,*)
 func == (lhs: RMInputKeyValue?, rhs: RMInputKeyValue?) -> Bool {
     if lhs is String && rhs is String {
         return lhs as! String == rhs as! String
@@ -34,6 +34,7 @@ func == (lhs: RMInputKeyValue?, rhs: RMInputKeyValue?) -> Bool {
     }
 }
 
+@available(OSX 10.10,*)
 func == (lhs: RMXUniqueEntity, rhs: RMXUniqueEntity) -> Bool {
     return lhs.rmxID == rhs.rmxID
 }
@@ -47,12 +48,12 @@ func == (lhs: RMXUniqueEntity, rhs: RMXUniqueEntity) -> Bool {
 //    return lhs.rmxID != rhs.rmxID
 //}
 
-
+@available(OSX 10.10,*)
 func != (lhs: RMXUniqueEntity, rhs: RMXUniqueEntity) -> Bool {
     return lhs.rmxID != rhs.rmxID
 }
 
-
+@available(OSX 10.10,*)
 protocol RMXUniqueEntity {
     var rmxID: Int? { get }
 }
@@ -148,6 +149,7 @@ extension Float {
         return NSNumber(float: self)
     }
 }
+
 extension Double {
     func toData(dp:String="05.2") -> String {
         return RMXValue.toData(self, dp: dp)
@@ -190,13 +192,14 @@ extension GLKVector3 {
     }
 }
 
+
 extension SCNVector3 {
     var print: String {
         return "\(x.toData()) \(y.toData()) \(z.toData())"
     }
     
     var normalised: SCNVector3 {
-        return RMXVector3Normalize(self)
+        return SCNVector3Normalize(self)
     }
     
     var asDegrees: String {
@@ -216,10 +219,12 @@ extension SCNVector3 {
         //return RMXVector3Distance(self, v)
     }
     
+    @available(OSX 10.10, *)
     var length: RMFloat {
         return RMFloat(self.distanceTo(SCNVector3Zero))
     }
     
+    @available(OSX 10.10, *)
     var velocity: RMFloat {
         return (self.sum > 0 ? 1 : -1) * self.length
     }
@@ -268,8 +273,7 @@ extension SCNVector4 {
     }
 }
 
-
-extension SCNMatrix4 : SCNLocatable3 {
+extension SCNMatrix4 {
     var print: String {
         let row1 = "   ROW1: \(m11.toData()) \(m12.toData()) \(m13.toData()) \(m14.toData())"
         let row2 = "   ROW2: \(m21.toData()) \(m22.toData()) \(m23.toData()) \(m24.toData())"

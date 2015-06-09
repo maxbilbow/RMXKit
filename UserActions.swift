@@ -8,7 +8,8 @@
 
 import Foundation
 
-public enum UserAction : String,  RMInputKeyValue, Printable {
+@available(OSX 10.10, *)
+public enum UserAction : String,  RMInputKeyValue, CustomStringConvertible {
     //Movement
     case MOVE = "Move Around"
     case MOVE_FORWARD = "Move Forward"
