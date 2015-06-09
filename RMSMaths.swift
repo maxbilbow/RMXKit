@@ -526,80 +526,44 @@ func != (lhs: SCNVector3, rhs: SCNVector3) -> Bool {
     return lhs.x != rhs.x || lhs.y != rhs.y || lhs.z != rhs.z
 }
 
-extension GLKMatrix4 {
-    /*
-    var upVector: SCNVector3 {
-        return SCNVector3Make(m12,m22,m32)
-    }
-    
-    var rightVector: SCNVector3 {
-        return SCNVector3Make(-m11, -m21, -m31)
-    }
-    
-    var leftVector: SCNVector3 {
-        return SCNVector3Make(m11,m21,m31)
-    }
-    
-    var forwardVector: SCNVector3 {
-        return SCNVector3Make(m13,m23,m33)
-    }
-    */
-}
-
-
-
-@available(OSX 10.10, *)
-extension SCNVector3  {
-    
-    var normalized: SCNVector3 {
-        return SCNVector3Normalize(self)
-    }
-}
-
-extension GLKVector3 {
-    var isZero: Bool {
-        return (x == 0) && (y == 0) && (z == 0)
-    }
-    
-    var length: Float {
-        return GLKVector3Length(self)
-    }
-    
-//    func setX(n: Float){
-//        SCNVector3SetX(&self,n)
-//    }
-//    
-//    func setY(n: Float){
-//        y = n
-//    }
-//    
-//    func setZ(n: Float){
-//        z = n
-//    }
-
-}
-
-let PI: RMFloat = 3.14159265358979323846
-let PIf = Float(PI)
-let PI_CG = CGFloat(PI)
-let TWO_PI: RMFloat = 2 * PI
-let TWO_PIf = Float(TWO_PI)
-let PI_OVER_2: RMFloat = PI / 2
-let PI_OVER_2f = Float(PI_OVER_2)
-let PI_OVER_2_CG = CGFloat(PI_OVER_2)
-let PI_OVER_180: RMFloat = PI / 18
-let PI_OVER_180f = Float(PI_OVER_180)
-let PI_OVER_180_CG = CGFloat(PI_OVER_180)
-
 
 func SCNVector3MultiplyScalar(v: SCNVector3, s: RMFloat) -> SCNVector3{
     #if true
-    return SCNVector3Make(
-        v.x * s,
-        v.y * s,
-        v.z * s
+        return SCNVector3Make(
+            v.x * s,
+            v.y * s,
+            v.z * s
         )
-    #else
+        #else
         return GLKVector3MultiplyScalar(v, s)
     #endif
 }
+
+
+
+func SCNVector3Random(max: CGFloat, min: CGFloat, div: CGFloat = 1, setY: CGFloat?) -> SCNVector3 {
+    return SCNVector3Random(Double(max), min: Double(min), div: Double(div), setY: setY != nil ? Double(setY!) : nil)
+}
+
+func SCNVector3Random(max: Float, min: Float, div: Float = 1, setY: Float?) -> SCNVector3 {
+    return SCNVector3Random(Double(max), min: Double(min), div: Double(div), setY: setY != nil ? Double(setY!) : nil)
+}
+
+func SCNVector3Random(max: Double, min: Double, div: Double = 1, setY: Double?) -> SCNVector3 {
+    return SCNVector3Random(Int(max), min: Int(min), div: Int(div), setY: setY != nil ? Int(setY!) : nil )
+}
+
+func SCNVector3Random(max: Int, min: Int, div: Int = 1, setY: Int?) -> SCNVector3 {
+
+    
+    return SCNVector3Make(
+        RMFloat(((random() % (2 * max)) + min) / div),
+        RMFloat(setY ?? ((random() % (2 * max)) - min) / div),
+        RMFloat(((random() % (2 * max)) + min) / div)
+    )
+    
+}
+
+
+
+

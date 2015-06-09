@@ -12,10 +12,12 @@ import Foundation
 class RMXSpriteTimer : NSObject {
     var sprite: RMXSprite
     
-    
+    var validationTimer: NSTimer!
     init(sprite: RMXSprite){
         self.sprite = sprite
         super.init()
+        self.validationTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "validate", userInfo: nil, repeats: true)
+        self.timers.append(self.validationTimer)
     }
     
     func addTimer(interval: NSTimeInterval = 5, target: AnyObject, selector: Selector, userInfo: AnyObject? = nil, repeats: Bool) {
@@ -25,7 +27,7 @@ class RMXSpriteTimer : NSObject {
         }
     }
     
-    private lazy var timers: [ NSTimer ] = [ NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "validate", userInfo: nil, repeats: true) ]
+    var timers: [ NSTimer ] = [  ]
     
     func validate() {
         if self.sprite.world.isLive {
@@ -35,21 +37,18 @@ class RMXSpriteTimer : NSObject {
             for timer in self.timers {
                 timer.invalidate()
             }
-            self.shouldActivate = true
         }
         
     }
     
-    var shouldActivate: Bool = true
-    func activate() {
-        if shouldActivate {
+    func activate(node: AnyObject!) -> Void {
+        if self.sprite.world.isLive {
             for timer in self.timers {
                 if !timer.valid {
                     timer.fire()// = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "validate", userInfo: nil, repeats: true)
                 }
             }
         }
-        self.shouldActivate = false
         
     }
 }

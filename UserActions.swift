@@ -8,8 +8,8 @@
 
 import Foundation
 
-@available(OSX 10.10, *)
-public enum UserAction : String,  RMInputKeyValue, CustomStringConvertible {
+
+enum UserAction : String, CustomStringConvertible {
     //Movement
     case MOVE = "Move Around"
     case MOVE_FORWARD = "Move Forward"
@@ -28,6 +28,7 @@ public enum UserAction : String,  RMInputKeyValue, CustomStringConvertible {
     //Interactions
     case GRAB_ITEM = "Grab Item"
     case THROW_ITEM = "Throw Item"
+    case THROW_OR_GRAB_ITEM = "Throw Item / Grab Item"
     case BOOM = "explode"
     
     //Environmentals
@@ -57,11 +58,13 @@ public enum UserAction : String,  RMInputKeyValue, CustomStringConvertible {
     case NEW_GAME = "New Game"
     case DEBUG_NEXT = "Next Debugging Set"
     case DEBUG_PREVIOUS = "Previous Debugging Set"
+
+    case NULL = "NULL"
     
-    public var description: String {
+    var description: String {
         return self.rawValue
     }
+
     
 }
-
 

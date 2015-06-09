@@ -9,44 +9,30 @@
 import Foundation
 import SceneKit
 
-protocol RMInputKeyValue {
-    
-}
+let PI: RMFloat = 3.14159265358979323846
+let PIf = Float(PI)
+let PI_CG = CGFloat(PI)
+let TWO_PI: RMFloat = 2 * PI
+let TWO_PIf = Float(TWO_PI)
+let PI_OVER_2: RMFloat = PI / 2
+let PI_OVER_2f = Float(PI_OVER_2)
+let PI_OVER_2_CG = CGFloat(PI_OVER_2)
+let PI_OVER_180: RMFloat = PI / 180
+let PI_OVER_180f = Float(PI_OVER_180)
+let PI_OVER_180_CG = CGFloat(PI_OVER_180)
+
 
 protocol SCNLocatable3 {
     func getPosition() -> SCNVector3
 }
 
-@available(OSX 10.10,*)
-extension String : RMInputKeyValue {
-    
-}
 
-
-@available(OSX 10.10,*)
-func == (lhs: RMInputKeyValue?, rhs: RMInputKeyValue?) -> Bool {
-    if lhs is String && rhs is String {
-        return lhs as! String == rhs as! String
-    } else if lhs is UserAction && rhs is UserAction {
-        return lhs as! UserAction == rhs as! UserAction
-    } else {
-        return false
-    }
-}
 
 @available(OSX 10.10,*)
 func == (lhs: RMXUniqueEntity, rhs: RMXUniqueEntity) -> Bool {
     return lhs.rmxID == rhs.rmxID
 }
 
-//
-//func == (lhs: RMSWorld, rhs: RMSWorld) -> Bool {
-//    return lhs.rmxID == rhs.rmxID
-//}
-//
-//func != (lhs: RMSWorld, rhs: RMSWorld) -> Bool {
-//    return lhs.rmxID != rhs.rmxID
-//}
 
 @available(OSX 10.10,*)
 func != (lhs: RMXUniqueEntity, rhs: RMXUniqueEntity) -> Bool {
@@ -58,13 +44,6 @@ protocol RMXUniqueEntity {
     var rmxID: Int? { get }
 }
 
-
-
-//protocol RMXNumber: Comparable  {
-//    var ns: NSNumber { get }
-//
-//    
-//}
 
 class RMXValue<T: Comparable> {
    // var n: NSValue = 0
@@ -190,7 +169,16 @@ extension GLKVector3 {
     func distanceTo(v: GLKVector3) -> Float{
         return GLKVector3Distance(self, v)
     }
+
+    var isZero: Bool {
+        return (x == 0) && (y == 0) && (z == 0)
+    }
+    
+    var length: Float {
+        return GLKVector3Length(self)
+    }
 }
+
 
 
 extension SCNVector3 {
@@ -236,7 +224,13 @@ extension SCNVector3 {
     var average: RMFloat {
         return self.sum / 3
     }
+    
+    var normalized: SCNVector3 {
+        return SCNVector3Normalize(self)
+    }
 }
+
+
 
 extension GLKVector4 {
     var print: String {
