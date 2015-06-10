@@ -16,5 +16,6 @@ protocol RMXSprite : RMXObject {
     var type: RMXSpriteType { get }
     var node: RMXNode { get }
     var spriteLogic: [ AiBehaviour ] { get }
+    var paused: Bool { get }
     func validate()
 }

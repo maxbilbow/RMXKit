@@ -63,10 +63,12 @@ class RMXAi : NSObject, RMXAiDelegate {
     }
     
     func run(sender: AnyObject?, updateAtTime time: NSTimeInterval) {
-        for logic in self.spriteLogic {
-            logic(self.sprite.node)
-        }
-        self.sprite.timer.activate(sender)
+//        if !self.sprite.paused {
+            for logic in self.spriteLogic {
+                logic(self.sprite.node)
+            }
+            self.sprite.timer.activate(sender)
+//        }
     }
     
     class func randomSprite(world: RMXWorld, not: RMXSprite, type: [RMXSpriteType]?) -> RMXSprite? {

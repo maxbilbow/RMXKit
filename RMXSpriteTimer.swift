@@ -30,15 +30,7 @@ class RMXSpriteTimer : NSObject {
     var timers: [ NSTimer ] = [  ]
     
     func validate() {
-        if self.sprite.world.isLive {
-            self.sprite.validate()
-        } else {
-//             NSLog("\(self.timer.valid)")
-            for timer in self.timers {
-                timer.invalidate()
-            }
-        }
-        
+        self.sprite.validate()
     }
     
     func activate(node: AnyObject!) -> Void {
@@ -47,6 +39,10 @@ class RMXSpriteTimer : NSObject {
                 if !timer.valid {
                     timer.fire()// = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "validate", userInfo: nil, repeats: true)
                 }
+            }
+        } else {
+            for timer in self.timers {
+                timer.invalidate()
             }
         }
         
