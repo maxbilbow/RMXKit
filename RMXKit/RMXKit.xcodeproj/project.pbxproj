@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50104D4C1B2C8F6E001AAC92 /* libRMXKitLib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */; };
 		5063BC9B1B2C5BEB00FB5558 /* RMXKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5063BC9A1B2C5BEB00FB5558 /* RMXKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5063BCA21B2C5BEB00FB5558 /* RMXKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063BC971B2C5BEB00FB5558 /* RMXKit.framework */; };
 		5063BCA71B2C5BEB00FB5558 /* RMXKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BCA61B2C5BEB00FB5558 /* RMXKitTests.swift */; };
-		5063BCCB1B2C5C5E00FB5558 /* RMXKit-ios.h in Headers */ = {isa = PBXBuildFile; fileRef = 5063BCCA1B2C5C5E00FB5558 /* RMXKit-ios.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BCD21B2C5C5E00FB5558 /* RMXKit-ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063BCC81B2C5C5E00FB5558 /* RMXKit-ios.framework */; };
+		5063BCCB1B2C5C5E00FB5558 /* RMXKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5063BCCA1B2C5C5E00FB5558 /* RMXKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5063BCD21B2C5C5E00FB5558 /* RMXKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063BCC81B2C5C5E00FB5558 /* RMXKit.framework */; };
 		5063BCD71B2C5C5E00FB5558 /* RMXKit_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BCD61B2C5C5E00FB5558 /* RMXKit_iosTests.swift */; };
 		5063BD2B1B2C7CF300FB5558 /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD1E1B2C7CF300FB5558 /* iOS.swift */; };
 		5063BD2C1B2C7CF300FB5558 /* OSX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD201B2C7CF300FB5558 /* OSX.swift */; };
@@ -33,18 +34,16 @@
 		5063BD3D1B2C7CF300FB5558 /* RMXWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD281B2C7CF300FB5558 /* RMXWorld.swift */; };
 		5063BD3E1B2C7CF300FB5558 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; };
 		5063BD3F1B2C7CF300FB5558 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; };
-		5063BD401B2C85F000FB5558 /* RMSMaths.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD211B2C7CF300FB5558 /* RMSMaths.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD411B2C85F000FB5558 /* RMX.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD221B2C7CF300FB5558 /* RMX.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD421B2C85F000FB5558 /* RMXAiDelegate.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD231B2C7CF300FB5558 /* RMXAiDelegate.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD431B2C85F000FB5558 /* RMXDebugger.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD241B2C7CF300FB5558 /* RMXDebugger.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD441B2C85F000FB5558 /* RMXFunctions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD251B2C7CF300FB5558 /* RMXFunctions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD451B2C85F000FB5558 /* RMXPawn.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD261B2C7CF300FB5558 /* RMXPawn.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD461B2C85F000FB5558 /* RMXValue.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD271B2C7CF300FB5558 /* RMXValue.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD471B2C85F000FB5558 /* RMXWorld.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD281B2C7CF300FB5558 /* RMXWorld.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		5063BD481B2C85F000FB5558 /* UserActions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		50104D4D1B2C8F6E001AAC92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5063BC8E1B2C5BEB00FB5558 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50104D401B2C8F6E001AAC92;
+			remoteInfo = RMXKitLib;
+		};
 		5063BCA31B2C5BEB00FB5558 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5063BC8E1B2C5BEB00FB5558 /* Project object */;
@@ -62,14 +61,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libRMXKitLib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		50104D4B1B2C8F6E001AAC92 /* RMXKitLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKitLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063BC971B2C5BEB00FB5558 /* RMXKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RMXKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063BC9A1B2C5BEB00FB5558 /* RMXKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMXKit.h; sourceTree = "<group>"; };
 		5063BC9C1B2C5BEB00FB5558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5063BCA11B2C5BEB00FB5558 /* RMXKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063BCA61B2C5BEB00FB5558 /* RMXKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMXKitTests.swift; sourceTree = "<group>"; };
 		5063BCA81B2C5BEB00FB5558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5063BCC81B2C5C5E00FB5558 /* RMXKit-ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "RMXKit-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5063BCCA1B2C5C5E00FB5558 /* RMXKit-ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMXKit-ios.h"; sourceTree = "<group>"; };
+		5063BCC81B2C5C5E00FB5558 /* RMXKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RMXKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5063BCCA1B2C5C5E00FB5558 /* RMXKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMXKit.h; sourceTree = "<group>"; };
 		5063BCCC1B2C5C5E00FB5558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5063BCD11B2C5C5E00FB5558 /* RMXKit-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMXKit-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063BCD61B2C5C5E00FB5558 /* RMXKit_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMXKit_iosTests.swift; sourceTree = "<group>"; };
@@ -88,6 +89,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		50104D3E1B2C8F6E001AAC92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50104D481B2C8F6E001AAC92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50104D4C1B2C8F6E001AAC92 /* libRMXKitLib.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5063BC931B2C5BEB00FB5558 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -114,7 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5063BCD21B2C5C5E00FB5558 /* RMXKit-ios.framework in Frameworks */,
+				5063BCD21B2C5C5E00FB5558 /* RMXKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +154,10 @@
 			children = (
 				5063BC971B2C5BEB00FB5558 /* RMXKit.framework */,
 				5063BCA11B2C5BEB00FB5558 /* RMXKitTests.xctest */,
-				5063BCC81B2C5C5E00FB5558 /* RMXKit-ios.framework */,
+				5063BCC81B2C5C5E00FB5558 /* RMXKit.framework */,
 				5063BCD11B2C5C5E00FB5558 /* RMXKit-iosTests.xctest */,
+				50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */,
+				50104D4B1B2C8F6E001AAC92 /* RMXKitLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,7 +183,7 @@
 		5063BCC91B2C5C5E00FB5558 /* RMXKit-ios */ = {
 			isa = PBXGroup;
 			children = (
-				5063BCCA1B2C5C5E00FB5558 /* RMXKit-ios.h */,
+				5063BCCA1B2C5C5E00FB5558 /* RMXKit.h */,
 				5063BCCC1B2C5C5E00FB5558 /* Info.plist */,
 			);
 			path = "RMXKit-ios";
@@ -185,8 +203,8 @@
 			children = (
 				5063BD1D1B2C7CF300FB5558 /* iOS */,
 				5063BD1F1B2C7CF300FB5558 /* OSX */,
-				5063BD211B2C7CF300FB5558 /* RMSMaths.swift */,
 				5063BD221B2C7CF300FB5558 /* RMX.swift */,
+				5063BD211B2C7CF300FB5558 /* RMSMaths.swift */,
 				5063BD231B2C7CF300FB5558 /* RMXAiDelegate.swift */,
 				5063BD241B2C7CF300FB5558 /* RMXDebugger.swift */,
 				5063BD251B2C7CF300FB5558 /* RMXFunctions.swift */,
@@ -218,20 +236,18 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		50104D3F1B2C8F6E001AAC92 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5063BC941B2C5BEB00FB5558 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5063BC9B1B2C5BEB00FB5558 /* RMXKit.h in Headers */,
-				5063BD401B2C85F000FB5558 /* RMSMaths.swift in Headers */,
-				5063BD411B2C85F000FB5558 /* RMX.swift in Headers */,
-				5063BD421B2C85F000FB5558 /* RMXAiDelegate.swift in Headers */,
-				5063BD431B2C85F000FB5558 /* RMXDebugger.swift in Headers */,
-				5063BD441B2C85F000FB5558 /* RMXFunctions.swift in Headers */,
-				5063BD451B2C85F000FB5558 /* RMXPawn.swift in Headers */,
-				5063BD461B2C85F000FB5558 /* RMXValue.swift in Headers */,
-				5063BD471B2C85F000FB5558 /* RMXWorld.swift in Headers */,
-				5063BD481B2C85F000FB5558 /* UserActions.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,13 +255,48 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5063BCCB1B2C5C5E00FB5558 /* RMXKit-ios.h in Headers */,
+				5063BCCB1B2C5C5E00FB5558 /* RMXKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		50104D401B2C8F6E001AAC92 /* RMXKitLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50104D511B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLib" */;
+			buildPhases = (
+				50104D3D1B2C8F6E001AAC92 /* Sources */,
+				50104D3E1B2C8F6E001AAC92 /* Frameworks */,
+				50104D3F1B2C8F6E001AAC92 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMXKitLib;
+			productName = RMXKitLib;
+			productReference = 50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		50104D4A1B2C8F6E001AAC92 /* RMXKitLibTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50104D541B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLibTests" */;
+			buildPhases = (
+				50104D471B2C8F6E001AAC92 /* Sources */,
+				50104D481B2C8F6E001AAC92 /* Frameworks */,
+				50104D491B2C8F6E001AAC92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50104D4E1B2C8F6E001AAC92 /* PBXTargetDependency */,
+			);
+			name = RMXKitLibTests;
+			productName = RMXKitLibTests;
+			productReference = 50104D4B1B2C8F6E001AAC92 /* RMXKitLibTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5063BC961B2C5BEB00FB5558 /* RMXKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5063BCAB1B2C5BEB00FB5558 /* Build configuration list for PBXNativeTarget "RMXKit" */;
@@ -297,7 +348,7 @@
 			);
 			name = "RMXKit-ios";
 			productName = "RMXKit-ios";
-			productReference = 5063BCC81B2C5C5E00FB5558 /* RMXKit-ios.framework */;
+			productReference = 5063BCC81B2C5C5E00FB5558 /* RMXKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5063BCD01B2C5C5E00FB5558 /* RMXKit-iosTests */ = {
@@ -328,6 +379,12 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
 				TargetAttributes = {
+					50104D401B2C8F6E001AAC92 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					50104D4A1B2C8F6E001AAC92 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					5063BC961B2C5BEB00FB5558 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 668T39KN4E;
@@ -337,6 +394,7 @@
 					};
 					5063BCC71B2C5C5E00FB5558 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 668T39KN4E;
 					};
 					5063BCD01B2C5C5E00FB5558 = {
 						CreatedOnToolsVersion = 7.0;
@@ -359,11 +417,20 @@
 				5063BCA01B2C5BEB00FB5558 /* RMXKitTests */,
 				5063BCC71B2C5C5E00FB5558 /* RMXKit-ios */,
 				5063BCD01B2C5C5E00FB5558 /* RMXKit-iosTests */,
+				50104D401B2C8F6E001AAC92 /* RMXKitLib */,
+				50104D4A1B2C8F6E001AAC92 /* RMXKitLibTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		50104D491B2C8F6E001AAC92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5063BC951B2C5BEB00FB5558 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,6 +462,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		50104D3D1B2C8F6E001AAC92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50104D471B2C8F6E001AAC92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5063BC921B2C5BEB00FB5558 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +529,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		50104D4E1B2C8F6E001AAC92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50104D401B2C8F6E001AAC92 /* RMXKitLib */;
+			targetProxy = 50104D4D1B2C8F6E001AAC92 /* PBXContainerItemProxy */;
+		};
 		5063BCA41B2C5BEB00FB5558 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5063BC961B2C5BEB00FB5558 /* RMXKit */;
@@ -461,6 +547,50 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		50104D521B2C8F6E001AAC92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50104D531B2C8F6E001AAC92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		50104D551B2C8F6E001AAC92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = RMXKitLibTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKitLibTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50104D561B2C8F6E001AAC92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				INFOPLIST_FILE = RMXKitLibTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKitLibTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		5063BCA91B2C5BEB00FB5558 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -550,7 +680,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -573,7 +703,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -615,6 +745,7 @@
 		5063BCDA1B2C5C5E00FB5558 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -622,10 +753,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "RMXKit-ios/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rattle.RMXKit-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKit;
+				PRODUCT_MODULE_NAME = RMXKit;
+				PRODUCT_NAME = RMXKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -635,6 +767,7 @@
 		5063BCDB1B2C5C5E00FB5558 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -642,10 +775,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "RMXKit-ios/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rattle.RMXKit-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKit;
+				PRODUCT_MODULE_NAME = RMXKit;
+				PRODUCT_NAME = RMXKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,6 +817,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		50104D511B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50104D521B2C8F6E001AAC92 /* Debug */,
+				50104D531B2C8F6E001AAC92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		50104D541B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLibTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50104D551B2C8F6E001AAC92 /* Debug */,
+				50104D561B2C8F6E001AAC92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5063BC911B2C5BEB00FB5558 /* Build configuration list for PBXProject "RMXKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -699,6 +849,7 @@
 				5063BCAD1B2C5BEB00FB5558 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5063BCAE1B2C5BEB00FB5558 /* Build configuration list for PBXNativeTarget "RMXKitTests" */ = {
 			isa = XCConfigurationList;
@@ -707,6 +858,7 @@
 				5063BCB01B2C5BEB00FB5558 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5063BCD91B2C5C5E00FB5558 /* Build configuration list for PBXNativeTarget "RMXKit-ios" */ = {
 			isa = XCConfigurationList;
@@ -715,6 +867,7 @@
 				5063BCDB1B2C5C5E00FB5558 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5063BCDC1B2C5C5E00FB5558 /* Build configuration list for PBXNativeTarget "RMXKit-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -723,6 +876,7 @@
 				5063BCDE1B2C5C5E00FB5558 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

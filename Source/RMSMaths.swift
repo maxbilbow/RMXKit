@@ -146,15 +146,9 @@ public func += (inout lhs: GLKVector3, rhs: SCNVector3) {
 }
 
 public func += (inout lhs: SCNVector3, rhs: GLKVector3) {
-    #if iOS
-        lhs.x += Float(rhs.x)
-        lhs.y += Float(rhs.y)
-        lhs.z += Float(rhs.z)
-    #else
-        lhs.x += CGFloat(rhs.x)
-        lhs.y += CGFloat(rhs.y)
-        lhs.z += CGFloat(rhs.z)
-    #endif
+    lhs.x += RMFloat(rhs.x)
+    lhs.y += RMFloat(rhs.y)
+    lhs.z += RMFloat(rhs.z)
 }
 
 public func += (inout lhs: SCNVector3, rhs: SCNVector3) {
