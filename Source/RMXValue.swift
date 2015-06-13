@@ -201,7 +201,7 @@ extension SCNVector3 {
         return SCNVector3Make(-x,-y,-z)
     }
     
-    func distanceTo(v: SCNVector3) -> RMFloat{
+    func distanceTo(v: SCNVector3) -> RMFloat {
         let A = SCNVector3ToGLKVector3(self); let B = SCNVector3ToGLKVector3(v)
         return RMFloat(GLKVector3Distance(A,B))
         //return RMXVector3Distance(self, v)
@@ -209,7 +209,7 @@ extension SCNVector3 {
     
     @available(OSX 10.10, *)
     var length: RMFloat {
-        return RMFloat(self.distanceTo(SCNVector3Zero))
+        return self.distanceTo(SCNVector3Zero)
     }
     
     @available(OSX 10.10, *)
