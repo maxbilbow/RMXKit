@@ -9,17 +9,18 @@
 import Foundation
 
 
-enum AiState { case MOVING, TURNING, IDLE }
+
+
 
 @available(OSX 10.10, *)
-protocol RMXAiDelegate : NSObjectProtocol {
+public protocol RMXAiDelegate : NSObjectProtocol {
     var state: String? { get }
     var args: [RMXSpriteType] { get }
-    var spriteLogic: [AiBehaviour] { get }
-    var sprite: RMXSprite { get }
-    init(sprite: RMXSprite)
+    var pawnLogic: [AiBehaviour] { get }
+    var pawn: RMXPawn { get }
+    init(pawn: RMXPawn)
     func run(sender: AnyObject?, updateAtTime time: NSTimeInterval) -> Void
-    func getTarget(args: RMXSpriteType ...) -> RMXSprite?
+    func getTarget(args: RMXSpriteType ...) -> RMXPawn?
 }
 
 @available(OSX 10.10, *)
@@ -36,52 +37,52 @@ class RMXAi : NSObject, RMXAiDelegate {
     }
     
     var world: RMXWorld {
-        return self.sprite.world
+        return self.pawn.world
     }
     
     var args: [RMXSpriteType] {
         return [ RMXSpriteType.PASSIVE ]
     }
     
-    var spriteLogic: [AiBehaviour] {
-        return self.sprite.spriteLogic
+    var pawnLogic: [AiBehaviour] {
+        return self.pawn.logic
     }
     
-    private var _sprite: RMXSprite
+    private var _pawn: RMXPawn
     
-    var sprite: RMXSprite {
-        return _sprite
+    var pawn: RMXPawn {
+        return _pawn
     }
     
-    required init(sprite: RMXSprite) {
-        _sprite = sprite
+    required init(pawn: RMXPawn) {
+        _pawn = pawn
         super.init()
     }
     
-    internal func getTarget(args: RMXSpriteType ...) -> RMXSprite? {
-        return RMXAi.randomSprite(self.world, not: self.sprite, type: args.count == 0 ? self.args : args)
+    func getTarget(args: RMXSpriteType ...) -> RMXPawn? {
+        return RMXAi.randomSprite(self.world, not: self.pawn, type: args.count == 0 ? self.args : args)
     }
     
     func run(sender: AnyObject?, updateAtTime time: NSTimeInterval) {
 //        if !self.sprite.paused {
-            for logic in self.spriteLogic {
-                logic(self.sprite.node)
+            for logic in self.pawnLogic {
+                logic(self.pawn.rootNode)
             }
-            self.sprite.timer.activate(sender)
+//            self.pawn.timer?.activate(sender)
 //        }
     }
     
-    class func randomSprite(world: RMXWorld, not: RMXSprite, type: [RMXSpriteType]?) -> RMXSprite? {
+    class func randomSprite(world: RMXWorld, not: RMXPawn, type: [RMXSpriteType]?) -> RMXPawn? {
         if let types = type {
-            let array = world.sprites.filter { (child) -> Bool in
+            let array: Array<AnyObject> = world.pawns.filter { (child) -> Bool in
                 for type in types {
-                    if child.type == type && child.rmxID != not.rmxID {
+                    if (child as? RMXPawn)?.type == type && (child as? RMXPawn)?.rmxID != not.rmxID {
                         return true
                     }
                 }
                 return false
             }
-            return array.count == 0 ? nil : array[random() % array.count]
+            return array.count == 0 ? nil : array[random() % array.count] as? RMXPawn
         }
         return nil
     }

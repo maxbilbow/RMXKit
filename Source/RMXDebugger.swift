@@ -24,7 +24,7 @@ extension RMX {
 }
 
 @available(OSX 10.10,*)
-class RMXLogEntry {
+public class RMXLogEntry {
     var senderID, message: String?
     var function, filename: String
     var line: String
@@ -86,7 +86,7 @@ class RMXLogEntry {
 typealias RMXDebugCallback = (AnyObject?, sender: RMXObject?, String, String, Int) -> Bool?
 
 @available(OSX 10.10,*)
-class RMXLog {// : NSObject {
+public class RMXLog {// : NSObject {
     static let DEBUG = "DEBUG"//classForCoder().description()
     
 //    #if DEBUG
@@ -177,7 +177,7 @@ class RMXLog {// : NSObject {
 
 
 @available(OSX 10.10, *)
-func RMLog(message: AnyObject? = "", sender: RMXObject? = nil, id: String = RMXLog.DEBUG, function: String = "", file: String = __FILE__, line: Int = __LINE__) -> Bool? {//, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
+public func RMLog(message: AnyObject? = "", sender: RMXObject? = nil, id: String = RMXLog.DEBUG, function: String = "", file: String = __FILE__, line: Int = __LINE__) -> Bool? {//, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
     #if DEBUG
     if RMXLog.isDebugging {
         if id == RMX.log[RMXLog.current].logID { //Array(RMX.log.keys)[RMXLog.current] {

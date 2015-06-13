@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum UserAction : String, CustomStringConvertible {
+public enum UserAction : String, CustomStringConvertible {
     //Movement
     case MOVE = "Move Around"
     case MOVE_FORWARD = "Move Forward"
@@ -61,7 +61,7 @@ enum UserAction : String, CustomStringConvertible {
 
     case NULL = "NULL"
     
-    var description: String {
+   public var description: String {
         return self.rawValue
     }
 
