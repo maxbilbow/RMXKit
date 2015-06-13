@@ -25,12 +25,11 @@ public struct RMX {
 }
 
 
-public protocol RMXObject {
+public protocol RMXObject : NSObjectProtocol {
     var name: String? { get }
     var rmxID: Int? { get }
     var uniqueID: String? { get }
     var print: String { get }
-    
 }
 
 

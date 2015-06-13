@@ -66,7 +66,7 @@ class RMXAi : NSObject, RMXAiDelegate {
     func run(sender: AnyObject?, updateAtTime time: NSTimeInterval) {
 //        if !self.sprite.paused {
             for logic in self.pawnLogic {
-                logic(self.pawn.rootNode)
+                logic(self.pawn)
             }
 //            self.pawn.timer?.activate(sender)
 //        }

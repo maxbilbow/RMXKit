@@ -13,9 +13,14 @@ public protocol RMXPawn : RMXObject, NSObjectProtocol {
 //    var timer: RMXTimer? { get }
     var aiDelegate: RMXAiDelegate? { get }
     var type: RMXSpriteType { get }
-    var rootNode: NSObject? { get }
     var logic: Array<AiBehaviour> { get }
-    var paused: Bool { get }
+    var isUnique: Bool { get }
+    var isLocalPlayer: Bool { get }
+    var isActor: Bool { get }
+    
+//    func grabItem(object: AnyObject?) -> Bool
+//    func throwItem(at object: AnyObject?, withForce strength: RMFloat, tracking: Bool) -> Bool
+//    func releaseItem()
     func validate()
 }
 
