@@ -34,6 +34,7 @@
 		5063BD3D1B2C7CF300FB5558 /* RMXWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD281B2C7CF300FB5558 /* RMXWorld.swift */; };
 		5063BD3E1B2C7CF300FB5558 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; };
 		5063BD3F1B2C7CF300FB5558 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; };
+		6C546F0A1B3319880063B4FC /* RMXKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C546F091B3319880063B4FC /* RMXKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		5063BD271B2C7CF300FB5558 /* RMXValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXValue.swift; sourceTree = "<group>"; };
 		5063BD281B2C7CF300FB5558 /* RMXWorld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXWorld.swift; sourceTree = "<group>"; };
 		5063BD291B2C7CF300FB5558 /* UserActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActions.swift; sourceTree = "<group>"; };
+		6C546F091B3319880063B4FC /* RMXKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMXKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			children = (
 				5063BC9A1B2C5BEB00FB5558 /* RMXKit.h */,
 				5063BC9C1B2C5BEB00FB5558 /* Info.plist */,
+				6C546F091B3319880063B4FC /* RMXKit.swift */,
 			);
 			path = RMXKit;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				5063BD361B2C7CF300FB5558 /* RMXFunctions.swift in Sources */,
 				5063BD2C1B2C7CF300FB5558 /* OSX.swift in Sources */,
 				5063BD3C1B2C7CF300FB5558 /* RMXWorld.swift in Sources */,
+				6C546F0A1B3319880063B4FC /* RMXKit.swift in Sources */,
 				5063BD321B2C7CF300FB5558 /* RMXAiDelegate.swift in Sources */,
 				5063BD3E1B2C7CF300FB5558 /* UserActions.swift in Sources */,
 				5063BD381B2C7CF300FB5558 /* RMXPawn.swift in Sources */,
@@ -680,7 +684,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -703,7 +707,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -824,6 +828,7 @@
 				50104D531B2C8F6E001AAC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		50104D541B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLibTests" */ = {
 			isa = XCConfigurationList;
@@ -832,6 +837,7 @@
 				50104D561B2C8F6E001AAC92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5063BC911B2C5BEB00FB5558 /* Build configuration list for PBXProject "RMXKit" */ = {
 			isa = XCConfigurationList;
