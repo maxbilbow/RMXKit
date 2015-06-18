@@ -10,8 +10,6 @@ import Foundation
 
 
 
-
-
 @available(OSX 10.10, *)
 public protocol RMXAiDelegate : NSObjectProtocol {
     var state: String? { get }
