@@ -34,18 +34,18 @@
 		5063BD3D1B2C7CF300FB5558 /* RMXWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD281B2C7CF300FB5558 /* RMXWorld.swift */; };
 		5063BD3E1B2C7CF300FB5558 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; };
 		5063BD3F1B2C7CF300FB5558 /* UserActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; };
-		6C22DE4B1B386DCC00185DA6 /* RMX.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD221B2C7CF300FB5558 /* RMX.swift */; settings = {ATTRIBUTES = (Private, ); }; };
+		6C22DE4B1B386DCC00185DA6 /* RMX.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD221B2C7CF300FB5558 /* RMX.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C22DE4C1B386DE000185DA6 /* RMX.swift in Resources */ = {isa = PBXBuildFile; fileRef = 5063BD221B2C7CF300FB5558 /* RMX.swift */; };
-		6C22DE531B386F6D00185DA6 /* SCNNode.swift in Headers */ = {isa = PBXBuildFile; fileRef = 6C41E03B1B38637D0082FCC1 /* SCNNode.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE541B386F6D00185DA6 /* OSX.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD201B2C7CF300FB5558 /* OSX.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE551B386F6D00185DA6 /* RMSMaths.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD211B2C7CF300FB5558 /* RMSMaths.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE561B386F6D00185DA6 /* RMXAiDelegate.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD231B2C7CF300FB5558 /* RMXAiDelegate.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE571B386F6D00185DA6 /* RMXDebugger.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD241B2C7CF300FB5558 /* RMXDebugger.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE581B386F6D00185DA6 /* RMXFunctions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD251B2C7CF300FB5558 /* RMXFunctions.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE591B386F6D00185DA6 /* RMXPawn.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD261B2C7CF300FB5558 /* RMXPawn.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE5A1B386F6D00185DA6 /* RMXValue.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD271B2C7CF300FB5558 /* RMXValue.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE5B1B386F6D00185DA6 /* RMXWorld.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD281B2C7CF300FB5558 /* RMXWorld.swift */; settings = {ATTRIBUTES = (Private, ); }; };
-		6C22DE5C1B386F6D00185DA6 /* UserActions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; settings = {ATTRIBUTES = (Private, ); }; };
+		6C22DE531B386F6D00185DA6 /* SCNNode.swift in Headers */ = {isa = PBXBuildFile; fileRef = 6C41E03B1B38637D0082FCC1 /* SCNNode.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE541B386F6D00185DA6 /* OSX.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD201B2C7CF300FB5558 /* OSX.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE551B386F6D00185DA6 /* RMSMaths.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD211B2C7CF300FB5558 /* RMSMaths.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE561B386F6D00185DA6 /* RMXAiDelegate.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD231B2C7CF300FB5558 /* RMXAiDelegate.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE571B386F6D00185DA6 /* RMXDebugger.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD241B2C7CF300FB5558 /* RMXDebugger.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE581B386F6D00185DA6 /* RMXFunctions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD251B2C7CF300FB5558 /* RMXFunctions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE591B386F6D00185DA6 /* RMXPawn.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD261B2C7CF300FB5558 /* RMXPawn.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE5A1B386F6D00185DA6 /* RMXValue.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD271B2C7CF300FB5558 /* RMXValue.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE5B1B386F6D00185DA6 /* RMXWorld.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD281B2C7CF300FB5558 /* RMXWorld.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C22DE5C1B386F6D00185DA6 /* UserActions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD291B2C7CF300FB5558 /* UserActions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C22DE5D1B386F7F00185DA6 /* SCNNode.swift in Headers */ = {isa = PBXBuildFile; fileRef = 6C41E03B1B38637D0082FCC1 /* SCNNode.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C22DE5E1B386F7F00185DA6 /* iOS.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD1E1B2C7CF300FB5558 /* iOS.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C22DE5F1B386F7F00185DA6 /* RMX.swift in Headers */ = {isa = PBXBuildFile; fileRef = 5063BD221B2C7CF300FB5558 /* RMX.swift */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -654,7 +654,7 @@
 		5063BCA91B2C5BEB00FB5558 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -669,7 +669,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -691,7 +691,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -702,7 +701,7 @@
 		5063BCAA1B2C5BEB00FB5558 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -717,7 +716,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1.1;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
