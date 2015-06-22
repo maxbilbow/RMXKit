@@ -34,7 +34,7 @@ public protocol RMXTimer : NSObjectProtocol {
 
 
 public class RMXAttributes : NSObject , NSCoding {
-    var values: Dictionary<String,String> = [
+    public var values: Dictionary<String,String> = [
         RMKeyValue.name   : "",
         RMKeyValue.Health : "100",
         RMKeyValue.Points : "0",
@@ -43,12 +43,12 @@ public class RMXAttributes : NSObject , NSCoding {
     ]
     
     
-    var keys: [String] {
+    public var keys: [String] {
         return self.values.keys.array
     }
     
     
-    override init() {
+    public override init() {
         super.init()
     }
     

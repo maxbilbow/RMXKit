@@ -21,7 +21,7 @@ public enum KeyboardType { case French, UK, DEFAULT }
 @available(OSX 10.10, *)
 public struct RMX {
 
-    static var COUNT: Int = 0
+    public static var COUNT: Int = 0
 }
 
 
@@ -34,12 +34,12 @@ public protocol RMXObject : NSObjectProtocol {
 
 
 public struct RMKeyValue {
-    static let name   = "name"
-    static let Sprite = "Sprite"
-    static let Health = "health"
-    static let Points = "points"
-    static let Kills  = "kills"
-    static let Deaths = "deaths"
+    public static let name   = "name"
+    public static let Sprite = "Sprite"
+    public static let Health = "health"
+    public static let Points = "points"
+    public static let Kills  = "kills"
+    public static let Deaths = "deaths"
 }
 
 

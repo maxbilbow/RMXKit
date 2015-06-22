@@ -11,10 +11,10 @@ import Foundation
 import GLKit
 import SceneKit
 
-let SCNMatrix4Zero = SCNMatrix4MakeScale(0,0,0)
-let GLKVector3Zero = GLKVector3Make(0,0,0)
-let GLKVector4Zero = GLKVector4Make(0,0,0,0)
-let CGVectorZero = CGVector(dx: 0,dy: 0)
+public let SCNMatrix4Zero = SCNMatrix4MakeScale(0,0,0)
+public let GLKVector3Zero = GLKVector3Make(0,0,0)
+public let GLKVector4Zero = GLKVector4Make(0,0,0,0)
+public let CGVectorZero = CGVector(dx: 0,dy: 0)
 
 public func SCNVector3Make(x:RMFloat, y:RMFloat, z:RMFloat) -> SCNVector3 {
    return SCNVector3Make(x,y,z)

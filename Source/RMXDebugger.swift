@@ -20,7 +20,7 @@ extension RMXLog {
 extension RMX {
     
     
-    static var log: [RMXLogEntry] = [ RMXLogEntry(sender: nil, function: "", filename: "\(__FILE__)", line: "\(__LINE__)", id: RMXLog.DEBUG) ]
+    public static var log: [RMXLogEntry] = [ RMXLogEntry(sender: nil, function: "", filename: "\(__FILE__)", line: "\(__LINE__)", id: RMXLog.DEBUG) ]
 }
 
 @available(OSX 10.10,*)
@@ -83,7 +83,7 @@ public class RMXLogEntry {
 }
 
 @available(OSX 10.10,*)
-typealias RMXDebugCallback = (AnyObject?, sender: RMXObject?, String, String, Int) -> Bool?
+public typealias RMXDebugCallback = (AnyObject?, sender: RMXObject?, String, String, Int) -> Bool?
 
 @available(OSX 10.10,*)
 public class RMXLog {// : NSObject {
@@ -96,30 +96,11 @@ public class RMXLog {// : NSObject {
     
     static var current: Int = 0
 //    #endif
-    
-   
-//    @availability(*,unavailable)
-//    static func print(_ message: AnyObject = "", sender: RMXObject? = nil, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
-//        #if DEBUG
-//        if self.isDebugging {
-//            let br = "\n"
-//            
-//            let heading: String = "BEGIN >> \(self.classForCoder().description())::\(file.lastPathComponent) >> ln\(line) >> \(function) <-- \(sender?.uniqueID ?? nul)"
-//
-//            let msg = (br + message.description).stringByReplacingOccurrencesOfString("\n", withString: "\n  -  ", options: NSStringCompareOptions.LiteralSearch)
-//
-//            println("\(heading)\(msg)\nEND\n")
-//        
-//            return true
-//        }
-//        #endif
-//        return nil
-//    }
+
     
     
     
-    
-    static func flush(){
+    public static func flush(){
         #if DEBUG
         for l in RMX.log {
             l.message = nil
@@ -127,7 +108,7 @@ public class RMXLog {// : NSObject {
         #endif
     }
     
-    static func printAndFlush() {
+    public static func printAndFlush() {
         #if DEBUG
         if let data = self.data {
             print("\n\(data)")
@@ -136,7 +117,7 @@ public class RMXLog {// : NSObject {
         #endif
     }
     
-    static var data: String? {
+    public static var data: String? {
         #if DEBUG
             return RMX.log[current].print//Array(RMX.log.values)[current].print
         #else
@@ -147,7 +128,7 @@ public class RMXLog {// : NSObject {
 
     
     
-    static func next() {
+    public static func next() {
         #if DEBUG
             if isDebugging {
                 if self.current == RMX.log.count - 1 {
@@ -160,7 +141,7 @@ public class RMXLog {// : NSObject {
         #endif
     }
     
-    static func previous() {
+    public static func previous() {
         #if DEBUG
             if isDebugging {
                 if self.current == 0 {

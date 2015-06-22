@@ -1,5 +1,5 @@
 //
-//  RMXCoreExtensions.swift
+//  RMXCore extensions.swift
 //  OC to Swift oGL
 //
 //  Created by Max Bilbow on 17/02/2015.
@@ -9,17 +9,17 @@
 import Foundation
 import SceneKit
 
-let PI: RMFloat = 3.14159265358979323846
-let PIf = Float(PI)
-let PI_CG = CGFloat(PI)
-let TWO_PI: RMFloat = 2 * PI
-let TWO_PIf = Float(TWO_PI)
-let PI_OVER_2: RMFloat = PI / 2
-let PI_OVER_2f = Float(PI_OVER_2)
-let PI_OVER_2_CG = CGFloat(PI_OVER_2)
-let PI_OVER_180: RMFloat = PI / 180
-let PI_OVER_180f = Float(PI_OVER_180)
-let PI_OVER_180_CG = CGFloat(PI_OVER_180)
+public let PI: RMFloat = 3.14159265358979323846
+public let PIf = Float(PI)
+public let PI_CG = CGFloat(PI)
+public let TWO_PI: RMFloat = 2 * PI
+public let TWO_PIf = Float(TWO_PI)
+public let PI_OVER_2: RMFloat = PI / 2
+public let PI_OVER_2f = Float(PI_OVER_2)
+public let PI_OVER_2_CG = CGFloat(PI_OVER_2)
+public let PI_OVER_180: RMFloat = PI / 180
+public let PI_OVER_180f = Float(PI_OVER_180)
+public let PI_OVER_180_CG = CGFloat(PI_OVER_180)
 
 
 protocol SCNLocatable3 {
@@ -93,7 +93,7 @@ class RMXValue<T: Comparable> {
 
 
 
-extension Int {
+public extension Int {
     func toData(dp:String="05") -> String {
         return RMXValue.toData(self, dp: dp)///NSString(format: "%.\(dp)f", self)
     }
@@ -111,7 +111,7 @@ extension Int {
     
 }
 
-extension Float {
+public extension Float {
     func toData(dp:String="05.2") -> String {
         return RMXValue.toData(self, dp: dp)///NSString(format: "%.\(dp)f", self)
     }
@@ -129,7 +129,7 @@ extension Float {
     }
 }
 
-extension Double {
+public extension Double {
     func toData(dp:String="05.2") -> String {
         return RMXValue.toData(self, dp: dp)
     }
@@ -143,7 +143,7 @@ extension Double {
     }
 }
 
-extension CGFloat {
+public extension CGFloat {
     func toData(dp:String="05.2") -> String {
         return RMXValue.toData(self, dp: dp)
     }
@@ -157,7 +157,7 @@ extension CGFloat {
     }
 }
 
-extension GLKVector3 {
+public extension GLKVector3 {
     var print: String {
         return "\(x.toData()) \(y.toData()) \(z.toData())"
     }
@@ -181,7 +181,7 @@ extension GLKVector3 {
 
 
 
-extension SCNVector3 {
+public extension SCNVector3 {
     var print: String {
         return "\(x.toData()) \(y.toData()) \(z.toData())"
     }
@@ -232,7 +232,7 @@ extension SCNVector3 {
 
 
 
-extension GLKVector4 {
+public extension GLKVector4 {
     var print: String {
         return "\(x.toData()) \(y.toData()) \(z.toData()) \(w.toData())"
     }
@@ -246,14 +246,14 @@ extension GLKVector4 {
     }
 }
 
-extension GLKQuaternion {
+public extension GLKQuaternion {
     var print: String {
         return "\(x.toData()) \(y.toData()) \(z.toData()) \(w.toData()) V: \(v.print)"
     }
 }
 
 
-extension SCNVector4 {
+public extension SCNVector4 {
     var print: String {
         return "\(x.toData()) \(y.toData()) \(z.toData()) \(w.toData())"
     }
@@ -267,7 +267,7 @@ extension SCNVector4 {
     }
 }
 
-extension SCNMatrix4 {
+public extension SCNMatrix4 {
     var print: String {
         let row1 = "   ROW1: \(m11.toData()) \(m12.toData()) \(m13.toData()) \(m14.toData())"
         let row2 = "   ROW2: \(m21.toData()) \(m22.toData()) \(m23.toData()) \(m24.toData())"
@@ -303,7 +303,7 @@ extension SCNMatrix4 {
 }
 
 
-extension GLKMatrix4 {
+public extension GLKMatrix4 {
     var print: String {
         let row1 = "   ROW1: \(m00.toData()) \(m01.toData()) \(m02.toData()) \(m03.toData())"
         let row2 = "   ROW2: \(m10.toData()) \(m11.toData()) \(m12.toData()) \(m13.toData())"
@@ -314,7 +314,7 @@ extension GLKMatrix4 {
 }
 
 
-extension CGVector {
+public extension CGVector {
     var print: String {
         return "\(dx.toData()) \(dy.toData())"
     }
@@ -322,7 +322,7 @@ extension CGVector {
 }
 
 
-extension SCNQuaternion {
+public extension SCNQuaternion {
     var up: CGVector  {
         return CGVector(dx: CGFloat(x * sin(w)), dy: CGFloat(y * cos(w)))
     }
@@ -338,13 +338,13 @@ extension SCNQuaternion {
 }
 
 
-extension CGSize {
+public extension CGSize {
     var average: CGFloat {
         return (width + height) / 2
     }
 }
 
-extension CGPoint {
+public extension CGPoint {
     var print: String {
         return "\(x.toData()) \(y.toData())"
     }
@@ -352,14 +352,14 @@ extension CGPoint {
 }
 
 
-extension CGRect {
+public extension CGRect {
     var print: String {
         return "size: width: \(width.print) by height: \(height.print) at \(origin.print)"
     }
 }
 
 
-extension CGSize {
+public extension CGSize {
     var print: String {
         return "size: width: \(width.print) by height: \(height.print)"
     }

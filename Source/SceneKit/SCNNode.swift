@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-extension SCNNode  {
+public extension SCNNode  {
     
 //    public var uniqueID: String? {
 //        let parentID = self.parentNode?.uniqueID ?? ""
