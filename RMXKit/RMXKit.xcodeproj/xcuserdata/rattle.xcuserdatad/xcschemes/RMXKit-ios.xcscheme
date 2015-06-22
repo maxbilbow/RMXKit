@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5063BCC71B2C5C5E00FB5558"
-               BuildableName = "RMXKit.framework"
+               BuildableName = "RMXKit-ios.framework"
                BlueprintName = "RMXKit-ios"
                ReferencedContainer = "container:RMXKit.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5063BCC71B2C5C5E00FB5558"
-            BuildableName = "RMXKit.framework"
+            BuildableName = "RMXKit-ios.framework"
             BlueprintName = "RMXKit-ios"
             ReferencedContainer = "container:RMXKit.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5063BCC71B2C5C5E00FB5558"
-            BuildableName = "RMXKit.framework"
+            BuildableName = "RMXKit-ios.framework"
             BlueprintName = "RMXKit-ios"
             ReferencedContainer = "container:RMXKit.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5063BCC71B2C5C5E00FB5558"
-            BuildableName = "RMXKit.framework"
+            BuildableName = "RMXKit-ios.framework"
             BlueprintName = "RMXKit-ios"
             ReferencedContainer = "container:RMXKit.xcodeproj">
          </BuildableReference>
