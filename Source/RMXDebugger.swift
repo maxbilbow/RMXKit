@@ -12,7 +12,7 @@ import SceneKit
 
 @available(OSX 10.10, *)
 extension RMXLog {
-    static let isDebugging: Bool = false
+//    static let isDebugging: Bool = false
 
 }
 
@@ -128,7 +128,7 @@ public class RMXLog {// : NSObject {
 
     
     
-    public static func next() {
+    public static func next(isDebugging: Bool = true) {
         #if DEBUG
             if isDebugging {
                 if self.current == RMX.log.count - 1 {
@@ -141,7 +141,7 @@ public class RMXLog {// : NSObject {
         #endif
     }
     
-    public static func previous() {
+    public static func previous(isDebugging: Bool = true) {
         #if DEBUG
             if isDebugging {
                 if self.current == 0 {
@@ -158,9 +158,9 @@ public class RMXLog {// : NSObject {
 
 
 @available(OSX 10.10, *)
-public func RMLog(message: AnyObject? = "", sender: RMXObject? = nil, id: String = RMXLog.DEBUG, function: String = "", file: String = __FILE__, line: Int = __LINE__) -> Bool? {//, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
+public func RMLog(message: AnyObject? = "", sender: RMXObject? = nil, id: String = RMXLog.DEBUG, function: String = "", file: String = __FILE__, line: Int = __LINE__, isDebugging: Bool = true) -> Bool? {//, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) -> Bool? {
     #if DEBUG
-    if RMXLog.isDebugging {
+    if isDebugging {
         if id == RMX.log[RMXLog.current].logID { //Array(RMX.log.keys)[RMXLog.current] {
             RMX.log[RMXLog.current].add(message, sender: sender, function: "\(function)", file: "\(file)", line: "\(line)")
         } else if let entry = RMX.log.filter({ (l: RMXLogEntry) -> Bool in
