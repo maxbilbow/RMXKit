@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50104D4C1B2C8F6E001AAC92 /* libRMXKitLib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */; };
 		5063BC9B1B2C5BEB00FB5558 /* RMXKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5063BC9A1B2C5BEB00FB5558 /* RMXKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5063BCA21B2C5BEB00FB5558 /* RMXKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5063BC971B2C5BEB00FB5558 /* RMXKit.framework */; };
 		5063BCA71B2C5BEB00FB5558 /* RMXKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5063BCA61B2C5BEB00FB5558 /* RMXKitTests.swift */; };
@@ -62,13 +61,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		50104D4D1B2C8F6E001AAC92 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5063BC8E1B2C5BEB00FB5558 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 50104D401B2C8F6E001AAC92;
-			remoteInfo = RMXKitLib;
-		};
 		5063BCA31B2C5BEB00FB5558 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5063BC8E1B2C5BEB00FB5558 /* Project object */;
@@ -86,8 +78,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libRMXKitLib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		50104D4B1B2C8F6E001AAC92 /* RMXKitLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKitLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063BC971B2C5BEB00FB5558 /* RMXKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RMXKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5063BC9A1B2C5BEB00FB5558 /* RMXKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMXKit.h; sourceTree = "<group>"; };
 		5063BC9C1B2C5BEB00FB5558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,21 +105,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		50104D3E1B2C8F6E001AAC92 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50104D481B2C8F6E001AAC92 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50104D4C1B2C8F6E001AAC92 /* libRMXKitLib.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5063BC931B2C5BEB00FB5558 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,8 +157,6 @@
 				5063BCA11B2C5BEB00FB5558 /* RMXKitTests.xctest */,
 				5063BCC81B2C5C5E00FB5558 /* RMXKit.framework */,
 				5063BCD11B2C5C5E00FB5558 /* RMXKit-iosTests.xctest */,
-				50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */,
-				50104D4B1B2C8F6E001AAC92 /* RMXKitLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,13 +244,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		50104D3F1B2C8F6E001AAC92 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5063BC941B2C5BEB00FB5558 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,41 +285,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		50104D401B2C8F6E001AAC92 /* RMXKitLib */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50104D511B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLib" */;
-			buildPhases = (
-				50104D3D1B2C8F6E001AAC92 /* Sources */,
-				50104D3E1B2C8F6E001AAC92 /* Frameworks */,
-				50104D3F1B2C8F6E001AAC92 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RMXKitLib;
-			productName = RMXKitLib;
-			productReference = 50104D411B2C8F6E001AAC92 /* libRMXKitLib.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		50104D4A1B2C8F6E001AAC92 /* RMXKitLibTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 50104D541B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLibTests" */;
-			buildPhases = (
-				50104D471B2C8F6E001AAC92 /* Sources */,
-				50104D481B2C8F6E001AAC92 /* Frameworks */,
-				50104D491B2C8F6E001AAC92 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				50104D4E1B2C8F6E001AAC92 /* PBXTargetDependency */,
-			);
-			name = RMXKitLibTests;
-			productName = RMXKitLibTests;
-			productReference = 50104D4B1B2C8F6E001AAC92 /* RMXKitLibTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		5063BC961B2C5BEB00FB5558 /* RMXKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5063BCAB1B2C5BEB00FB5558 /* Build configuration list for PBXNativeTarget "RMXKit" */;
@@ -436,12 +367,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
 				TargetAttributes = {
-					50104D401B2C8F6E001AAC92 = {
-						CreatedOnToolsVersion = 7.0;
-					};
-					50104D4A1B2C8F6E001AAC92 = {
-						CreatedOnToolsVersion = 7.0;
-					};
 					5063BC961B2C5BEB00FB5558 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 668T39KN4E;
@@ -474,20 +399,11 @@
 				5063BCA01B2C5BEB00FB5558 /* RMXKitTests */,
 				5063BCC71B2C5C5E00FB5558 /* RMXKit-ios */,
 				5063BCD01B2C5C5E00FB5558 /* RMXKit-iosTests */,
-				50104D401B2C8F6E001AAC92 /* RMXKitLib */,
-				50104D4A1B2C8F6E001AAC92 /* RMXKitLibTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		50104D491B2C8F6E001AAC92 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5063BC951B2C5BEB00FB5558 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,20 +436,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		50104D3D1B2C8F6E001AAC92 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		50104D471B2C8F6E001AAC92 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5063BC921B2C5BEB00FB5558 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -589,11 +491,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		50104D4E1B2C8F6E001AAC92 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 50104D401B2C8F6E001AAC92 /* RMXKitLib */;
-			targetProxy = 50104D4D1B2C8F6E001AAC92 /* PBXContainerItemProxy */;
-		};
 		5063BCA41B2C5BEB00FB5558 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5063BC961B2C5BEB00FB5558 /* RMXKit */;
@@ -607,50 +504,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		50104D521B2C8F6E001AAC92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		50104D531B2C8F6E001AAC92 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		50104D551B2C8F6E001AAC92 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				INFOPLIST_FILE = RMXKitLibTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKitLibTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		50104D561B2C8F6E001AAC92 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				INFOPLIST_FILE = RMXKitLibTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKitLibTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		5063BCA91B2C5BEB00FB5558 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -752,7 +605,7 @@
 				INFOPLIST_FILE = RMXKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -776,7 +629,7 @@
 				INFOPLIST_FILE = RMXKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rattle.RMXKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -888,24 +741,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50104D511B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLib" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50104D521B2C8F6E001AAC92 /* Debug */,
-				50104D531B2C8F6E001AAC92 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		50104D541B2C8F6E001AAC92 /* Build configuration list for PBXNativeTarget "RMXKitLibTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				50104D551B2C8F6E001AAC92 /* Debug */,
-				50104D561B2C8F6E001AAC92 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		5063BC911B2C5BEB00FB5558 /* Build configuration list for PBXProject "RMXKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
