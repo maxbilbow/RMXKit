@@ -1,0 +1,794 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		503A23961B6A1F56008F89F6 /* Tools.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 503A23931B6A1F56008F89F6 /* Tools.hpp */; };
+		503A239B1B6A29CB008F89F6 /* Object.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 503A239A1B6A29CB008F89F6 /* Object.hpp */; };
+		503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
+		503A23AD1B6A3C75008F89F6 /* ASingleton.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 503A23891B6A0B68008F89F6 /* ASingleton.hpp */; };
+		503A23AF1B6A4138008F89F6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
+		503A23B51B6A4516008F89F6 /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
+		503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
+		503A23C11B6A6579008F89F6 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A238D1B6A0F1E008F89F6 /* Object.cpp */; };
+		503A23C21B6A6875008F89F6 /* RMXKit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C501B679E6500AD2FAC /* RMXKit.cpp */; };
+		503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
+		503A23C71B6A69BF008F89F6 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
+		503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
+		509BC1811B68A389007172B6 /* LinkedList.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 509BC17E1B68A389007172B6 /* LinkedList.hpp */; };
+		509BC18D1B68BBBE007172B6 /* Dictionary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 509BC18A1B68BBBE007172B6 /* Dictionary.hpp */; };
+		50C43C4A1B679E6500AD2FAC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C43C491B679E6500AD2FAC /* CoreFoundation.framework */; };
+		50C43C5F1B679E9200AD2FAC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
+		50C43C681B67A00600AD2FAC /* NotificationCenter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 50C43C651B67A00600AD2FAC /* NotificationCenter.hpp */; };
+		50C43C691B67A01C00AD2FAC /* RMXKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 50C43C4C1B679E6500AD2FAC /* RMXKit.h */; };
+		50C43C6A1B67A01C00AD2FAC /* RMXKitPriv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 50C43C4E1B679E6500AD2FAC /* RMXKitPriv.hpp */; };
+		50D026441B695D8200895093 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D026431B695D8200895093 /* AppDelegate.swift */; };
+		50D026461B695D8200895093 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D026451B695D8200895093 /* GameViewController.swift */; };
+		50D026481B695D8200895093 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50D026471B695D8200895093 /* Shaders.metal */; };
+		50D0264A1B695D8200895093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50D026491B695D8200895093 /* Assets.xcassets */; };
+		50D0264D1B695D8200895093 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50D0264B1B695D8200895093 /* MainMenu.xib */; };
+		50D026721B695E7400895093 /* CBridge.c in Sources */ = {isa = PBXBuildFile; fileRef = 50D0266F1B695E7400895093 /* CBridge.c */; };
+		50D026761B69633800895093 /* OpenGLView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50D026731B69633800895093 /* OpenGLView.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50D026541B695D8200895093 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C43C3E1B679E6500AD2FAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50D026401B695D8200895093;
+			remoteInfo = AiCuboBridge;
+		};
+		50D0265F1B695D8200895093 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C43C3E1B679E6500AD2FAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50D026401B695D8200895093;
+			remoteInfo = AiCuboBridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50C43C5A1B679E9200AD2FAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		503A237E1B69FF26008F89F6 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		503A237F1B69FF26008F89F6 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
+		503A23811B6A00C3008F89F6 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		503A23821B6A0167008F89F6 /* GLFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFacade.cpp; sourceTree = "<group>"; };
+		503A23841B6A01A2008F89F6 /* GLFacade.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GLFacade.hpp; sourceTree = "<group>"; };
+		503A23851B6A024C008F89F6 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		503A23861B6A024C008F89F6 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		503A23891B6A0B68008F89F6 /* ASingleton.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ASingleton.hpp; sourceTree = "<group>"; };
+		503A238D1B6A0F1E008F89F6 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Object.cpp; path = ../AiCubo/OSX/Object.cpp; sourceTree = "<group>"; };
+		503A23921B6A1F56008F89F6 /* Tools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tools.cpp; sourceTree = "<group>"; };
+		503A23931B6A1F56008F89F6 /* Tools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tools.hpp; sourceTree = "<group>"; };
+		503A239A1B6A29CB008F89F6 /* Object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Object.hpp; path = ../AiCubo/OSX/Object.hpp; sourceTree = "<group>"; };
+		503A23C61B6A69BF008F89F6 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
+		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
+		509BC17E1B68A389007172B6 /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LinkedList.hpp; path = RMXKit/LinkedList.hpp; sourceTree = SOURCE_ROOT; };
+		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
+		509BC18A1B68BBBE007172B6 /* Dictionary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Dictionary.hpp; path = RMXKit/Dictionary.hpp; sourceTree = SOURCE_ROOT; };
+		50C43C461B679E6500AD2FAC /* RMXKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C43C491B679E6500AD2FAC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		50C43C4C1B679E6500AD2FAC /* RMXKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMXKit.h; sourceTree = "<group>"; };
+		50C43C4E1B679E6500AD2FAC /* RMXKitPriv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RMXKitPriv.hpp; sourceTree = "<group>"; };
+		50C43C501B679E6500AD2FAC /* RMXKit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RMXKit.cpp; sourceTree = "<group>"; };
+		50C43C521B679E6500AD2FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50C43C5C1B679E9200AD2FAC /* AiCubo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AiCubo; sourceTree = BUILT_PRODUCTS_DIR; };
+		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NotificationCenter.cpp; sourceTree = "<group>"; };
+		50C43C651B67A00600AD2FAC /* NotificationCenter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NotificationCenter.hpp; sourceTree = "<group>"; };
+		50C43C6C1B67A0A900AD2FAC /* EventListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EventListener.hpp; sourceTree = "<group>"; };
+		50D026411B695D8200895093 /* AiCuboBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AiCuboBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D026431B695D8200895093 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		50D026451B695D8200895093 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		50D026471B695D8200895093 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		50D026491B695D8200895093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		50D0264C1B695D8200895093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		50D0264E1B695D8200895093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50D026531B695D8200895093 /* AiCuboBridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AiCuboBridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D0265E1B695D8200895093 /* AiCuboBridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AiCuboBridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D0266E1B695E7400895093 /* AiCuboBridge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AiCuboBridge-Bridging-Header.h"; sourceTree = "<group>"; };
+		50D0266F1B695E7400895093 /* CBridge.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CBridge.c; sourceTree = "<group>"; };
+		50D026701B695E7400895093 /* CBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBridge.h; sourceTree = "<group>"; };
+		50D026731B69633800895093 /* OpenGLView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLView.cpp; path = ../OpenGLView.cpp; sourceTree = "<group>"; };
+		50D026741B69633800895093 /* OpenGLView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLView.hpp; path = ../OpenGLView.hpp; sourceTree = "<group>"; };
+		50D0267A1B69653300895093 /* Shapes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shapes.hpp; sourceTree = "<group>"; };
+		50D0267B1B69653300895093 /* Shapes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shapes.cpp; sourceTree = "<group>"; };
+		50D0267C1B69653300895093 /* DesktopInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DesktopInput.hpp; sourceTree = "<group>"; };
+		50D0267D1B69653300895093 /* DesktopInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DesktopInput.cpp; sourceTree = "<group>"; };
+		50D0267E1B69653300895093 /* MouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MouseInput.hpp; sourceTree = "<group>"; };
+		50D0267F1B69653300895093 /* MouseInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseInput.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50C43C431B679E6500AD2FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50C43C4A1B679E6500AD2FAC /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C43C591B679E9200AD2FAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D0263E1B695D8200895093 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D026501B695D8200895093 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D0265B1B695D8200895093 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		503A23971B6A2910008F89F6 /* cpp */ = {
+			isa = PBXGroup;
+			children = (
+				50D026731B69633800895093 /* OpenGLView.cpp */,
+				503A23821B6A0167008F89F6 /* GLFacade.cpp */,
+				503A23851B6A024C008F89F6 /* Camera.cpp */,
+				503A23921B6A1F56008F89F6 /* Tools.cpp */,
+				50D0267B1B69653300895093 /* Shapes.cpp */,
+				50D0267D1B69653300895093 /* DesktopInput.cpp */,
+				50D0267F1B69653300895093 /* MouseInput.cpp */,
+				503A237E1B69FF26008F89F6 /* Window.cpp */,
+			);
+			name = cpp;
+			sourceTree = "<group>";
+		};
+		503A239D1B6A3014008F89F6 /* cpp */ = {
+			isa = PBXGroup;
+			children = (
+				509BC1891B68BBBE007172B6 /* Dictionary.cpp */,
+				509BC17D1B68A389007172B6 /* LinkedList.cpp */,
+				503A238D1B6A0F1E008F89F6 /* Object.cpp */,
+				50C43C501B679E6500AD2FAC /* RMXKit.cpp */,
+				50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */,
+				503A23C61B6A69BF008F89F6 /* EventListener.cpp */,
+			);
+			name = cpp;
+			sourceTree = "<group>";
+		};
+		50C43C3D1B679E6500AD2FAC = {
+			isa = PBXGroup;
+			children = (
+				50C43C4B1B679E6500AD2FAC /* RMXKit */,
+				50C43C5D1B679E9200AD2FAC /* AiCubo */,
+				50D026421B695D8200895093 /* AiCuboBridge */,
+				50C43C481B679E6500AD2FAC /* Frameworks */,
+				50C43C471B679E6500AD2FAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50C43C471B679E6500AD2FAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50C43C461B679E6500AD2FAC /* RMXKit.bundle */,
+				50C43C5C1B679E9200AD2FAC /* AiCubo */,
+				50D026411B695D8200895093 /* AiCuboBridge.app */,
+				50D026531B695D8200895093 /* AiCuboBridgeTests.xctest */,
+				50D0265E1B695D8200895093 /* AiCuboBridgeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50C43C481B679E6500AD2FAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50C43C491B679E6500AD2FAC /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50C43C4B1B679E6500AD2FAC /* RMXKit */ = {
+			isa = PBXGroup;
+			children = (
+				503A239D1B6A3014008F89F6 /* cpp */,
+				509BC18A1B68BBBE007172B6 /* Dictionary.hpp */,
+				509BC17E1B68A389007172B6 /* LinkedList.hpp */,
+				503A239A1B6A29CB008F89F6 /* Object.hpp */,
+				50C43C4C1B679E6500AD2FAC /* RMXKit.h */,
+				50C43C4E1B679E6500AD2FAC /* RMXKitPriv.hpp */,
+				50C43C521B679E6500AD2FAC /* Info.plist */,
+				50C43C6C1B67A0A900AD2FAC /* EventListener.hpp */,
+				50C43C651B67A00600AD2FAC /* NotificationCenter.hpp */,
+				503A23891B6A0B68008F89F6 /* ASingleton.hpp */,
+			);
+			path = RMXKit;
+			sourceTree = "<group>";
+		};
+		50C43C5D1B679E9200AD2FAC /* AiCubo */ = {
+			isa = PBXGroup;
+			children = (
+				50D026771B69653300895093 /* headers */,
+				50C43C5E1B679E9200AD2FAC /* main.cpp */,
+			);
+			path = AiCubo;
+			sourceTree = "<group>";
+		};
+		50D026421B695D8200895093 /* AiCuboBridge */ = {
+			isa = PBXGroup;
+			children = (
+				50D026431B695D8200895093 /* AppDelegate.swift */,
+				50D0266F1B695E7400895093 /* CBridge.c */,
+				50D026701B695E7400895093 /* CBridge.h */,
+				50D026451B695D8200895093 /* GameViewController.swift */,
+				50D026471B695D8200895093 /* Shaders.metal */,
+				50D026491B695D8200895093 /* Assets.xcassets */,
+				50D0264B1B695D8200895093 /* MainMenu.xib */,
+				50D0264E1B695D8200895093 /* Info.plist */,
+				50D0266E1B695E7400895093 /* AiCuboBridge-Bridging-Header.h */,
+			);
+			path = AiCuboBridge;
+			sourceTree = "<group>";
+		};
+		50D026771B69653300895093 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				503A23971B6A2910008F89F6 /* cpp */,
+				503A23841B6A01A2008F89F6 /* GLFacade.hpp */,
+				503A23861B6A024C008F89F6 /* Camera.hpp */,
+				503A23931B6A1F56008F89F6 /* Tools.hpp */,
+				50D026741B69633800895093 /* OpenGLView.hpp */,
+				50D0267A1B69653300895093 /* Shapes.hpp */,
+				50D0267C1B69653300895093 /* DesktopInput.hpp */,
+				50D0267E1B69653300895093 /* MouseInput.hpp */,
+				503A237F1B69FF26008F89F6 /* Window.hpp */,
+				503A23811B6A00C3008F89F6 /* Constants.h */,
+			);
+			name = headers;
+			path = OSX;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		50C43C441B679E6500AD2FAC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503A23AD1B6A3C75008F89F6 /* ASingleton.hpp in Headers */,
+				509BC18D1B68BBBE007172B6 /* Dictionary.hpp in Headers */,
+				50C43C681B67A00600AD2FAC /* NotificationCenter.hpp in Headers */,
+				50C43C691B67A01C00AD2FAC /* RMXKit.h in Headers */,
+				50C43C6A1B67A01C00AD2FAC /* RMXKitPriv.hpp in Headers */,
+				503A23961B6A1F56008F89F6 /* Tools.hpp in Headers */,
+				509BC1811B68A389007172B6 /* LinkedList.hpp in Headers */,
+				503A239B1B6A29CB008F89F6 /* Object.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		50C43C451B679E6500AD2FAC /* RMXKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C43C551B679E6500AD2FAC /* Build configuration list for PBXNativeTarget "RMXKit" */;
+			buildPhases = (
+				50C43C421B679E6500AD2FAC /* Sources */,
+				50C43C431B679E6500AD2FAC /* Frameworks */,
+				50C43C441B679E6500AD2FAC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMXKit;
+			productName = RMXKit;
+			productReference = 50C43C461B679E6500AD2FAC /* RMXKit.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		50C43C5B1B679E9200AD2FAC /* AiCubo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C43C601B679E9200AD2FAC /* Build configuration list for PBXNativeTarget "AiCubo" */;
+			buildPhases = (
+				50C43C581B679E9200AD2FAC /* Sources */,
+				50C43C591B679E9200AD2FAC /* Frameworks */,
+				50C43C5A1B679E9200AD2FAC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AiCubo;
+			productName = AiCubo;
+			productReference = 50C43C5C1B679E9200AD2FAC /* AiCubo */;
+			productType = "com.apple.product-type.tool";
+		};
+		50D026401B695D8200895093 /* AiCuboBridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50D0266B1B695D8200895093 /* Build configuration list for PBXNativeTarget "AiCuboBridge" */;
+			buildPhases = (
+				50D0263D1B695D8200895093 /* Sources */,
+				50D0263E1B695D8200895093 /* Frameworks */,
+				50D0263F1B695D8200895093 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AiCuboBridge;
+			productName = AiCuboBridge;
+			productReference = 50D026411B695D8200895093 /* AiCuboBridge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50D026521B695D8200895093 /* AiCuboBridgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50D0266C1B695D8200895093 /* Build configuration list for PBXNativeTarget "AiCuboBridgeTests" */;
+			buildPhases = (
+				50D0264F1B695D8200895093 /* Sources */,
+				50D026501B695D8200895093 /* Frameworks */,
+				50D026511B695D8200895093 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50D026551B695D8200895093 /* PBXTargetDependency */,
+			);
+			name = AiCuboBridgeTests;
+			productName = AiCuboBridgeTests;
+			productReference = 50D026531B695D8200895093 /* AiCuboBridgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		50D0265D1B695D8200895093 /* AiCuboBridgeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50D0266D1B695D8200895093 /* Build configuration list for PBXNativeTarget "AiCuboBridgeUITests" */;
+			buildPhases = (
+				50D0265A1B695D8200895093 /* Sources */,
+				50D0265B1B695D8200895093 /* Frameworks */,
+				50D0265C1B695D8200895093 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50D026601B695D8200895093 /* PBXTargetDependency */,
+			);
+			name = AiCuboBridgeUITests;
+			productName = AiCuboBridgeUITests;
+			productReference = 50D0265E1B695D8200895093 /* AiCuboBridgeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50C43C3E1B679E6500AD2FAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Rattle Media Ltd";
+				TargetAttributes = {
+					50C43C451B679E6500AD2FAC = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					50C43C5B1B679E9200AD2FAC = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					50D026401B695D8200895093 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					50D026521B695D8200895093 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 50D026401B695D8200895093;
+					};
+					50D0265D1B695D8200895093 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 50D026401B695D8200895093;
+					};
+				};
+			};
+			buildConfigurationList = 50C43C411B679E6500AD2FAC /* Build configuration list for PBXProject "RMXKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 50C43C3D1B679E6500AD2FAC;
+			productRefGroup = 50C43C471B679E6500AD2FAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50C43C451B679E6500AD2FAC /* RMXKit */,
+				50C43C5B1B679E9200AD2FAC /* AiCubo */,
+				50D026401B695D8200895093 /* AiCuboBridge */,
+				50D026521B695D8200895093 /* AiCuboBridgeTests */,
+				50D0265D1B695D8200895093 /* AiCuboBridgeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50D0263F1B695D8200895093 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50D0264A1B695D8200895093 /* Assets.xcassets in Resources */,
+				50D0264D1B695D8200895093 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D026511B695D8200895093 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D0265C1B695D8200895093 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50C43C421B679E6500AD2FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503A23B51B6A4516008F89F6 /* LinkedList.cpp in Sources */,
+				503A23C21B6A6875008F89F6 /* RMXKit.cpp in Sources */,
+				503A23C71B6A69BF008F89F6 /* EventListener.cpp in Sources */,
+				503A23AF1B6A4138008F89F6 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50C43C581B679E9200AD2FAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */,
+				503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */,
+				50C43C5F1B679E9200AD2FAC /* main.cpp in Sources */,
+				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
+				503A23C11B6A6579008F89F6 /* Object.cpp in Sources */,
+				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D0263D1B695D8200895093 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50D026481B695D8200895093 /* Shaders.metal in Sources */,
+				50D026461B695D8200895093 /* GameViewController.swift in Sources */,
+				50D026721B695E7400895093 /* CBridge.c in Sources */,
+				50D026441B695D8200895093 /* AppDelegate.swift in Sources */,
+				50D026761B69633800895093 /* OpenGLView.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D0264F1B695D8200895093 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50D0265A1B695D8200895093 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50D026551B695D8200895093 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50D026401B695D8200895093 /* AiCuboBridge */;
+			targetProxy = 50D026541B695D8200895093 /* PBXContainerItemProxy */;
+		};
+		50D026601B695D8200895093 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50D026401B695D8200895093 /* AiCuboBridge */;
+			targetProxy = 50D0265F1B695D8200895093 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		50D0264B1B695D8200895093 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50D0264C1B695D8200895093 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		50C43C531B679E6500AD2FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		50C43C541B679E6500AD2FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		50C43C561B679E6500AD2FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RMXKit/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.RMXKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50C43C571B679E6500AD2FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RMXKit/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.RMXKit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		50C43C611B679E9200AD2FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50C43C621B679E9200AD2FAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		50D026651B695D8200895093 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiCuboBridge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.AiCuboBridge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AiCuboBridge/AiCuboBridge-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		50D026661B695D8200895093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiCuboBridge/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.AiCuboBridge";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AiCuboBridge/AiCuboBridge-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		50D026671B695D8200895093 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiCuboBridgeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.AiCuboBridgeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AiCuboBridge.app/Contents/MacOS/AiCuboBridge";
+			};
+			name = Debug;
+		};
+		50D026681B695D8200895093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiCuboBridgeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.AiCuboBridgeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AiCuboBridge.app/Contents/MacOS/AiCuboBridge";
+			};
+			name = Release;
+		};
+		50D026691B695D8200895093 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiCuboBridgeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.AiCuboBridgeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AiCuboBridge;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		50D0266A1B695D8200895093 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AiCuboBridgeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.maxbilbow-cpp.AiCuboBridgeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = AiCuboBridge;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50C43C411B679E6500AD2FAC /* Build configuration list for PBXProject "RMXKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C43C531B679E6500AD2FAC /* Debug */,
+				50C43C541B679E6500AD2FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C43C551B679E6500AD2FAC /* Build configuration list for PBXNativeTarget "RMXKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C43C561B679E6500AD2FAC /* Debug */,
+				50C43C571B679E6500AD2FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C43C601B679E9200AD2FAC /* Build configuration list for PBXNativeTarget "AiCubo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50C43C611B679E9200AD2FAC /* Debug */,
+				50C43C621B679E9200AD2FAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50D0266B1B695D8200895093 /* Build configuration list for PBXNativeTarget "AiCuboBridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50D026651B695D8200895093 /* Debug */,
+				50D026661B695D8200895093 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50D0266C1B695D8200895093 /* Build configuration list for PBXNativeTarget "AiCuboBridgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50D026671B695D8200895093 /* Debug */,
+				50D026681B695D8200895093 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50D0266D1B695D8200895093 /* Build configuration list for PBXNativeTarget "AiCuboBridgeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50D026691B695D8200895093 /* Debug */,
+				50D0266A1B695D8200895093 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50C43C3E1B679E6500AD2FAC /* Project object */;
+}
