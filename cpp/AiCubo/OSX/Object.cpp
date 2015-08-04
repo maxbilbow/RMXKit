@@ -12,6 +12,9 @@
 using namespace std;
 using namespace rmx;
 
+unsigned int Object::_count = 0;
+
+LinkedList<Object> Object::_allObjects = LinkedList<Object>();
 
 //unsigned int Object::Count() {
 //    return Object::count;
@@ -38,6 +41,8 @@ class Thing {
 public:
     std::string name = "Hello, I'm Barry!";
 };
+
+
 
 void RMXObjectCloneTest(){
     Object * o = new Object();

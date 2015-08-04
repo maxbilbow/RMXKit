@@ -19,11 +19,11 @@ CFStringRef RMXKitUUID(void);
 #pragma GCC visibility pop
 }
 
-
+#define as_string(x) #x
 #import "LinkedList.hpp"
 #import "Dictionary.hpp"
 #import "NotificationCenter.hpp"
 #import "Object.hpp"
 #import "ASingleton.hpp"
-
+#import "Behaviour.hpp"
 

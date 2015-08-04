@@ -83,8 +83,9 @@ namespace rmx {
             }
         }
         
-        Value setValueForKey(Key key, Value  value) {
-            return *this->setValueForKey(key, &value);
+        bool setValueForKey(Key key, Value value) {
+            this->setValueForKey(key, &value);
+            return true;
         }
 
     };

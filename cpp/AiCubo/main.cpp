@@ -7,8 +7,8 @@
 //
 
 #import <iostream>
-
-
+#define DEBUG_LINKED_LIST 1
+#define DEBUG_BEHAVIOURS 1
 #import "RMXKit.h"
 
 //#import "LinkedList.hpp"
@@ -17,7 +17,7 @@
 //#import "Object.hpp"
 
 
-#define quote(x) #x
+
 
 //#import "OpenGLView.hpp"
 
@@ -30,9 +30,13 @@ using namespace rmx;
 
 
 int main(int argc, char * argv[]) {
-    RMXLinkedListTest();
-    RMXDictionaryTest();
-    RMXObjectCloneTest();
-    RMXEventListenerTest();
+//    RMXLinkedListTest();
+//    RMXDictionaryTest();
+//    RMXObjectCloneTest();
+//    RMXEventListenerTest();
+    RMXBehaviourTest();
+    
+    
+    
     return 0;
 }

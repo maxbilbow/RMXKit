@@ -14,7 +14,7 @@
 #import <iostream>
 namespace rmx {
 
-
+    
     template <typename Value> class LinkedList {
         typedef LinkedList<Value> List;
     public:
@@ -22,12 +22,26 @@ namespace rmx {
         public:
             Value * value;
             _Node * next;
+            _Node * prev; //Not Implemented
         } Node;
+        
     private:
         int _count;
         Node * _head;
 
     public:
+        typedef struct _Iterator {
+            Node * current;
+            bool hasValues() {
+                return this->_count != 0 && current->next != nullptr;
+            }
+            Value * next() {
+                Value * v = current->value;
+                current = current->next;
+                return v;
+            }
+        } Iterator;
+        
         LinkedList();
         ~LinkedList();
         
@@ -100,7 +114,11 @@ namespace rmx {
         
         Value * pop(Node ** head);
        
-        
+        Iterator getIterator() {
+            Iterator * i = new Iterator();
+            i->current = this->_head;
+            return *i;
+        }
         
         LinkedList<Value> * reverse();
         
@@ -133,7 +151,7 @@ namespace rmx {
             last->next->value = value;
         }
         ++this->_count;
-#if RMX_DEBUG
+#if DEBUG_LINKED_LIST
         try {
             std::cout << "appending " << value << " at " << value << ", SIZE is now: " << _count << std::endl;
         } catch (std::exception e) {

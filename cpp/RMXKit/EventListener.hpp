@@ -27,6 +27,7 @@ namespace rmx {
         EventListener(std::string name = "", bool add = true):Object(name) {
             this->init(add);
         }
+        ~EventListener();
         //    virtual void OnEvent(String theEvent, EventArgs args){}
         virtual void OnEventDidStart(AnEvent theEvent, EventArgs args) {
             std::cout << *this << "\n       Event Started: " << theEvent << ", with args: " << args << std::endl << std::endl;
@@ -35,9 +36,11 @@ namespace rmx {
         virtual void OnEventDidEnd(AnEvent theEvent, EventArgs args) {
             std::cout << *this << "\n         Event Ended: " << theEvent << ", with args: " << args << std::endl << std::endl;
         }
-        virtual void SendMessage(AnEvent message){
-            std::cout << *this << "\n    Message Received: " << message << std::endl << std::endl;
-        }
+       
+        
+        void StartListening();
+        
+        void StopListening();
         
         EventListener * clone() override;
 //        {
