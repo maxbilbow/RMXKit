@@ -20,10 +20,13 @@ CFStringRef RMXKitUUID(void);
 }
 
 #define as_string(x) #x
+
+
+//#import "Tests.h"
 #import "LinkedList.hpp"
 #import "Dictionary.hpp"
 #import "NotificationCenter.hpp"
 #import "Object.hpp"
 #import "ASingleton.hpp"
-#import "Behaviour.hpp"
+//#import "Behaviour.hpp"
 

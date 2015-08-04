@@ -6,10 +6,11 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-
+#import "Tests.h"
 #import "EventListener.hpp"
 #import "NotificationCenter.hpp"
 
+#define DEBUG_THIS (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_EVENT_LISTENER)
 using namespace rmx;
 using namespace std;
 
@@ -18,18 +19,27 @@ void EventListener::init(bool add) {
         NotificationCenter::addListener(this);
 }
 
-EventListener::~EventListener() {
+EventListener::~EventListener(){
     NotificationCenter::removeListener(this);
+//    Object::~Object();
+#if DEBUG_MALLOC
+    cout << "~DELETING EventListener: " << *this << endl;
+#endif
 }
 
 EventListener * EventListener::clone() {
     EventListener * clone =  (EventListener*) Object::clone();
     if (NotificationCenter::hasListener(this)) {
+#if DEBUG_THIS
         cout << "\n *** Should Add the Clone: " << Name() << endl << endl;
+#endif
         NotificationCenter::addListener(clone);
-    } else {
+    }
+#if DEBUG_THIS
+    else {
         cout << "\n *** Diddn't Add the Clone: " << Name() << endl << endl;
     }
+#endif
     
     return clone;
 }
@@ -48,6 +58,7 @@ void EventListener::StopListening() {
 /// • Object::Instantiate(Object inheritance)
 /// • Event Listening with cloned objects
 void RMXEventListenerTest(){
+    std::cout << "\n\n******** BEGIN TEST: EventListener ********\n" << std::endl;
     EventListener * o = new EventListener(" O Will Listen");
     EventListener p = EventListener(" P Will Listen");
     EventListener p2 = EventListener("P2 Not Listening", false);
@@ -78,5 +89,8 @@ void RMXEventListenerTest(){
     
     NotificationCenter::eventDidOccur("Something's Happening!",  new string("Poof!"));
     NotificationCenter::notifyListeners("MESSAE RECEIVED!");
+    
+    
+    std::cout <<   "\n********   END TEST: EventListener ********\n" << std::endl;
 
 }

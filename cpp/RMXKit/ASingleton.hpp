@@ -22,7 +22,7 @@ namespace rmx {
     ///Useuful for switching between camera objects, for example.
     ///setCurrent(T) returns the value that was replaced.
     template <class T>
-    class ASingleton {
+    class ASingleton : public Object {
         static T * _current;
     public:
         static T * current() {
@@ -31,6 +31,11 @@ namespace rmx {
             else
                 _current = new T();
             return _current;
+        }
+        
+        ~ASingleton() {
+            _current = nullptr;
+            Object::~Object();
         }
         
         ///Sets the current static "Singleton" and returns the old

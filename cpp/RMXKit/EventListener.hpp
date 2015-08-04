@@ -35,12 +35,16 @@ namespace rmx {
         
         ///Notify's all active listeners that an event is about to start
         virtual void OnEventDidStart(AnEvent theEvent, EventArgs args) {
+            #if DEBUG_INCLUDE_TEST_OUTPUT
             std::cout << *this << "\n       Event Started: " << theEvent << ", with args: " << args << std::endl << std::endl;
+            #endif
         }
         
         ///Notify's all active listeners that an event did start
         virtual void OnEventDidEnd(AnEvent theEvent, EventArgs args) {
+            #if DEBUG_INCLUDE_TEST_OUTPUT
             std::cout << *this << "\n         Event Ended: " << theEvent << ", with args: " << args << std::endl << std::endl;
+            #endif
         }
 
         
@@ -48,7 +52,9 @@ namespace rmx {
         /// Has to be overridden for to add specific method handing
         /// as it is currently not automatic to call a method this way
         virtual void SendMessage(AnEvent message, EventArgs args = nullptr){
+            #if DEBUG_INCLUDE_TEST_OUTPUT
             std::cout << *this << "\n    Message Received: " << message << std::endl << std::endl;
+            #endif
         }
 
        
@@ -67,9 +73,5 @@ namespace rmx {
 }
 
 
-///Successfull test of
-/// • Object::clone()
-/// • Object::Instantiate(Object inheritance)
-/// • Event Listening with cloned objects
-void RMXEventListenerTest();
+
 

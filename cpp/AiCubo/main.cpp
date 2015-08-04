@@ -1,14 +1,13 @@
 //
 //  main.cpp
-//  AiCubo
+//  RMXKit
 //
 //  Created by Max Bilbow on 28/07/2015.
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
 #import <iostream>
-#define DEBUG_LINKED_LIST 1
-#define DEBUG_BEHAVIOURS 1
+#import "Tests.h"
 #import "RMXKit.h"
 
 //#import "LinkedList.hpp"

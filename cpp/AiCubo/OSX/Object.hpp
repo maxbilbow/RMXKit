@@ -55,10 +55,10 @@ namespace rmx {
     };
 }
 
-///Prints the class' details, including location in memory, along with it's ToString() method
+///Prints the object's details, including location in memory, along with it's ToString() method
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a);
 
-///Prints the class' details, including pointer address, along with it's ToString() method
+///Prints the object's ToString() method
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a);
 
 namespace rmx {
@@ -78,6 +78,10 @@ namespace rmx {
             this->_id = _count++;
         }
         
+        static void _RemoveObject(Object * obj) {
+            Object::_allObjects.removeValue(obj);
+        }
+        
 
         
     protected:
@@ -92,12 +96,12 @@ namespace rmx {
     public:
         ///The total number of rmx::Objects that exist.
         static unsigned int Count() {
-            return Object::_count - Object::_deleted;
+            return Object::_allObjects.count(); //_count - Object::_deleted;
         }
         
         static void DeleteAllObjects();
-        static LinkedList<Object> AllObjects() {
-            return Object::_allObjects;
+        static LinkedList<Object> * AllObjects() {
+            return &Object::_allObjects;
         }
         
         ///Initiates with default name "Unnamed Object"
@@ -105,10 +109,20 @@ namespace rmx {
             this->_id = Object::_count++; //this->IncrementCount();
             this->name = !name.empty() ? name : "Unnamed Object";
             Object::_allObjects.append(this);
+#if DEBUG_MALLOC
+            std::cout << "~INITIALIZING Object: " << *this << std::endl;
+#endif
         }
        
         ~Object() {
+#if DEBUG_MALLOC
+            std::cout << "~DELETING Object: " << *this;
+#endif
             Object::_deleted++;
+            Object::_RemoveObject(this);
+#if DEBUG_MALLOC
+            std::cout << ", Remainig: " << Object::Count() << std::endl;
+#endif
         }
         
         ///Returns the name with the uniqueID in brackets
@@ -145,7 +159,11 @@ namespace rmx {
             o->_updateID();
             if (o->name.find("CLONE of \"") == std::string::npos)
                 o->setName("CLONE of \"" + this->name + "\"");// + std::to_string(this->getID()) + ")");
-            return (Object*) ptr;
+            Object::_allObjects.append(o);
+#if DEBUG_MALLOC
+            std::cout << "~INITIALIZING CLONE: " << *o << std::endl;
+#endif
+            return o;
         }
         
         ///Returns the uniqueID
@@ -207,11 +225,17 @@ namespace rmx {
         template<class T>
         static T * Instantiate(T * object) {
 //            if( Object * o = dynamic_cast< Object* >( object ) )
-            if (std::is_base_of<Object,T>::value)
+            if (std::is_base_of<Object,T>::value) {
+#if DEBUG_MALLOC
+                std::cout << "Object::";
+#endif
                 return (T*) ((Object*) object)->clone();
-            else {
+            } else {
                 void * ptr = malloc(sizeof(*object));//&o;
                 memcpy(ptr, (void*)object, sizeof(*object));
+#if DEBUG_MALLOC
+                std::cout << "~UNKNOWN CLONE: " << ptr << std::endl;
+#endif
                 return (T*) ptr;
             }
            
@@ -232,14 +256,7 @@ namespace rmx {
 
 
 
-///Successfully tests the clone and instantiate methods.
-void RMXObjectCloneTest();
 
-///Successfully tests the cout << operator.
-void RMXPrintableTest();
-
-
-void RMXObjectCountInitAndDeinitTest();
 
 
 

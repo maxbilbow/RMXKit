@@ -16,7 +16,7 @@
 //#import "NotificationCenter.hpp"
 #include "Object.hpp"
 #define _(x) #x
-void RMXBehaviourTest();
+
 
 namespace rmx {
     class Behaviour : public Object {

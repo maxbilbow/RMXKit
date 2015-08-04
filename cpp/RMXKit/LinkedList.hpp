@@ -12,6 +12,7 @@
 #endif /* LinkedList_cpp */
 
 #import <iostream>
+//#import "Object.hpp"
 namespace rmx {
 
     
@@ -31,16 +32,37 @@ namespace rmx {
 
     public:
         typedef struct _Iterator {
-            Node * current;
+        protected:
+//            Node * _prev;
+            Node * currentNode;
+            List * linkedList;
+            int i;
+
+        public:
+            _Iterator(List * list) {
+                this->currentNode = list->firstNode();
+                this->linkedList = list;
+            }
             bool hasValues() {
-                return this->_count != 0 && current->next != nullptr;
+                return this->currentNode != nullptr;
             }
             Value * next() {
-                Value * v = current->value;
-                current = current->next;
-                return v;
+//                Node * next = nullptr
+                if (this->currentNode == nullptr)
+                    throw std::out_of_range("CURRENT VALUE IS NULL: Count: " + std::to_string(this->i) + ", ListCount: " + std::to_string(this->count()));
+                Value * v = this->currentNode->value;
+                this->currentNode = this->currentNode->next;
+                ++this->i;
+                if (v != nullptr) {
+                    return v;
+                } else {
+                    return this->next();
+                }
             }
-        } Iterator;
+            int count() {
+                return this->linkedList->count();
+            }
+        }Iterator;
         
         LinkedList();
         ~LinkedList();
@@ -76,6 +98,9 @@ namespace rmx {
         
         ///Removes all elements, beginnig with the first.
         void removeAll();
+        
+        ///Deletes all elements, beginnig with the first.
+        void deleteAll();
         
         ///Appends and returns appended value
         Value * append(Value * value);
@@ -115,9 +140,9 @@ namespace rmx {
         Value * pop(Node ** head);
        
         Iterator getIterator() {
-            Iterator * i = new Iterator();
-            i->current = this->_head;
-            return *i;
+//            Iterator * i = new Iterator(this);
+//            i->current = this->_head;
+            return Iterator(this);
         }
         
         LinkedList<Value> * reverse();
@@ -132,7 +157,9 @@ namespace rmx {
 
     template <typename Value>
     inline LinkedList<Value>::~LinkedList() {
-        std::cout << "Deleting!" << std::endl;
+#if DEBUG_MALLOC
+        std::cout << "~DELETING LinkedList of " << typeid(Value).name() << std::endl;
+#endif
         this->removeAll();
         //    free(this);
         
@@ -151,7 +178,7 @@ namespace rmx {
             last->next->value = value;
         }
         ++this->_count;
-#if DEBUG_LINKED_LIST
+#if DEBUG_RMX_LINKED_LIST
         try {
             std::cout << "appending " << value << " at " << value << ", SIZE is now: " << _count << std::endl;
         } catch (std::exception e) {
@@ -219,6 +246,9 @@ namespace rmx {
     };
 
     template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::removeNodeWithValue(Value * value) {
+        if (value == nullptr) {
+            throw std::invalid_argument("Cannot remove NULL (yet)");
+        }
         if (this->_head->value == value) {
             Node * result = this->_head;
             this->_head = this->_head->next;
@@ -233,6 +263,8 @@ namespace rmx {
                     previous->next = current->next;
                     --_count;
                     return current;
+                } else if (current == nullptr) {
+                    return nullptr;
                 } else {
                     previous = current;
                     current = current->next;
@@ -267,6 +299,8 @@ namespace rmx {
     }
 
     template <typename Value> Value * LinkedList<Value>::removeValue(Value * value) {
+        if (value == nullptr)
+            throw std::invalid_argument("Value cannot be NULL (yet)");
         Node * result = this->removeNodeWithValue(value);
         return result == nullptr ? nullptr : result->value;
     };
@@ -296,7 +330,7 @@ namespace rmx {
         //	Node * next = this->head->next;
         //	Node * result;
         while (i <= index) {
-            if (i++ == index) {
+            if (i == index) {
                 //			result = current;
                 if (previous == NULL) {
                     this->_head = current->next;
@@ -308,17 +342,31 @@ namespace rmx {
             } else {
                 previous = current;
                 current = current->next;
+                ++i;
             }
         }
-        throw std::invalid_argument("Unknown index exception - index: " + std::to_string(index) + ", range: " + std::to_string(_count));
+        throw std::invalid_argument("Unknown index exception - index: " + std::to_string(index) + ", range: " + std::to_string(this->_count));
     };
 
 
     template <typename Value> void LinkedList<Value>::removeAll() {
-        while (_count > 0) {
-            removeNodeAtIndex(0);
+        while (this->_count > 0) {
+            this->removeNodeAtIndex(0);
         }
     }
+    
+    template <typename Value> void LinkedList<Value>::deleteAll() {
+        while (this->_count > 0) {
+            Value * val = this->removeValueAtIndex(0);
+            if (val != nullptr)
+                free(val);
+//                Object::Destroy(val);
+//            std::cout << this->count() << std::endl;
+            
+            
+        }
+    }
+
 
 
 
@@ -452,4 +500,4 @@ namespace rmx {
         
     }
 }
-    void RMXLinkedListTest(void);
+    

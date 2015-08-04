@@ -11,8 +11,9 @@
 //#import "EventListener.hpp"
 //#import "LinkedList.hpp"
 //#import "Dictionary.hpp"
+#import "Tests.h"
 #import "NotificationCenter.hpp"
-
+#define DEBUG_THIS (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_NOTIFICATION_CENTER)
 
 using namespace rmx;
 
@@ -54,7 +55,7 @@ void NotificationCenter::addListener(EventListener * listener) {
         NotificationCenter::listeners->append(listener);
 //        cout << "\nAdded to Listeners: " << *listener << endl;
     } else {
-        cout << "\n !! Not Adding => Listeners already contain: " << *listener << endl;
+        cout << "\n !! Not Adding => Listeners already contain: " << listener << endl;
     }
 }
 
