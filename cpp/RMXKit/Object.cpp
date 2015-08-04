@@ -8,7 +8,7 @@
 
 #import "RMXKit.h"
 #define DEBUG_THIS  (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_OBJECT)
-//#import "Object.hpp"
+//#import "Object.h"
 //#import <iostream>
 using namespace std;
 using namespace rmx;

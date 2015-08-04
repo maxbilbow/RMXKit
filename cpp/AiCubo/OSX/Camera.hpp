@@ -13,8 +13,8 @@
 
 #endif /* Camera_hpp */
 
-//#import "ASingleton.hpp"
-//#import "Values.hpp"
+//#import "ASingleton.h"
+//#import "Values.h"
 namespace RMX {
     class Camera : public ASingleton<Camera> {
 

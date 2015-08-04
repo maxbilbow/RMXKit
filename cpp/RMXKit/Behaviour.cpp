@@ -6,7 +6,7 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#include "Behaviour.hpp"
+#include "Behaviour.h"
 #define as_string(x) #x
 using namespace rmx;
 using namespace std;

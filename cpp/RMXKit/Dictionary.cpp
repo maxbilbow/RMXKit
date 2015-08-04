@@ -11,10 +11,10 @@
 //#import <iostream>
 //
 //
-//#import "LinkedList.hpp"
+//#import "LinkedList.h"
 #import "Tests.h"
-#import "Dictionary.hpp"
-#import "Object.hpp"
+#import "Dictionary.h"
+#import "Object.h"
 #define DEBUG_THIS (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_DICTIONARY)
 using namespace std;
 using namespace rmx;

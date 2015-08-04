@@ -6,7 +6,7 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 #include <stdlib.h>
-#include "Tools.hpp"
+#include "Tools.h"
 
 using namespace rmx;
 

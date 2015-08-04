@@ -22,11 +22,22 @@ CFStringRef RMXKitUUID(void);
 #define as_string(x) #x
 
 
-//#import "Tests.h"
-#import "LinkedList.hpp"
-#import "Dictionary.hpp"
-#import "NotificationCenter.hpp"
-#import "Object.hpp"
-#import "ASingleton.hpp"
+
+#import "LinkedList.h"
+#import "Dictionary.h"
+#import "NotificationCenter.h"
+#import "Object.h"
+#import "ASingleton.h"
 //#import "Behaviour.hpp"
 
+/*
+ *   @author Max Bilbow, 15-08-04 16:08:32
+ *
+ *   @brief RMXKit.h
+ *   RMXKit
+ *   @since <#0.1#>
+ *
+ *   Created by Max Bilbow on 28/07/2015.
+ *   Copyright © 2015 Max Bilbow. All rights reserved.
+ *
+ */

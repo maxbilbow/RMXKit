@@ -7,8 +7,8 @@
 //
 
 #import "Tests.h"
-#import "EventListener.hpp"
-#import "NotificationCenter.hpp"
+#import "EventListener.h"
+#import "NotificationCenter.h"
 
 #define DEBUG_THIS (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_EVENT_LISTENER)
 using namespace rmx;

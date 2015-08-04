@@ -12,12 +12,16 @@
 
 #endif /* EventListener */
 #import <iostream>
-#import "Object.hpp"
-//#import "NotificationCenter.hpp"
+#import "Object.h"
+//#import "NotificationCenter.h"
 
 
 namespace rmx {
-    
+    /*!
+     *   @brief  abstract class for EventListeners
+     *
+     *   @since 0.1
+     */
     class EventListener : public Object {
         ///Private initilization adds this object to NotificationCenter::listeners iff add == true;
         ///@see NotificationCenter::listeners

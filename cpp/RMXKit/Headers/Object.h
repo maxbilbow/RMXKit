@@ -17,10 +17,8 @@
 
 #import <iostream>
 #import <type_traits>
-#import "LinkedList.hpp"
+#import "LinkedList.h"
 
-
-//#define string std::string
 
 namespace rmx {
 
@@ -28,18 +26,24 @@ namespace rmx {
         RequiresReceiver, DoesNotRequireReceiver
     };
 
-    ///A simple interface that allows any object to be printed using std::cout << theObject or std::cout << *theObject.
-    ///node the difference between theObject and *theObject; the former gives the pointer's location in memory and more detailed description.
-    ///@code
-    ///Printable * theObject = new Printable();
-    ///theObject->setDescription("Hello, World!");
-    ///cout << theObject << endl;
-    ///cout << *theObject << endl;
-    ///@endcode
-    ///
-    ///rmx::ptr:  0x7fff5fbff798 >> N3rmx9PrintableE, info: Hello, World!
-    ///
-    ///Hello, World!
+    /*!
+     *   @author Max Bilbow, 15-08-04 16:08:04
+     *
+     *   A simple interface that allows any object to be printed using std::cout << theObject or std::cout << *theObject.
+     *   node the difference between theObject and *theObject; the former gives the pointer's location in memory and more detailed description.
+     *   @code
+     *   Printable * theObject = new Printable();
+     *   theObject->setDescription("Hello, World!");
+     *   cout << theObject << endl;
+     *   cout << *theObject << endl;
+     *   @endcode
+     *
+     *   rmx::ptr:  0x7fff5fbff798 >> N3rmx9PrintableE, info: Hello, World!
+     *
+     *   Hello, World!
+     *
+     *   @since <#0.1#>
+     */
     class Printable {
         
     protected:

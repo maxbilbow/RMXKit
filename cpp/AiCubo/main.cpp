@@ -10,15 +10,15 @@
 #import "Tests.h"
 #import "RMXKit.h"
 
-//#import "LinkedList.hpp"
-//#import "Dictionary.hpp"
-//#import "ASingleton.hpp"
-//#import "Object.hpp"
+//#import "LinkedList.h"
+//#import "Dictionary.h"
+//#import "ASingleton.h"
+//#import "Object.h"
 
 
 
 
-//#import "OpenGLView.hpp"
+//#import "OpenGLView.h"
 
 using namespace std;
 using namespace rmx;

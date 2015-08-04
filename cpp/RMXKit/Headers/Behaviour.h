@@ -12,13 +12,19 @@
 #include <stdio.h>
 
 #endif /* Behaviour_hpp */
-//#import "EventListener.hpp"
-//#import "NotificationCenter.hpp"
-#include "Object.hpp"
+
+#include "Object.h"
 #define _(x) #x
 
-
+/*!
+ *   @author Max Bilbow, 15-08-04 16:08:16
+ *
+ *     
+ *
+ *   @since <#0.1#>
+ */
 namespace rmx {
+
     class Behaviour : public Object {
         //Messages
     protected:

@@ -9,19 +9,21 @@
 #ifndef Dictionary_cpp
 #define Dictionary_cpp
 
-//#include <stdio.h>
-//#import <list>
-//#import "LinkedList.hpp"
 
 #endif /* Dictionary_cpp */
 
 #import <iostream>
-#import "LinkedList.hpp"
+#import "LinkedList.h"
 
 
 namespace rmx {
-    
 
+
+    /*!
+     *   @brief Holds the key that can be searched for when accessing the related value.
+     *
+     *   @since 0.1
+     */
     template <typename Key, typename Value>
     class KeyValuePair {
     public:
@@ -42,13 +44,7 @@ namespace rmx {
     public:
         typedef KeyValuePair<Key, Value> Pair;
         typedef typename LinkedList<KeyValuePair<Key,Value> >::Node Node;
-//        Dictionary() {
-// //            super::LinkedList();
-//        }
-//        ~Dictionary() {
-//            this->removeAll();//TODO: More here
-//        }
-        
+
         ///Returns the KeyValuePair that points to the entry
         Pair * getKeyValuePair(Key key) {
             Node * node = this->firstNode();

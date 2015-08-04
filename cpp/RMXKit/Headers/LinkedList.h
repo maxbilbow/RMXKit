@@ -12,10 +12,17 @@
 #endif /* LinkedList_cpp */
 
 #import <iostream>
-//#import "Object.hpp"
+
 namespace rmx {
 
-    
+    /*!
+     *   @author Max Bilbow, 15-08-04 16:08:45
+     *
+     *   @brief  Simple linked list with basic functionality
+     *   @todo   Add 'previous' connectivity within nodes for quick list reversing.
+     *
+     *   @since 0.1
+     */
     template <typename Value> class LinkedList {
         typedef LinkedList<Value> List;
     public:

@@ -9,11 +9,11 @@
 #import <GLKit/GLKVector2.h>
 #import <GLUT/GLUT.h>
 #import <GLKit/GLKMatrix4.h>
-#import "Object.hpp"
-#import "ASingleton.hpp"
-#import "Camera.hpp"
-#import "Window.hpp"
-#import "GLFacade.hpp"
+#import "Object.h"
+#import "ASingleton.h"
+#import "Camera.h"
+#import "Window.h"
+#import "GLFacade.h"
 
 
 

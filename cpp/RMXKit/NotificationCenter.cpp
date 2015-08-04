@@ -8,11 +8,11 @@
 
 
 #import <iostream>
-//#import "EventListener.hpp"
-//#import "LinkedList.hpp"
-//#import "Dictionary.hpp"
+//#import "EventListener.h"
+//#import "LinkedList.h"
+//#import "Dictionary.h"
 #import "Tests.h"
-#import "NotificationCenter.hpp"
+#import "NotificationCenter.h"
 #define DEBUG_THIS (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_NOTIFICATION_CENTER)
 
 using namespace rmx;

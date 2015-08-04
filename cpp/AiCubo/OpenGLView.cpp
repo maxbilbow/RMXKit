@@ -12,12 +12,12 @@
 //#import <GLKit/GLKVector3.h>
 //#import <GLKit/GLKVector4.h>
 #import <GLKit/GLKMatrix4.h>
-#import "Object.hpp"
-#import "ASingleton.hpp"
-#import "Camera.hpp"
-#import "Window.hpp"
-#import "GLFacade.hpp"
-#import "OpenGLView.hpp"
+#import "Object.h"
+#import "ASingleton.h"
+#import "Camera.h"
+#import "Window.h"
+#import "GLFacade.h"
+#import "OpenGLView.h"
 
 
 using namespace std;

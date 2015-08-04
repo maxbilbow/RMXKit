@@ -16,7 +16,7 @@
 #define MODEL_VIEW_DEFAULT MODEL_VIEW_COLS
 
 
-//#import "Camera.hpp"
+//#import "Camera.h"
 namespace RMX {
     
     class GL {

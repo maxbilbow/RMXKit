@@ -23,13 +23,21 @@
 #define EVENT_STATUS_FAILURE    3ui
 
 
-#import "LinkedList.hpp"
-#import "Dictionary.hpp"
-#import "EventListener.hpp"
-#import "Behaviour.hpp"
+#import "LinkedList.h"
+#import "Dictionary.h"
+#import "EventListener.h"
+#import "Behaviour.h"
+
+
 namespace rmx {
     
-    ///static class for handling global notifications throughout a system.
+    /*!
+     *   @author Max Bilbow, 15-08-04 16:08:21
+     *
+     *   @brief  static class for handling global notifications throughout a system.
+     *
+     *   @since <#0.1#>
+     */
     class NotificationCenter {
     public:
         typedef void * EventArgs;

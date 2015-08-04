@@ -8,7 +8,7 @@
  */
 
 #include "RMXKit.h"
-#include "RMXKitPriv.hpp"
+#include "RMXKitPriv.h"
 
 //using namespace rmx;
 CFStringRef RMXKitUUID(void)

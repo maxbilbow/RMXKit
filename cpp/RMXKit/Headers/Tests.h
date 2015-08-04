@@ -3,7 +3,7 @@
 //  RMXKit
 //
 //  Created by Max Bilbow on 04/08/2015.
-//  Copyright © 2015 Rattle Media Ltd. All rights reserved.
+//  Copyright © 2015 Max Bilbow. All rights reserved.
 //
 
 #ifndef Tests_h

@@ -7,7 +7,7 @@
 //
 
 
-#import "DesktopInput.hpp"
+#import "DesktopInput.h"
 
 struct KeyProcessor {
     char forward, back, left, right, up, down, stop, jump;

@@ -14,13 +14,18 @@
 #endif /* ASingleton_hpp */
 
 #import <iostream>
-#import "Object.hpp"
+#import "Object.h"
 
 namespace rmx {
-    ///Not a true singleton as additional objects can be created through decendants.
-    ///However current() is a simple way of having one main statically available instance.
-    ///Useuful for switching between camera objects, for example.
-    ///setCurrent(T) returns the value that was replaced.
+
+    /*!
+     *   Not a true singleton as additional objects can be created through decendants.
+     *   However current() is a simple way of having one main statically available instance.
+     *   Useuful for switching between camera objects, for example.
+     *   setCurrent(T) returns the value that was replaced.
+     *
+     *   @since <#0.1#>
+     */
     template <class T>
     class ASingleton : public Object {
         static T * _current;

@@ -5,14 +5,14 @@
 //  Created by Max Bilbow on 09/07/2015.
 //  Copyright © 2015 Rattle Media. All rights reserved.
 //
-//#include "Interfaces.hpp"
+//#include "Interfaces.h"
 
 //#include <iostream>
 
-//#include "Tests.hpp"
+//#include "Tests.h"
 #import "Tests.h"
 
-#include "LinkedList.hpp"
+#include "LinkedList.h"
 
 #define DEBUG_THIS (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_LINKED_LIST)
 using namespace std;
