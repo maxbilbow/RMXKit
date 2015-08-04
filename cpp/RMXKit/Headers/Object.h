@@ -59,25 +59,41 @@ namespace rmx {
     };
 }
 
-///Prints the object's details, including location in memory, along with it's ToString() method
+/*!
+ *  @author Max Bilbow, 15-08-04 17:08:53
+ *  @param strm proceeding output
+ *  @param a    the Printable object
+ *  @return Prints the object's details, including location in memory, along with it's ToString() method
+ *  @since 0.1
+ */
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a);
 
-///Prints the object's ToString() method
+/*!
+ *  @author Max Bilbow, 15-08-04 17:08:54
+ *  @param strm proceeding output
+ *  @param a    the Printable object pointer
+ *  @return Prints the object's ToString() method
+ *  @since 0.1
+ */
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a);
 
 namespace rmx {
     typedef void* Any;
     
+    /*!
+     *  @author Max Bilbow, 15-08-04 17:08:49
+     *
+     *  Base object for all standart event listening and notification tools.
+     *  @since 0.1
+     */
     class Object : public Printable {
         static unsigned int _count;
         static unsigned int _deleted;
         static LinkedList<Object> _allObjects;
         unsigned int _id;
         
-        typedef void (*Receiver)(Object *, Any);
-
-//        Dictionary<std::string, Receiver> * _receivers = new Dictionary<std::string, Receiver>();
-       
+        
+        
         void _updateID() {
             this->_id = _count++;
         }
@@ -89,10 +105,7 @@ namespace rmx {
 
         
     protected:
-        void addReceiver(std::string name, Receiver receiver) {
-            throw std::invalid_argument("Not implemented");
-//              this->_receivers->setValueForKey(name, receiver);
-        }
+       
         
         std::string name;
 
@@ -104,30 +117,21 @@ namespace rmx {
         }
         
         static void DeleteAllObjects();
+        
+        /*!
+         *  @author Max Bilbow, 15-08-04 17:08:40
+         *
+         *  @return A LinkedList containing all available Objects.
+         *  @since 0.1
+         */
         static LinkedList<Object> * AllObjects() {
             return &Object::_allObjects;
         }
         
         ///Initiates with default name "Unnamed Object"
-        Object(std::string name = "Unnamed Object"){
-            this->_id = Object::_count++; //this->IncrementCount();
-            this->name = !name.empty() ? name : "Unnamed Object";
-            Object::_allObjects.append(this);
-#if DEBUG_MALLOC
-            std::cout << "~INITIALIZING Object: " << *this << std::endl;
-#endif
-        }
+        Object(std::string name = "Unnamed Object");
        
-        ~Object() {
-#if DEBUG_MALLOC
-            std::cout << "~DELETING Object: " << *this;
-#endif
-            Object::_deleted++;
-            Object::_RemoveObject(this);
-#if DEBUG_MALLOC
-            std::cout << ", Remainig: " << Object::Count() << std::endl;
-#endif
-        }
+        ~Object();
         
         ///Returns the name with the uniqueID in brackets
         ///For name without id, use getName();
@@ -156,19 +160,7 @@ namespace rmx {
         
         ///Clones the object and makes sure that the name and ID are updated accordingly.
         ///This should be overridden, with inherited mathods invoked first, to include custom modifiers on any decendants.
-        virtual Object * clone(){
-            void * ptr = malloc(sizeof(*this));//&o;
-            memcpy(ptr, (void*)this, sizeof(*this));
-            Object * o = (Object *) ptr;
-            o->_updateID();
-            if (o->name.find("CLONE of \"") == std::string::npos)
-                o->setName("CLONE of \"" + this->name + "\"");// + std::to_string(this->getID()) + ")");
-            Object::_allObjects.append(o);
-#if DEBUG_MALLOC
-            std::cout << "~INITIALIZING CLONE: " << *o << std::endl;
-#endif
-            return o;
-        }
+        virtual Object * clone();
         
         ///Returns the uniqueID
         int getID() {
@@ -176,21 +168,8 @@ namespace rmx {
         }
        
         ///@TODO: convert message into function call.
-        void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
-            Receiver receiver = nullptr; //*this->_receivers->getValueForKey(message);
-            if (receiver != nullptr) {
-                try {
-                    receiver(this, args);
-                } catch (std::exception e) {
-                    std::cout << "Receiver Error: "<< message << ", for: " << *this << "\n ==> ERROR: " << e.what() << std::endl;
-                }
-            } else if (options == RequiresReceiver)
-                throw std::invalid_argument("Receiver was not available: " + message);
-#if DEBUG_BEHAVIOURS
-            else
-                std::cout << "Receiver was not available: "<< message << ", for: " << *this << std::endl;
-#endif
-        }
+        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {}
+        
         
         /// Removes a gameobject, component or asset by calling delete.
         /// TODO: Additonal functionality may be needed later

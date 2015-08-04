@@ -31,6 +31,58 @@ unsigned int Object::_count = 0;
 unsigned int Object::_deleted = 0;
 LinkedList<Object> * _allObjects = new LinkedList<Object>();
 
+Object::Object(std::string name){
+    this->_id = Object::_count++; //this->IncrementCount();
+    this->name = !name.empty() ? name : "Unnamed Object";
+    Object::_allObjects.append(this);
+#if DEBUG_MALLOC
+    std::cout << "~INITIALIZING Object: " << *this << std::endl;
+#endif
+}
+
+Object::~Object() {
+#if DEBUG_MALLOC
+    std::cout << "~DELETING Object: " << *this;
+#endif
+    Object::_deleted++;
+    Object::_RemoveObject(this);
+#if DEBUG_MALLOC
+    std::cout << ", Remainig: " << Object::Count() << std::endl;
+#endif
+}
+
+Object * Object::clone() {
+    void * ptr = malloc(sizeof(*this));//&o;
+    memcpy(ptr, (void*)this, sizeof(*this));
+    Object * o = (Object *) ptr;
+    o->_updateID();
+    if (o->name.find("CLONE of \"") == std::string::npos)
+        o->setName("CLONE of \"" + this->name + "\"");// + std::to_string(this->getID()) + ")");
+    Object::_allObjects.append(o);
+#if DEBUG_MALLOC
+    std::cout << "~INITIALIZING CLONE: " << *o << std::endl;
+#endif
+    return o;
+}
+
+//void Object::SendMessage(std::string message, Any args, SendMessageOptions options) {
+//    Receiver receiver = nullptr; //*this->_receivers->getValueForKey(message);
+//    if (receiver != nullptr) {
+//        try {
+//            receiver(this, args);
+//        } catch (std::exception e) {
+//            std::cout << "Receiver Error: "<< message << ", for: " << *this << "\n ==> ERROR: " << e.what() << std::endl;
+//        }
+//    } else if (options == RequiresReceiver)
+//        throw std::invalid_argument("Receiver was not available: " + message);
+//#if DEBUG_BEHAVIOURS
+//    else
+//        std::cout << "Receiver was not available: "<< message << ", for: " << *this << std::endl;
+//#endif
+//}
+
+
+
 class Thing {
 public:
     std::string name = "Hello, I'm Barry!";

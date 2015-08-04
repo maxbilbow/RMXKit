@@ -24,13 +24,17 @@
  *   @since <#0.1#>
  */
 namespace rmx {
-
+    ///Override this to setup your receivers
+    ///You must add all the receivers that were overriden.
     class Behaviour : public Object {
-        //Messages
+
     protected:
-        ///Override this to setup your receivers
-        ///You must add all the receivers that were overriden.
-    
+        
+        typedef void (*Receiver)(Object *, Any);
+        void addReceiver(std::string name, Receiver receiver) {
+            throw std::invalid_argument("Not implemented");
+            //              this->_receivers->setValueForKey(name, receiver);
+        }
     public:
         bool enabled = true;
         Behaviour(std::string name = ""):Object(name) {

@@ -13,13 +13,14 @@
 #endif /* EventListener */
 #import <iostream>
 #import "Object.h"
-//#import "NotificationCenter.h"
-
 
 namespace rmx {
     /*!
-     *   @brief  abstract class for EventListeners
+     * 
+     *   @author Max Bilbow, 15-08-04 16:08:32
      *
+     *   @brief  abstract class for EventListeners
+     *   @see NotificationCenter
      *   @since 0.1
      */
     class EventListener : public Object {
@@ -30,41 +31,83 @@ namespace rmx {
         typedef std::string AnEvent;
         typedef void * EventArgs;
         
-        ///Initializes and adds the object to the list of active event listeners.
+        /*!
+         *  @author Max Bilbow, 15-08-04 16:08:01
+         *
+         *  Initializes and adds the object to the list of active event listeners.
+         *  @param name (default: "") inherited from rmx::Object
+         *  @param add (default: true) whether to add this listener on initialization
+         *  @see Object
+         *  @since <#0.1#>
+         */
         EventListener(std::string name = "", bool add = true):Object(name) {
             this->init(add);
         }
-        
+
         ~EventListener();
         
-        ///Notify's all active listeners that an event is about to start
+        /*!
+         *  @author Max Bilbow, 15-08-04 16:08:30
+         *
+         *  Notify's all active listeners that an event is about to start
+         *  @param theEvent as string
+         *  @param args     anything
+         *  @since 0.1
+         */
         virtual void OnEventDidStart(AnEvent theEvent, EventArgs args) {
-            #if DEBUG_INCLUDE_TEST_OUTPUT
-            std::cout << *this << "\n       Event Started: " << theEvent << ", with args: " << args << std::endl << std::endl;
+            #ifdef DEBUG
+            std::cout << this << "\n       Event Started: " << theEvent << ", with args: " << args << std::endl << std::endl;
             #endif
         }
         
-        ///Notify's all active listeners that an event did start
+        /*!
+         *  @author Max Bilbow, 15-08-04 16:08:53
+         *
+         *  Notify's all active listeners that an event did start
+         *  @param theEvent string identifier
+         *  @param args     anything
+         *  @since 0.1
+         */
         virtual void OnEventDidEnd(AnEvent theEvent, EventArgs args) {
-            #if DEBUG_INCLUDE_TEST_OUTPUT
-            std::cout << *this << "\n         Event Ended: " << theEvent << ", with args: " << args << std::endl << std::endl;
+            #ifdef DEBUG
+            std::cout << this << "\n         Event Ended: " << theEvent << ", with args: " << args << std::endl << std::endl;
             #endif
         }
 
         
-        ///Receives a message
-        /// Has to be overridden for to add specific method handing
-        /// as it is currently not automatic to call a method this way
+        /*!
+         *   @author Max Bilbow, 15-08-04 16:08:55
+         *
+         *   Receives a message
+         *   Has to be overridden for to add specific method handing
+         *   as it is currently not automatic to call a method this way
+         *   @param message Name of selector or any other message
+         *   @param args    any object.
+         *   @since 0.1
+         */
         virtual void SendMessage(AnEvent message, EventArgs args = nullptr){
-            #if DEBUG_INCLUDE_TEST_OUTPUT
-            std::cout << *this << "\n    Message Received: " << message << std::endl << std::endl;
+            #ifdef DEBUG
+            std::cout << this << "\n    Message Received: " << message << std::endl << std::endl;
             #endif
         }
 
-       
-        
+        /*!
+         *   @author Max Bilbow, 15-08-04 16:08:22
+         *
+         *   @brief  Inserts the object into Notification::listeners, if it isn't already inserted.
+         *
+         *   @see NotificationCenter::addListener(listener)
+         *   @since 0.1
+         */
         void StartListening();
         
+        /*!
+         *   @author Max Bilbow, 15-08-04 16:08:22
+         *
+         *   @brief  Removes the object from Notification::listeners, if it exists in the list.
+         *   @see NotificationCenter::removeListener(listener)
+         *   @since <#0.1#>
+         */
         void StopListening();
 
         
