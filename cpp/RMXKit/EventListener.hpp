@@ -31,6 +31,8 @@ namespace rmx {
             this->init(add);
         }
         
+        ~EventListener();
+        
         ///Notify's all active listeners that an event is about to start
         virtual void OnEventDidStart(AnEvent theEvent, EventArgs args) {
             std::cout << *this << "\n       Event Started: " << theEvent << ", with args: " << args << std::endl << std::endl;
@@ -40,6 +42,7 @@ namespace rmx {
         virtual void OnEventDidEnd(AnEvent theEvent, EventArgs args) {
             std::cout << *this << "\n         Event Ended: " << theEvent << ", with args: " << args << std::endl << std::endl;
         }
+
         
         ///Receives a message
         /// Has to be overridden for to add specific method handing
@@ -47,6 +50,13 @@ namespace rmx {
         virtual void SendMessage(AnEvent message, EventArgs args = nullptr){
             std::cout << *this << "\n    Message Received: " << message << std::endl << std::endl;
         }
+
+       
+        
+        void StartListening();
+        
+        void StopListening();
+
         
         ///Extends the Object::clone() method so that the listening status of the object is also copied.
         ///@see NotificationCenter::addListener(listener);

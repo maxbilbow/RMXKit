@@ -18,7 +18,9 @@ void EventListener::init(bool add) {
         NotificationCenter::addListener(this);
 }
 
-
+EventListener::~EventListener() {
+    NotificationCenter::removeListener(this);
+}
 
 EventListener * EventListener::clone() {
     EventListener * clone =  (EventListener*) Object::clone();
@@ -30,6 +32,15 @@ EventListener * EventListener::clone() {
     }
     
     return clone;
+}
+
+
+void EventListener::StartListening() {
+    NotificationCenter::addListener(this);
+}
+
+void EventListener::StopListening() {
+    NotificationCenter::removeListener(this);
 }
 
 ///Successfull test of

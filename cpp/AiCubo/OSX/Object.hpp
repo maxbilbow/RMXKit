@@ -19,10 +19,15 @@
 #import <type_traits>
 #import "LinkedList.hpp"
 
+
 //#define string std::string
 
 namespace rmx {
-   
+
+    enum SendMessageOptions {
+        RequiresReceiver, DoesNotRequireReceiver
+    };
+
     ///A simple interface that allows any object to be printed using std::cout << theObject or std::cout << *theObject.
     ///node the difference between theObject and *theObject; the former gives the pointer's location in memory and more detailed description.
     ///@code
@@ -48,26 +53,42 @@ namespace rmx {
             this->description = description;
         }
     };
+}
 
+///Prints the class' details, including location in memory, along with it's ToString() method
+std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a);
 
+///Prints the class' details, including pointer address, along with it's ToString() method
+std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a);
+
+namespace rmx {
+    typedef void* Any;
+    
     class Object : public Printable {
         static unsigned int _count;
         static unsigned int _deleted;
         static LinkedList<Object> _allObjects;
         unsigned int _id;
         
-        ///Private heler method used when to alter the objects uniqueID when cloning
+        typedef void (*Receiver)(Object *, Any);
+
+//        Dictionary<std::string, Receiver> * _receivers = new Dictionary<std::string, Receiver>();
+       
         void _updateID() {
-            this->_id = Object::_count++;
+            this->_id = _count++;
         }
         
-//        void _init(std::string name) {
-//            this->_id = this->IncrementCount();
-//            this->name = !name.empty() ? name : "Unnamed Object";// + std::to_string(this->getID());
-//        }
+
         
     protected:
+        void addReceiver(std::string name, Receiver receiver) {
+            throw std::invalid_argument("Not implemented");
+//              this->_receivers->setValueForKey(name, receiver);
+        }
+        
         std::string name;
+
+
     public:
         ///The total number of rmx::Objects that exist.
         static unsigned int Count() {
@@ -81,9 +102,9 @@ namespace rmx {
         
         ///Initiates with default name "Unnamed Object"
         Object(std::string name = "Unnamed Object"){
-//            this->_init(name);
             this->_id = Object::_count++; //this->IncrementCount();
             this->name = !name.empty() ? name : "Unnamed Object";
+            Object::_allObjects.append(this);
         }
        
         ~Object() {
@@ -131,11 +152,30 @@ namespace rmx {
         int getID() {
             return this->_id;
         }
+       
+        ///@TODO: convert message into function call.
+        void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
+            Receiver receiver = nullptr; //*this->_receivers->getValueForKey(message);
+            if (receiver != nullptr) {
+                try {
+                    receiver(this, args);
+                } catch (std::exception e) {
+                    std::cout << "Receiver Error: "<< message << ", for: " << *this << "\n ==> ERROR: " << e.what() << std::endl;
+                }
+            } else if (options == RequiresReceiver)
+                throw std::invalid_argument("Receiver was not available: " + message);
+#if DEBUG_BEHAVIOURS
+            else
+                std::cout << "Receiver was not available: "<< message << ", for: " << *this << std::endl;
+#endif
+        }
         
         /// Removes a gameobject, component or asset by calling delete.
         /// TODO: Additonal functionality may be needed later
-        static void Destroy(Object * object) {
-            delete object; //should happen at end of cycle
+        template <class T>
+        static void Destroy(T * object) {
+            delete object;
+//            free(object);
         }
         
         /// Destroys the object obj immediately. You are strongly recommended to use Destroy instead.
@@ -176,6 +216,10 @@ namespace rmx {
             }
            
         }
+        
+        static LinkedList<Object>::Iterator ObjectIterator() {
+            return Object::_allObjects.getIterator();
+        }
     };
     
    
@@ -184,11 +228,7 @@ namespace rmx {
 
 
 
-///Prints the class' details, including location in memory, along with it's ToString() method
-std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a);
 
-///Prints the class' details, including pointer address, along with it's ToString() method
-std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a);
 
 
 

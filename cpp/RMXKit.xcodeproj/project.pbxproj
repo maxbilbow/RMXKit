@@ -19,6 +19,7 @@
 		503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
 		503A23C71B6A69BF008F89F6 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
 		503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
+		504ECB071B6B61F100DE1DE8 /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */; };
 		509BC1811B68A389007172B6 /* LinkedList.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 509BC17E1B68A389007172B6 /* LinkedList.hpp */; };
 		509BC18D1B68BBBE007172B6 /* Dictionary.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 509BC18A1B68BBBE007172B6 /* Dictionary.hpp */; };
 		50C43C4A1B679E6500AD2FAC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C43C491B679E6500AD2FAC /* CoreFoundation.framework */; };
@@ -78,6 +79,8 @@
 		503A23931B6A1F56008F89F6 /* Tools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tools.hpp; sourceTree = "<group>"; };
 		503A239A1B6A29CB008F89F6 /* Object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Object.hpp; path = ../AiCubo/OSX/Object.hpp; sourceTree = "<group>"; };
 		503A23C61B6A69BF008F89F6 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
+		504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Behaviour.cpp; sourceTree = "<group>"; };
+		504ECB061B6B61F100DE1DE8 /* Behaviour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Behaviour.hpp; sourceTree = "<group>"; };
 		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
 		509BC17E1B68A389007172B6 /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = LinkedList.hpp; path = RMXKit/LinkedList.hpp; sourceTree = SOURCE_ROOT; };
 		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
@@ -183,6 +186,15 @@
 			name = cpp;
 			sourceTree = "<group>";
 		};
+		504ECB081B6B61F700DE1DE8 /* GameStuff */ = {
+			isa = PBXGroup;
+			children = (
+				504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */,
+				504ECB061B6B61F100DE1DE8 /* Behaviour.hpp */,
+			);
+			name = GameStuff;
+			sourceTree = "<group>";
+		};
 		50C43C3D1B679E6500AD2FAC = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +239,7 @@
 				50C43C6C1B67A0A900AD2FAC /* EventListener.hpp */,
 				50C43C651B67A00600AD2FAC /* NotificationCenter.hpp */,
 				503A23891B6A0B68008F89F6 /* ASingleton.hpp */,
+				504ECB081B6B61F700DE1DE8 /* GameStuff */,
 			);
 			path = RMXKit;
 			sourceTree = "<group>";
@@ -478,6 +491,7 @@
 				503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */,
 				503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */,
 				50C43C5F1B679E9200AD2FAC /* main.cpp in Sources */,
+				504ECB071B6B61F100DE1DE8 /* Behaviour.cpp in Sources */,
 				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
 				503A23C11B6A6579008F89F6 /* Object.cpp in Sources */,
 				503A23C01B6A57E8008F89F6 /* Dictionary.cpp in Sources */,

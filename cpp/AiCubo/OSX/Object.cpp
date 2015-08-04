@@ -13,6 +13,8 @@ using namespace std;
 using namespace rmx;
 
 
+LinkedList<Object> Object::_allObjects = LinkedList<Object>();
+
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a) {
     return strm /* << "rms::inst: " << &a << " >> " << typeid(a).name() << ", info: \n   ==> " */ <<  a.ToString();
 }
@@ -29,6 +31,8 @@ class Thing {
 public:
     std::string name = "Hello, I'm Barry!";
 };
+
+
 
 void RMXObjectCloneTest(){
     Object * o = new Object();
