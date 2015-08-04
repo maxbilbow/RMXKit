@@ -25,34 +25,34 @@ typedef NotificationCenter::EventStatus EventStatus;
 
 using namespace std;
 
-NotificationCenter::NotificationCenter() {
-    listeners = new LinkedList<EventListener>();
-    events = new Dictionary<EventType, EventStatus>();
-}
+//NotificationCenter::NotificationCenter() {
+LinkedList<EventListener> * NotificationCenter::listeners = new LinkedList<EventListener>();
+Dictionary<EventType, EventStatus> * NotificationCenter::events = new Dictionary<EventType, EventStatus>();
+//}
 
-static bool _init;
-static NotificationCenter * _current;
+//static bool _init;
+//static NotificationCenter * _current;
 
-NotificationCenter * NotificationCenter::current() {
-    if (!_init) {
-        _current = new NotificationCenter();
-        _init = true;
-    }
-    return _current;
-}
-    
+//NotificationCenter * NotificationCenter::current() {
+//    if (!_init) {
+//        _current = new NotificationCenter();
+//        _init = true;
+//    }
+//    return _current;
+//}
+
 bool NotificationCenter::hasListener(EventListener * listener) {
-     return current()->listeners->contains(listener);// Listeners.Contains (listener);
+     return NotificationCenter::listeners->contains(listener);// Listeners.Contains (listener);
 }
 
 void NotificationCenter::reset(EventType theEvent) {
 //    theEvent->status = Idle;
-    current()->events->setValueForKey(theEvent, EVENT_STATUS_IDLE);
+    NotificationCenter::events->setValueForKey(theEvent, EVENT_STATUS_IDLE);
 }
     
 void NotificationCenter::addListener(EventListener * listener) {
-    if (!current()->listeners->contains (listener)) {
-        current()->listeners->append(listener);
+    if (!NotificationCenter::listeners->contains (listener)) {
+        NotificationCenter::listeners->append(listener);
 //        cout << "\nAdded to Listeners: " << *listener << endl;
     } else {
         cout << "\n !! Not Adding => Listeners already contain: " << *listener << endl;
@@ -60,15 +60,15 @@ void NotificationCenter::addListener(EventListener * listener) {
 }
 
 EventListener * NotificationCenter::removeListener(EventListener * listener) {
-    return current()->listeners->removeValue(listener);
+    return NotificationCenter::listeners->removeValue(listener);
 }
 
 EventStatus NotificationCenter::statusOf(EventType theEvent) {
     try {
-        return *current()->events->getValueForKey(theEvent);
+        return *NotificationCenter::events->getValueForKey(theEvent);
     } catch (exception e) {
         cout << e.what() << ": setting new event as Idle" << endl;
-        current()->events->setValueForKey(theEvent, EVENT_STATUS_IDLE);
+        NotificationCenter::events->setValueForKey(theEvent, EVENT_STATUS_IDLE);
         return EVENT_STATUS_IDLE;
     }
 }
@@ -98,7 +98,7 @@ bool NotificationCenter::didFail(EventType theEvent) {
 
 
 void NotificationCenter::eventWillStart(EventType theEvent, EventArgs o) {
-    LinkedList<EventListener>::Node * node = current()->listeners->firstNode();
+    LinkedList<EventListener>::Node * node = NotificationCenter::listeners->firstNode();
     if (node->value == nullptr)
         return;
     else {
@@ -110,7 +110,7 @@ void NotificationCenter::eventWillStart(EventType theEvent, EventArgs o) {
 }
 
 void NotificationCenter::eventDidEnd(EventType theEvent, EventArgs o) {
-    LinkedList<EventListener>::Node * node = current()->listeners->firstNode();
+    LinkedList<EventListener>::Node * node = NotificationCenter::listeners->firstNode();
     if (node->value == nullptr)
         return;
     else {
@@ -121,21 +121,16 @@ void NotificationCenter::eventDidEnd(EventType theEvent, EventArgs o) {
     }
 }
 
- void NotificationCenter::notifyListeners(string message) {
-     LinkedList<EventListener>::Node * node = current()->listeners->firstNode();
+ void NotificationCenter::notifyListeners(string message, EventArgs args) {
+     LinkedList<EventListener>::Node * node = NotificationCenter::listeners->firstNode();
      if (node->value == nullptr)
          return;
      else {
          while (node != nullptr) {
-             node->value->SendMessage(message);
+             node->value->SendMessage(message, args);
              node = node->next;
          }
      }
 }
 
-void NotificationCenter::Test() {
-    (new EventListener())->SendMessage("Yo!");
-    NotificationCenter::eventWillStart("Hello, world!");
-    NotificationCenter::eventDidEnd("Googbye, world!");
-}
-    
+

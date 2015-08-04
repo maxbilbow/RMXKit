@@ -19,38 +19,47 @@
 namespace rmx {
     
     class EventListener : public Object {
-//    protected:
+        ///Private initilization adds this object to NotificationCenter::listeners iff add == true;
+        ///@see NotificationCenter::listeners
         void init(bool add = true);
     public:
         typedef std::string AnEvent;
         typedef void * EventArgs;
+        
+        ///Initializes and adds the object to the list of active event listeners.
         EventListener(std::string name = "", bool add = true):Object(name) {
             this->init(add);
         }
-        //    virtual void OnEvent(String theEvent, EventArgs args){}
+        
+        ///Notify's all active listeners that an event is about to start
         virtual void OnEventDidStart(AnEvent theEvent, EventArgs args) {
             std::cout << *this << "\n       Event Started: " << theEvent << ", with args: " << args << std::endl << std::endl;
         }
         
+        ///Notify's all active listeners that an event did start
         virtual void OnEventDidEnd(AnEvent theEvent, EventArgs args) {
             std::cout << *this << "\n         Event Ended: " << theEvent << ", with args: " << args << std::endl << std::endl;
         }
-        virtual void SendMessage(AnEvent message){
+        
+        ///Receives a message
+        /// Has to be overridden for to add specific method handing
+        /// as it is currently not automatic to call a method this way
+        virtual void SendMessage(AnEvent message, EventArgs args = nullptr){
             std::cout << *this << "\n    Message Received: " << message << std::endl << std::endl;
         }
         
+        ///Extends the Object::clone() method so that the listening status of the object is also copied.
+        ///@see NotificationCenter::addListener(listener);
         EventListener * clone() override;
-//        {
-//            EventListener * clone =  (EventListener*) Object::clone();
-//            if (NotificationCenter::hasListener(this)) {
-//                NotificationCenter::addListener(clone);
-//            }
-//        }
+
     };
 
 }
 
 
-
+///Successfull test of
+/// • Object::clone()
+/// • Object::Instantiate(Object inheritance)
+/// • Event Listening with cloned objects
 void RMXEventListenerTest();
 

@@ -18,6 +18,8 @@ void EventListener::init(bool add) {
         NotificationCenter::addListener(this);
 }
 
+
+
 EventListener * EventListener::clone() {
     EventListener * clone =  (EventListener*) Object::clone();
     if (NotificationCenter::hasListener(this)) {
@@ -30,6 +32,10 @@ EventListener * EventListener::clone() {
     return clone;
 }
 
+///Successfull test of
+/// • Object::clone()
+/// • Object::Instantiate(Object inheritance)
+/// • Event Listening with cloned objects
 void RMXEventListenerTest(){
     EventListener * o = new EventListener(" O Will Listen");
     EventListener p = EventListener(" P Will Listen");

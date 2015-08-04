@@ -34,5 +34,7 @@ int main(int argc, char * argv[]) {
     RMXDictionaryTest();
     RMXObjectCloneTest();
     RMXEventListenerTest();
+    RMXPrintableTest();
+    RMXObjectCountInitAndDeinitTest();
     return 0;
 }

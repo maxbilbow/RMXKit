@@ -13,26 +13,17 @@ using namespace std;
 using namespace rmx;
 
 
-//unsigned int Object::Count() {
-//    return Object::count;
-//}
-//unsigned int Object::IncrementCount() {
-//    cout << Object::count << endl;
-//    return Object::count++;
-//}
-
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a) {
     return strm /* << "rms::inst: " << &a << " >> " << typeid(a).name() << ", info: \n   ==> " */ <<  a.ToString();
 }
 
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a) {
-    return strm << "rmx::ptr:  " << &a /* << ", rms::inst: " << *a */<< " >> " << typeid(*a).name() << ", info: \n   ==> " << a->ToString();
+    return strm << "rmx::ptr:  " << &a /* << ", rms::inst: " << *a */<< " >> " << typeid(*a).name() << ", info: " << a->ToString();
 }
 
-//void Object::init(std::string name) {
-//    this->_id = this->IncrementCount();
-//    this->name = !name.empty() ? name : "Unnamed Object " + std::to_string(this->_id);
-//}
+unsigned int Object::_count = 0;
+unsigned int Object::_deleted = 0;
+LinkedList<Object> * _allObjects = new LinkedList<Object>();
 
 class Thing {
 public:
@@ -78,4 +69,33 @@ void RMXObjectCloneTest(){
     //    OpenGLView::Run(argc, argv);
     
     //    NotificationCenter::Test();
+}
+
+
+void RMXPrintableTest() {
+    Printable * theObject = new Printable();
+    theObject->setDescription("Hello, World!");
+    cout << theObject << endl;
+    cout << *theObject << endl;
+}
+
+class AnObject : public Object {
+    
+};
+
+void RMXObjectCountInitAndDeinitTest() {
+//    LinkedList<Object>::
+    AnObject * thing = new AnObject();
+    cout << "++Objects: " << Object::Count() << endl;
+    AnObject * thing2 = new AnObject();
+    cout << "++Objects: " << Object::Count() << endl;
+    AnObject * thing3 = (AnObject*) thing->clone();
+    cout << "++Objects: " << Object::Count() << endl;
+    delete thing;
+    cout << "--Objects: " << Object::Count() << endl;
+    delete thing2;
+    cout << "--Objects: " << Object::Count() << endl;
+    delete thing3;
+    cout << "--Objects: " << Object::Count() << endl;
+    
 }
