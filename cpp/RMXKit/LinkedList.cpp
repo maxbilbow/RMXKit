@@ -133,8 +133,8 @@ void RMXLinkedListTest(void) {
 
     sList->print();
 #endif
-    delete list;
-    delete sList;
+//    delete list;
+//    delete sList;
     
    //   list->remove_by_value(3);
 //   list->print();

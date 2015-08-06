@@ -147,14 +147,10 @@ namespace rmx {
         Value * pop(Node ** head);
        
         Iterator getIterator() {
-//            Iterator * i = new Iterator(this);
-//            i->current = this->_head;
             return Iterator(this);
         }
         
         LinkedList<Value> * reverse();
-        
-    //    template <class Value>
     };
 
     template <typename Value>

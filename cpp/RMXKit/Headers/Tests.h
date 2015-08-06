@@ -12,7 +12,7 @@
 
 #endif /* Tests_h */
 
-#define DEBUG_ALL                           0
+#define DEBUG_ALL                           1
 #define DEBUG_MALLOC                        DEBUG_ALL || 0
 #define DEBUG_INCLUDE_TEST_OUTPUT           DEBUG_ALL || 0
 

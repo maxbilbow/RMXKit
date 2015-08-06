@@ -48,7 +48,7 @@ namespace rmx {
         
         ///	Awake is called when the script instance is being loaded.
         virtual void awake(Any args = nullptr) {
-            std::cout << "\"" << this->Name() << "\" is Awake!." << std::endl;
+            std::cout << "\"" << this->uniqueName() << "\" is Awake!." << std::endl;
         }
         ///	This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
         virtual void fixedUpdate(Any args = nullptr) {}
@@ -88,7 +88,7 @@ namespace rmx {
         virtual void onControllerColliderHit(Any args = nullptr) {}
         ///	This function is called when the MonoBehaviour will be destroyed.
         virtual void onDestroy(Any args = nullptr) {
-            std::cout << "\"" << this->Name() << "\" was destroyed." << std::endl;
+            std::cout << "\"" << this->uniqueName() << "\" was destroyed." << std::endl;
         }
         /// This function is called when the behaviour becomes disabled (Any args = nullptr) {} or inactive.
         virtual void onDisable(Any args = nullptr) {}

@@ -42,7 +42,7 @@ namespace rmx {
      *
      *   Hello, World!
      *
-     *   @since <#0.1#>
+     *   @since 0.1
      */
     class Printable {
         
@@ -78,6 +78,7 @@ std::ostream& operator<<(std::ostream &strm,  rmx::Printable &a);
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a);
 
 namespace rmx {
+
     typedef void* Any;
     
     /*!
@@ -87,36 +88,52 @@ namespace rmx {
      *  @since 0.1
      */
     class Object : public Printable {
+        
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:35
+         *
+         *  The number of instances created; used to assign the the unique _id on initialization.
+         *  @since 0.1
+         */
         static unsigned int _count;
-        static unsigned int _deleted;
+
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:33
+         *
+         *  A static collection of all active Object instances.
+         *  @see LinkedList<Value>
+         *  @since 0.1
+         */
         static LinkedList<Object> _allObjects;
+        
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:13
+         *
+         *  The unique id of the instance as an unsigned int.
+         *  @since 0.1
+         */
         unsigned int _id;
-        
-        
-        
-        void _updateID() {
-            this->_id = _count++;
-        }
-        
-        static void _RemoveObject(Object * obj) {
-            Object::_allObjects.removeValue(obj);
-        }
-        
 
         
     protected:
        
-        
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:27
+         *
+         *  The given name of the instance.
+         *  @since 0.1
+         */
         std::string name;
 
-
     public:
-        ///The total number of rmx::Objects that exist.
-        static unsigned int Count() {
-            return Object::_allObjects.count(); //_count - Object::_deleted;
-        }
         
-        static void DeleteAllObjects();
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:50
+         *
+         *  @return The total number of rmx::Objects that currently exist in the system.
+         *  @since 0.1
+         */
+        static unsigned int Count();
         
         /*!
          *  @author Max Bilbow, 15-08-04 17:08:40
@@ -128,57 +145,158 @@ namespace rmx {
             return &Object::_allObjects;
         }
         
-        ///Initiates with default name "Unnamed Object"
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:41
+         *
+         *  Initiates with default name "Unnamed Object"
+         *  @since 0.1
+         */
         Object(std::string name = "Unnamed Object");
        
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:14
+         *
+         *  Deconstructor: removes the object from the list of active objects.
+         *  @since 0.1
+         */
         ~Object();
         
-        ///Returns the name with the uniqueID in brackets
-        ///For name without id, use getName();
-        std::string Name() {
-            return this->name + " (" + std::to_string(this->_id) + ")";
-        }
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:50
+         *
+         *  Returns the name with the uniqueID in brackets
+         *  For name without id, use Name();
+         *  @return the name with the uniqueID
+         *  @since 0.1
+         *  @see Name()
+         */
+        std::string uniqueName();
         
-        ///Returns the text name of the object
-        std::string getName() {
-            return this->name;
-        }
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:14
+         *
+         *  @return the given name of the object
+         *  @since 0.1
+         *  @see uniqueName()
+         */
+        std::string Name();
         
-        ///	Should the object be hidden, saved with the scene or modifiable by the user?
-        bool hideFlags = false;
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:25
+         *
+         *  Can be overriden as required.
+         *  @return the unique name and description
+         *  @since 0.1
+         *  @see Printable
+         */
+        virtual std::string ToString() override;
         
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:12
+         *
+         *  Setter for the name
+         *  @param name any string
+         *  @since 0.1
+         *  @see uniqueName()
+         */
+        void setName(std::string name);
         
-        ///Prints the unique name and description
-        std::string ToString() override {
-            return "Name: " + this->Name() + ", Description: " + Printable::ToString();
-        }
-        
-        ///Sets the name
-        void setName(std::string name) {
-             this->name = name;
-        }
-        
-        ///Clones the object and makes sure that the name and ID are updated accordingly.
-        ///This should be overridden, with inherited mathods invoked first, to include custom modifiers on any decendants.
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:40
+         *
+         *  Clones the object and makes sure that the name and ID are updated accordingly.
+         *  This should be overridden, with inherited mathods invoked first, to include custom modifiers on any decendants.
+         *  @return a clone of the object
+         *  @since 0.1
+         */
         virtual Object * clone();
         
-        ///Returns the uniqueID
-        int getID() {
-            return this->_id;
-        }
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:21
+         *
+         *  @return the uniqueID assigned at initialization
+         *  @since 0.1
+         */
+        int getID();
        
-        ///@TODO: convert message into function call.
-        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {}
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:42
+         *
+         *  @discussion Does not currently work as desired. Not sure if messages sending,
+         *  in this mannor is possible in c++ without excessive overhead.
+         *  It might be possible to externally reference Objective-C but 
+         *  probably not an ideal solution.
+         *
+         *  @param message the name of the method to call
+         *  @param args    any value
+         *  @param options e.g. should an error be thrown if no receiver present?
+         *  @since 0.1
+         *  @TODO: find a way of making this work...
+         */
+        virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) { }
         
-        
-        /// Removes a gameobject, component or asset by calling delete.
-        /// TODO: Additonal functionality may be needed later
-        template <class T>
-        static void Destroy(T * object) {
-            delete object;
-//            free(object);
+
+        /*!
+         *  @author Max Bilbow, 15-08-06 16:08:43
+         *
+         *
+         *  @return A LinkedList<Object>:Iterator containing all available Objects in the system.
+         *  @since 0.1
+         */
+        static LinkedList<Object>::Iterator ObjectIterator() {
+            return Object::_allObjects.getIterator();
         }
         
+        
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:26
+         *
+         *  Clones the object original and returns the clone.
+            If the object is of type rmx::Object, then it's clone() method is called
+            Otherwise the instance is cloned in memory and may need additional modification 
+            (i.e. uniqueID, pointers, etc... that should not match that of the original.
+         *
+         *  @param object anything
+         *  @return a unique copy of the input or the instance's Object::clone result.
+         *  @since 0.1
+         *  @see clone()
+         */
+        template<class T> static T * Instantiate(T * object) {
+            //            if( Object * o = dynamic_cast< Object* >( object ) )
+            if (std::is_base_of<Object,T>::value) {
+                #if DEBUG_MALLOC
+                std::cout << "Object::";
+                #endif
+                return (T*) ((Object*) object)->clone();
+            } else {
+                void * ptr = malloc(sizeof(*object));//&o;
+                memcpy(ptr, (void*)object, sizeof(*object));
+                #if DEBUG_MALLOC
+                std::cout << "~UNKNOWN CLONE: " << ptr << std::endl;
+                #endif
+                return (T*) ptr;
+            }
+
+        }
+        
+        
+        /*!
+         *  @author Max Bilbow, 15-08-06 17:08:58
+         *
+         *  Removes a gameobject, component or asset by calling delete.
+         *  @TODO: Make destruction safe as with Unity's GameObject.Destroy function.
+         *  @param object Anything
+         *  @since 0.1
+         */
+        template <class T> static void Destroy(T * object) {
+            delete object; //TODO Dont destroy immediately.
+        }
+        
+        /* More unimplemented Unity GameObject based functions:
+         
+        ///	Should the object be hidden, saved with the scene or modifiable by the user?
+        bool hideFlags = false;
+         
         /// Destroys the object obj immediately. You are strongly recommended to use Destroy instead.
         /// TODO: Additonal functionality may be needed later
         static void DestroyImmediate(Object * object) {
@@ -201,36 +319,10 @@ namespace rmx {
             //TODO
             return nullptr;
         }
+        */
         
-        /// Clones the object original and returns the clone.
-        /// If the object is of type rmx::Object, then it's clone() method is called
-        /// Otherwise the instance is cloned in memory and may need additional modification (i.e. uniqueID, pointers, etc... that should not match that of the original.
-        template<class T>
-        static T * Instantiate(T * object) {
-//            if( Object * o = dynamic_cast< Object* >( object ) )
-            if (std::is_base_of<Object,T>::value) {
-#if DEBUG_MALLOC
-                std::cout << "Object::";
-#endif
-                return (T*) ((Object*) object)->clone();
-            } else {
-                void * ptr = malloc(sizeof(*object));//&o;
-                memcpy(ptr, (void*)object, sizeof(*object));
-#if DEBUG_MALLOC
-                std::cout << "~UNKNOWN CLONE: " << ptr << std::endl;
-#endif
-                return (T*) ptr;
-            }
-           
-        }
-        
-        static LinkedList<Object>::Iterator ObjectIterator() {
-            return Object::_allObjects.getIterator();
-        }
     };
     
-   
-
 }
 
 

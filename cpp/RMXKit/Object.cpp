@@ -7,6 +7,7 @@
 //
 
 #import "RMXKit.h"
+#import "Tests.h"
 #define DEBUG_THIS  (DEBUG_INCLUDE_TEST_OUTPUT || DEBUG_RMX_OBJECT)
 //#import "Object.h"
 //#import <iostream>
@@ -28,7 +29,7 @@ std::ostream& operator<<(std::ostream &strm,  rmx::Printable & a) {
 }
 
 unsigned int Object::_count = 0;
-unsigned int Object::_deleted = 0;
+//unsigned int Object::_deleted = 0;
 LinkedList<Object> * _allObjects = new LinkedList<Object>();
 
 Object::Object(std::string name){
@@ -40,12 +41,36 @@ Object::Object(std::string name){
 #endif
 }
 
+string Object::uniqueName() {
+    return this->name + " (" + std::to_string(this->_id) + ")";
+}
+
+string Object::Name() {
+    return this->name;
+}
+
+void Object::setName(std::string name) {
+    this->name = name;
+}
+
+int Object::getID() {
+    return this->_id;
+}
+
+string Object::ToString()  {
+    return "Name: " + this->uniqueName() + ", Description: " + Printable::ToString();
+}
+
+unsigned int Object::Count() {
+    return Object::_allObjects.count(); //_count - Object::_deleted;
+}
+
 Object::~Object() {
 #if DEBUG_MALLOC
     std::cout << "~DELETING Object: " << *this;
 #endif
-    Object::_deleted++;
-    Object::_RemoveObject(this);
+//    Object::_deleted++;
+    Object::_allObjects.removeValue(this);
 #if DEBUG_MALLOC
     std::cout << ", Remainig: " << Object::Count() << std::endl;
 #endif
@@ -55,7 +80,7 @@ Object * Object::clone() {
     void * ptr = malloc(sizeof(*this));//&o;
     memcpy(ptr, (void*)this, sizeof(*this));
     Object * o = (Object *) ptr;
-    o->_updateID();
+    o->_id = _count++;
     if (o->name.find("CLONE of \"") == std::string::npos)
         o->setName("CLONE of \"" + this->name + "\"");// + std::to_string(this->getID()) + ")");
     Object::_allObjects.append(o);
