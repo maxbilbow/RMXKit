@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6C4C15A71B73C41B006D6392 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C15A61B73C41B006D6392 /* main.m */; };
+		6C4C15BC1B73CB60006D6392 /* RMXNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C15BB1B73CB60006D6392 /* RMXNotificationCenter.m */; };
+		6C4C15BE1B73DF39006D6392 /* RMXObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C15BD1B73DF39006D6392 /* RMXObject.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6C4C15A11B73C41B006D6392 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6C4C15A31B73C41B006D6392 /* RMXKit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RMXKit; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C4C15A61B73C41B006D6392 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6C4C15AE1B73C433006D6392 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
+		6C4C15AF1B73C433006D6392 /* Behaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Behaviour.h; sourceTree = "<group>"; };
+		6C4C15B01B73C433006D6392 /* Dictionary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dictionary.hpp; sourceTree = "<group>"; };
+		6C4C15B11B73C433006D6392 /* RMXEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXEventListener.h; sourceTree = "<group>"; };
+		6C4C15B21B73C433006D6392 /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
+		6C4C15B31B73C433006D6392 /* RMXNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXNotificationCenter.h; sourceTree = "<group>"; };
+		6C4C15B41B73C433006D6392 /* RMXObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXObject.h; sourceTree = "<group>"; };
+		6C4C15B51B73C433006D6392 /* RMXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXKit.h; sourceTree = "<group>"; };
+		6C4C15B61B73C433006D6392 /* RMXKitPriv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RMXKitPriv.hpp; sourceTree = "<group>"; };
+		6C4C15B71B73C433006D6392 /* Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests.h; sourceTree = "<group>"; };
+		6C4C15BB1B73CB60006D6392 /* RMXNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXNotificationCenter.m; path = Objc/RMXNotificationCenter.m; sourceTree = "<group>"; };
+		6C4C15BD1B73DF39006D6392 /* RMXObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXObject.m; path = Objc/RMXObject.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6C4C15A01B73C41B006D6392 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6C4C159A1B73C41B006D6392 = {
+			isa = PBXGroup;
+			children = (
+				6C4C15BA1B73CB42006D6392 /* Objc */,
+				6C4C15B91B73C471006D6392 /* Headers */,
+				6C4C15A51B73C41B006D6392 /* RMXKit */,
+				6C4C15A41B73C41B006D6392 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6C4C15A41B73C41B006D6392 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6C4C15A31B73C41B006D6392 /* RMXKit */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6C4C15A51B73C41B006D6392 /* RMXKit */ = {
+			isa = PBXGroup;
+			children = (
+				6C4C15A61B73C41B006D6392 /* main.m */,
+			);
+			path = RMXKit;
+			sourceTree = "<group>";
+		};
+		6C4C15B91B73C471006D6392 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				6C4C15B31B73C433006D6392 /* RMXNotificationCenter.h */,
+				6C4C15AE1B73C433006D6392 /* ASingleton.h */,
+				6C4C15AF1B73C433006D6392 /* Behaviour.h */,
+				6C4C15B01B73C433006D6392 /* Dictionary.hpp */,
+				6C4C15B11B73C433006D6392 /* RMXEventListener.h */,
+				6C4C15B21B73C433006D6392 /* LinkedList.hpp */,
+				6C4C15B41B73C433006D6392 /* RMXObject.h */,
+				6C4C15B51B73C433006D6392 /* RMXKit.h */,
+				6C4C15B61B73C433006D6392 /* RMXKitPriv.hpp */,
+				6C4C15B71B73C433006D6392 /* Tests.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		6C4C15BA1B73CB42006D6392 /* Objc */ = {
+			isa = PBXGroup;
+			children = (
+				6C4C15BB1B73CB60006D6392 /* RMXNotificationCenter.m */,
+				6C4C15BD1B73DF39006D6392 /* RMXObject.m */,
+			);
+			name = Objc;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6C4C15A21B73C41B006D6392 /* RMXKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6C4C15AA1B73C41B006D6392 /* Build configuration list for PBXNativeTarget "RMXKit" */;
+			buildPhases = (
+				6C4C159F1B73C41B006D6392 /* Sources */,
+				6C4C15A01B73C41B006D6392 /* Frameworks */,
+				6C4C15A11B73C41B006D6392 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMXKit;
+			productName = RMXKit;
+			productReference = 6C4C15A31B73C41B006D6392 /* RMXKit */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6C4C159B1B73C41B006D6392 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Max Bilbow";
+				TargetAttributes = {
+					6C4C15A21B73C41B006D6392 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 6C4C159E1B73C41B006D6392 /* Build configuration list for PBXProject "RMXKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6C4C159A1B73C41B006D6392;
+			productRefGroup = 6C4C15A41B73C41B006D6392 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6C4C15A21B73C41B006D6392 /* RMXKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6C4C159F1B73C41B006D6392 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C4C15A71B73C41B006D6392 /* main.m in Sources */,
+				6C4C15BC1B73CB60006D6392 /* RMXNotificationCenter.m in Sources */,
+				6C4C15BE1B73DF39006D6392 /* RMXObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6C4C15A81B73C41B006D6392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6C4C15A91B73C41B006D6392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6C4C15AB1B73C41B006D6392 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6C4C15AC1B73C41B006D6392 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6C4C159E1B73C41B006D6392 /* Build configuration list for PBXProject "RMXKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C4C15A81B73C41B006D6392 /* Debug */,
+				6C4C15A91B73C41B006D6392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6C4C15AA1B73C41B006D6392 /* Build configuration list for PBXNativeTarget "RMXKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C4C15AB1B73C41B006D6392 /* Debug */,
+				6C4C15AC1B73C41B006D6392 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6C4C159B1B73C41B006D6392 /* Project object */;
+}

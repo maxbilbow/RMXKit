@@ -76,6 +76,10 @@ Object::~Object() {
 #endif
 }
 
+LinkedList<Object>::Iterator Object::ObjectIterator() {
+    return Object::_allObjects.getIterator();
+}
+
 Object * Object::clone() {
     void * ptr = malloc(sizeof(*this));//&o;
     memcpy(ptr, (void*)this, sizeof(*this));

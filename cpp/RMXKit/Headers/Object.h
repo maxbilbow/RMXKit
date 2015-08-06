@@ -243,9 +243,7 @@ namespace rmx {
          *  @return A LinkedList<Object>:Iterator containing all available Objects in the system.
          *  @since 0.1
          */
-        static LinkedList<Object>::Iterator ObjectIterator() {
-            return Object::_allObjects.getIterator();
-        }
+        static LinkedList<Object>::Iterator ObjectIterator();
         
         
         /*!
