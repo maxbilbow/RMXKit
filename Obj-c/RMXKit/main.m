@@ -11,7 +11,7 @@
 #import "Tests.h"
 #import "RMXKit.h"
 
-@interface Listener : RMXObject
+@interface Listener : RMXSingleton
 - (void)print;
 - (void)printWithArgs:(void*)args;
 @end
@@ -47,12 +47,18 @@ int main(int argc, const char * argv[]) {
         [RMXNotificationCenter Start];
         Listener * l = [Listener new];
         [l startListening];
-        [RMXNotificationCenter notifyListeners:@"Hello, World!"];
-        [RMXNotificationCenter eventDidOccur:@"An Event" withArgs:@"An Argument"];
+        [RMXNotificationCenter notifyListeners:@"[RMXNotificationCenter notifyListeners: \"Hello, World!\"]"];
+        [RMXNotificationCenter eventDidOccur:@"[RMXNotificationCenter eventDidOccur:\"An Event\"]" withArgs:@"An Argument"];
         
         [l sendMessage:@"print"]; //Works
         [l sendMessage:@"print" withArgs: @"Hello, World!"]; //Doesnt work but doesnt break either
         [l sendMessage:@"printWithArgs:" withArgs: @"Hello, World!"]; //Success!
+        [l setName:@"A Supposed Singleton"];
+        NSLog(@" First instance: %@", l.name);
+        NSLog(@"Second instance: %@", [Listener current].name);
+        NSLog(@" Third instance: %@", [Listener new].name);
+        NSLog(@"Fourth instance: %@", [[Listener alloc]init].name);
+        
         
     }
     return 0;

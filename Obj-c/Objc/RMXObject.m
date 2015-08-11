@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RMXBehaviour.h"
 #import "RMXEventListener.h"
-#import "RMXNotificationCenter.h"
 #import "RMXObject.h"
+#import "RMXSingleton.h"
+#import "RMXNotificationCenter.h"
+
 
 @implementation RMXObject {
     @private unsigned int _id;

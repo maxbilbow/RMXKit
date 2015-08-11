@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5086DCDB1B75F9F8002ECE98 /* RMXSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5086DCDA1B75F9F8002ECE98 /* RMXSingleton.m */; };
 		6C4C15A71B73C41B006D6392 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C15A61B73C41B006D6392 /* main.m */; };
 		6C4C15BC1B73CB60006D6392 /* RMXNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C15BB1B73CB60006D6392 /* RMXNotificationCenter.m */; };
 		6C4C15BE1B73DF39006D6392 /* RMXObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4C15BD1B73DF39006D6392 /* RMXObject.m */; };
@@ -25,17 +26,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5086DCDA1B75F9F8002ECE98 /* RMXSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXSingleton.m; path = Objc/RMXSingleton.m; sourceTree = "<group>"; };
 		6C4C15A31B73C41B006D6392 /* RMXKit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RMXKit; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C4C15A61B73C41B006D6392 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6C4C15AE1B73C433006D6392 /* ASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASingleton.h; sourceTree = "<group>"; };
-		6C4C15AF1B73C433006D6392 /* Behaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Behaviour.h; sourceTree = "<group>"; };
+		6C4C15AE1B73C433006D6392 /* RMXSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXSingleton.h; sourceTree = "<group>"; };
+		6C4C15AF1B73C433006D6392 /* RMXBehaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXBehaviour.h; sourceTree = "<group>"; };
 		6C4C15B01B73C433006D6392 /* Dictionary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dictionary.hpp; sourceTree = "<group>"; };
 		6C4C15B11B73C433006D6392 /* RMXEventListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXEventListener.h; sourceTree = "<group>"; };
 		6C4C15B21B73C433006D6392 /* LinkedList.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LinkedList.hpp; sourceTree = "<group>"; };
 		6C4C15B31B73C433006D6392 /* RMXNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXNotificationCenter.h; sourceTree = "<group>"; };
 		6C4C15B41B73C433006D6392 /* RMXObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXObject.h; sourceTree = "<group>"; };
 		6C4C15B51B73C433006D6392 /* RMXKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMXKit.h; sourceTree = "<group>"; };
-		6C4C15B61B73C433006D6392 /* RMXKitPriv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RMXKitPriv.hpp; sourceTree = "<group>"; };
 		6C4C15B71B73C433006D6392 /* Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests.h; sourceTree = "<group>"; };
 		6C4C15BB1B73CB60006D6392 /* RMXNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXNotificationCenter.m; path = Objc/RMXNotificationCenter.m; sourceTree = "<group>"; };
 		6C4C15BD1B73DF39006D6392 /* RMXObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMXObject.m; path = Objc/RMXObject.m; sourceTree = "<group>"; };
@@ -82,14 +83,13 @@
 			isa = PBXGroup;
 			children = (
 				6C4C15B31B73C433006D6392 /* RMXNotificationCenter.h */,
-				6C4C15AE1B73C433006D6392 /* ASingleton.h */,
-				6C4C15AF1B73C433006D6392 /* Behaviour.h */,
+				6C4C15AE1B73C433006D6392 /* RMXSingleton.h */,
+				6C4C15AF1B73C433006D6392 /* RMXBehaviour.h */,
 				6C4C15B01B73C433006D6392 /* Dictionary.hpp */,
 				6C4C15B11B73C433006D6392 /* RMXEventListener.h */,
 				6C4C15B21B73C433006D6392 /* LinkedList.hpp */,
 				6C4C15B41B73C433006D6392 /* RMXObject.h */,
 				6C4C15B51B73C433006D6392 /* RMXKit.h */,
-				6C4C15B61B73C433006D6392 /* RMXKitPriv.hpp */,
 				6C4C15B71B73C433006D6392 /* Tests.h */,
 			);
 			name = Headers;
@@ -100,6 +100,7 @@
 			children = (
 				6C4C15BB1B73CB60006D6392 /* RMXNotificationCenter.m */,
 				6C4C15BD1B73DF39006D6392 /* RMXObject.m */,
+				5086DCDA1B75F9F8002ECE98 /* RMXSingleton.m */,
 			);
 			name = Objc;
 			sourceTree = "<group>";
@@ -163,6 +164,7 @@
 				6C4C15A71B73C41B006D6392 /* main.m in Sources */,
 				6C4C15BC1B73CB60006D6392 /* RMXNotificationCenter.m in Sources */,
 				6C4C15BE1B73DF39006D6392 /* RMXObject.m in Sources */,
+				5086DCDB1B75F9F8002ECE98 /* RMXSingleton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +281,7 @@
 				6C4C15AC1B73C41B006D6392 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -73,7 +73,7 @@
  *  Base object for all standart event listening and notification tools.
  *  @since 0.1
  */
-@interface RMXObject : NSObject  <RMXPrintable, RMXEventListener>
+@interface RMXObject : NSObject  <RMXPrintable, RMXEventListener, RMXBehaviour>
         
 
 /*!
@@ -93,7 +93,8 @@
  */
 @property (readonly) unsigned int uniqueID;
 
-
+///@see RMXBehaviour
+@property BOOL enabled;
        
 /*!
  *  @author Max Bilbow, 15-08-06 17:08:27

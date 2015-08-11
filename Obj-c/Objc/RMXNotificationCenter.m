@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RMXEventListener.h"
-#import "RMXNotificationCenter.h"
+#import "RMXKit.h"
 
-@interface RMXEvent : NSObject
-@property unsigned short status;
-@end
 
 @implementation RMXEvent
 - (id)init {
@@ -23,33 +19,48 @@
 @end
 
 
-@implementation RMXNotificationCenter {
-//    static NSDictionary * events;
+@implementation RMXNotificationCenter  {
+    /*!
+     *  @author Max Bilbow, 15-08-04 17:08:42
+     *  List of all active EventListeners, assuming they were added to the list.
+     *  @see EventListener::EventListener(std::string name, bool add);
+     *  @since 0.1
+     */
+     NSMutableArray<EventListener> * listeners;
+    /*!
+     *
+     *  @author Max Bilbow, 15-08-04 17:08:42
+     *  Dictionaty containing all events, that have been activated at least once, and their statuses.
+     *  @since 0.1
+     */
+     NSMutableDictionary<EventType, RMXEvent*> * events;
 }
-/*!
- *  @author Max Bilbow, 15-08-04 17:08:42
- *  List of all active EventListeners, assuming they were added to the list.
- *  @see EventListener::EventListener(std::string name, bool add);
- *  @since 0.1
- */
-static NSMutableArray<EventListener> * _listeners;
-/*!
- *
- *  @author Max Bilbow, 15-08-04 17:08:42
- *  Dictionaty containing all events, that have been activated at least once, and their statuses.
- *  @since 0.1
- */
-static NSMutableDictionary<EventType, RMXEvent*> * _events;
 
-static BOOL _init = false;
+
+static RMXNotificationCenter* _current;
+
++ (void)setCurrent:(id)singleton {
+    _current = singleton;
+}
+
+//static BOOL _init = false;
 + (void)Start {
-    if (!_init) {
-        _listeners = [NSMutableArray<RMXEventListener> new];
-        _events = [NSMutableDictionary<EventType, RMXEvent*> new];
-        _init = YES;
-    }
+//    if (!_init) {
+//        _listeners = [NSMutableArray<RMXEventListener> new];
+//        _events = [NSMutableDictionary<EventType, RMXEvent*> new];
+//        _init = YES;
+//        [self new];
+//        
+//    }
 }
 
+- (void)doOnInit {
+    NSLog(@"doOnInit!");
+    self._listeners = [NSMutableArray<RMXEventListener> new];
+    self._events = [NSMutableDictionary<EventType, RMXEvent*> new];
+//    _init = YES;
+
+}
 
 /*!
  *  @author Max Bilbow, 15-08-04 17:08:42
@@ -58,7 +69,7 @@ static BOOL _init = false;
  *  @since 0.1
  */
 + (BOOL)hasListener:(EventListener)listener {
-    return [_listeners containsObject: listener];
+    return [[RMXNotificationCenter current]._listeners containsObject: listener];
 }
 
 /*!
@@ -67,8 +78,8 @@ static BOOL _init = false;
  *  @since 0.1
  */
 + (void)reset:(EventType)theEvent {
-    if (_events[theEvent] != NULL) {
-        _events[theEvent].status = EVENT_STATUS_IDLE;
+    if ([RMXNotificationCenter current]._events[theEvent] != NULL) {
+        [RMXNotificationCenter current]._events[theEvent].status = EVENT_STATUS_IDLE;
     }
 }
 
@@ -78,7 +89,7 @@ static BOOL _init = false;
  *  @since 0.1
  */
 + (void)addListener:(EventListener)listener{
-    [_listeners addObject:listener];
+    [[RMXNotificationCenter current]._listeners addObject:listener];
 }
 
 /*!
@@ -87,8 +98,8 @@ static BOOL _init = false;
  *  @since 0.1
  */
 + (EventListener)removeListener:(EventListener)listener{
-    if ([_listeners containsObject:listener]) {
-        [_listeners removeObject:listener];
+    if ([[RMXNotificationCenter current]._listeners containsObject:listener]) {
+        [[RMXNotificationCenter current]._listeners removeObject:listener];
         return listener;
     } else {
         return NULL;
@@ -101,7 +112,7 @@ static BOOL _init = false;
  *  @since 0.1
  */
 + (EventStatus)statusOf:(EventType)theEvent{
-    RMXEvent * e = _events[theEvent];
+    RMXEvent * e = [RMXNotificationCenter current]._events[theEvent];
     if (e != NULL) {
         return  e.status;
     } else {
@@ -196,14 +207,14 @@ static BOOL _init = false;
 }
 
 + (void)eventWillStart:(EventType)theEvent withArgs:(EventArgs)args{
-    if (_events[theEvent] == NULL) {
-        _events[theEvent] = [RMXEvent new];
+    if ([RMXNotificationCenter current]._events[theEvent] == NULL) {
+        [RMXNotificationCenter current]._events[theEvent] = [RMXEvent new];
     }
-    for (EventListener listener in _listeners) {
+    for (EventListener listener in [RMXNotificationCenter current]._listeners) {
         if ([listener respondsToSelector:@selector(onEventDidEnd:withArgs:)])
             [listener onEventDidStart:theEvent withArgs:args];
     }
-    _events[theEvent].status = EVENT_STATUS_ACTIVE;
+    [RMXNotificationCenter current]._events[theEvent].status = EVENT_STATUS_ACTIVE;
 }
 
 /*!
@@ -227,11 +238,11 @@ static BOOL _init = false;
 
 + (void)eventDidEnd:(EventType)theEvent withArgs:(EventArgs)args{
 //    if (args is EventStatus && (EventStatus) args == EVENT_STATUS_COMPLETE)
-    for (EventListener listener in _listeners) {
+    for (EventListener listener in [RMXNotificationCenter current]._listeners) {
         if ([listener respondsToSelector:@selector(onEventDidStart:withArgs:)])
             [listener onEventDidEnd:theEvent withArgs:args];
     }
-    [RMXNotificationCenter reset:theEvent];
+    [self reset:theEvent];
 
 }
 
@@ -250,7 +261,7 @@ static BOOL _init = false;
 }
 
 + (void)notifyListeners:(NSString*)message withArgs:(EventArgs)args {
-    for (EventListener listener in _listeners) {
+    for (EventListener listener in [RMXNotificationCenter current]._listeners) {
         if ([listener respondsToSelector:@selector(sendMessage:withArgs:)])
             [listener sendMessage:message withArgs:args];
     }

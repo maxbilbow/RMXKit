@@ -9,7 +9,8 @@
 
 //#import "LinkedList.h"
 //#import "Dictionary.h"
+#import "RMXBehaviour.h"
 #import "RMXEventListener.h"
-#import "RMXNotificationCenter.h"
 #import "RMXObject.h"
-//#import "ASingleton.h"
+#import "RMXSingleton.h"
+#import "RMXNotificationCenter.h"

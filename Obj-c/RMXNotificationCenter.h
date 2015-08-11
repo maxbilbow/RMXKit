@@ -27,6 +27,9 @@
 //} RMXEvent;
 
 
+@interface RMXEvent : NSObject
+@property unsigned short status;
+@end
 
 /*!
  *   @author Max Bilbow, 15-08-04 16:08:21
@@ -35,12 +38,27 @@
  *
  *   @since 0.1
  */
-@interface RMXNotificationCenter : NSNotificationCenter
+@interface RMXNotificationCenter : RMXSingleton <RMXSingleton>
 
 typedef id<RMXEventListener> EventListener;
 typedef NSString * EventType;
 typedef void * EventArgs;
 typedef unsigned short EventStatus;
+
+/*!
+ *  @author Max Bilbow, 15-08-04 17:08:42
+ *  List of all active EventListeners, assuming they were added to the list.
+ *  @see EventListener::EventListener(std::string name, bool add);
+ *  @since 0.1
+ */
+@property NSMutableArray<EventListener> * _listeners;
+/*!
+ *
+ *  @author Max Bilbow, 15-08-04 17:08:42
+ *  Dictionaty containing all events, that have been activated at least once, and their statuses.
+ *  @since 0.1
+ */
+@property NSMutableDictionary<EventType, RMXEvent*> * _events;
 
 /*!
  *  @author Max Bilbow, 15-08-06 20:08:21

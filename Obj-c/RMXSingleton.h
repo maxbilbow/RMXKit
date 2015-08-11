@@ -13,7 +13,24 @@
 #endif /* ASingleton_hpp */
 
 
-#import "Object.h"
+//#import "RMXObject.h"
+
+@protocol RMXSingleton
+
+///Return the current singleton or initialize a new one
++ (instancetype)current;
+
+- (void)setCurrent:(id)singleton;
+
++ (BOOL)isInitialized;
+
+///null the current singleton
+- (void)dealloc;
+
+@optional
+- (void)doOnInit;
+
+@end
 
 /*!
  *   Not a true singleton as additional objects can be created through decendants.
@@ -23,28 +40,12 @@
  *
  *   @since <#0.1#>
  */
-template <class T>
-class ASingleton : public Object {
-    static T * _current;
-public:
-    static T * current() {
-        if (_current != nullptr)
-            return _current;
-        else
-            _current = new T();
-        return _current;
-    }
-    
-    ~ASingleton() {
-        _current = nullptr;
-        Object::~Object();
-    }
-    
-    ///Sets the current static "Singleton" and returns the old
-    static T * setCurrent(T * t) {
-        T * old = _current;
-        _current = t;
-        return old;
-    }
-};
+@interface RMXSingleton : RMXObject
+
+
++ (instancetype)current;
++ (BOOL)isInitialized;
+
+
+@end
     
