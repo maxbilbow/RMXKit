@@ -3,7 +3,7 @@ package rmx;
 import java.util.LinkedList;
 import java.util.Dictionary;
 
-public class RMXObject extends EventListener implements KeyValueObserver, IEventListener {
+public class RMXObject extends EventListener implements KeyValueObserver {
 	private Dictionary<String, Object> values;// = new Dictionary<String, Object> ();
 	private LinkedList<KeyValueObserver> observers = new LinkedList<KeyValueObserver> ();
 
@@ -134,7 +134,7 @@ public class RMXObject extends EventListener implements KeyValueObserver, IEvent
 	}
 	
 
-	@Override
+	
 	public String name() {
 		// TODO Auto-generated method stub
 		return null;

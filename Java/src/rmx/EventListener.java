@@ -9,7 +9,7 @@ package rmx;
  *   @see NotificationCenter
  *   @since 0.1
  */
-public abstract class EventListener implements IEventListener {
+public abstract class EventListener {
     
    
        
