@@ -1,17 +1,23 @@
 package rmx;
 
-import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class NotificationCenter {
 	
 	private static LinkedList<EventListener> listeners = new LinkedList<EventListener> ();
 
-	private static Dictionary<String, EventStatus> events;
+	private static HashMap<String, EventStatus> events = new HashMap<String, EventStatus> ();
 
-	public static void init() {
+	//private static NotificationCenter singleton = new NotificationCenter();
 	
-	}
+//	protected NotificationCenter() {
+//		this.events = new Dictionary<String, EventStatus> ();
+//	}
+//	public static NotificationCenter defaultCenter() {
+//		return singleton;
+//	}
+
 	public static boolean hasListener(EventListener listener) {
 		return listeners.contains(listener);
 	}
@@ -36,7 +42,12 @@ public class NotificationCenter {
 	}
 
 	public static EventStatus statusOf(String theEvent) {
-		return events.get(theEvent) != null ? events.get(theEvent) : EventStatus.Idle;
+		try {
+			return events.get(theEvent);
+		} catch (NullPointerException e) {
+			events.put(theEvent, EventStatus.Idle);
+			return EventStatus.Idle;
+		}
 	}
 
 	public static boolean isIdle(String theEvent) {
@@ -48,10 +59,10 @@ public class NotificationCenter {
 	}
 
 	public static void EventDidOccur(String e) {
-		eventDidOccur (e, null);
+		EventDidOccur (e, null);
 	}
 
-	public static void eventDidOccur(String theEvent, Object o) {
+	public static void EventDidOccur(String theEvent, Object o) {
 		
 		EventWillStart(theEvent, o);
 		EventDidEnd(theEvent, o);

@@ -4,6 +4,14 @@ public class StringFormatter {
 	private String originalText;
 	private String formattedText;
 	
+	public StringFormatter(String text) {
+		this.newTextInput(text);
+	}
+
+	public StringFormatter() {
+		this.newTextInput("");
+	}
+	
 	public String getOriginalText() {
 		return originalText;
 	}
@@ -54,7 +62,7 @@ public class StringFormatter {
 		StringFormatter sf = new StringFormatter();
 		sf.newTextInput("One two three four five!");
 		sf.reverse();
-		System.out.println(sf);
+//		System.out.println(sf);
 		return sf;
 	}
 }

@@ -1,13 +1,16 @@
 package rmx;
 
 import java.util.LinkedList;
-import java.util.Dictionary;
+import java.util.Set;
+import java.util.HashMap;
 
 public class RMXObject extends EventListener implements KeyValueObserver {
-	private Dictionary<String, Object> values;// = new Dictionary<String, Object> ();
-	private LinkedList<KeyValueObserver> observers = new LinkedList<KeyValueObserver> ();
-
-
+	private HashMap<String, Object> values = new HashMap<String, Object> ();
+	private HashMap<String, LinkedList<KeyValueObserver>> observers = new HashMap<String, LinkedList<KeyValueObserver>>  ();
+//	protected String name = "Unnamed RMXObject";
+	
+	private static int _count = 0;
+	private int id = _count++;
 	/// <summary>
 	/// Gets a value indicating whether this <see cref="RMX.ASingleton`1"/> add to global listeners.
 	/// </summary>
@@ -23,60 +26,53 @@ public class RMXObject extends EventListener implements KeyValueObserver {
 	}
 
 	public RMXObject() {
+		this.setName("Unnamed RMXObject");
 		this.awake();
 	}
+	
 	protected void awake() {
 		if (this.addToGlobalListeners())
 			NotificationCenter.addListener(this);
 	}
 
-//	protected virtual void OnDestroy() {
-//		Notifications.RemoveListener (this);
-//	}
+	protected void willBeginEvent(String theEvent){
+		NotificationCenter.EventWillStart (theEvent);
+	}
 
-//	protected void willBeginEvent(IEvent theEvent){
-//		NotificationCenter.EventWillStart (theEvent);
-//	}
-//
-//	protected void didUpdateEvent(IEvent theEvent) {
-//		NotificationCenter.EventWillStart (theEvent);
-//	}
-//
-//	protected void didFinishEvent(IEvent theEvent){
-//		NotificationCenter.EventDidEnd (theEvent);
-//	}
-//
-//	protected void didCauseEvent(IEvent theEvent){
-//		NotificationCenter.EventDidOccur (theEvent);
-//	}
-//
-//	protected void willBeginEvent(IEvent theEvent, object info){
-//		NotificationCenter.EventWillStart (theEvent, info);
-//	}
+	protected void didFinishEvent(String theEvent){
+		NotificationCenter.EventDidEnd (theEvent);
+	}
+
+	protected void didCauseEvent(String theEvent){
+		NotificationCenter.EventDidOccur (theEvent);
+	}
+
+	protected void willBeginEvent(String theEvent, Object args){
+		NotificationCenter.EventWillStart (theEvent, args);
+	}
+	
+	
+	protected void DidFinishEvent(String theEvent, Object args){
+		NotificationCenter.EventDidEnd (theEvent, args);
+	}
+
+	protected void DidCauseEvent(String theEvent, Object args){
+		NotificationCenter.EventDidOccur (theEvent, args);
+	}
+
+	protected void WillChangeValueForKey(String key){
+		if (this.observers.size() > 0)
+			for (KeyValueObserver observer : this.observers.get(key)) {
+				observer.OnValueForKeyWillChange(key, this.values.get(key), this);
+			}
+	}
 //	
-//	protected void DidUpdateEvent(IEvent theEvent, object info) {
-//		NotificationCenter.EventWillStart (theEvent, info);
-//	}
-//	
-//	protected void DidFinishEvent(IEvent theEvent, object info){
-//		NotificationCenter.EventDidEnd (theEvent, info);
-//	}
-//
-//	protected void DidCauseEvent(IEvent theEvent, object info){
-//		NotificationCenter.EventDidOccur (theEvent, info);
-//	}
-//
-//	protected void WillChangeValueForKey(string key){
-//		foreach (KeyValueObserver observer in observers) {
-//			observer.OnValueForKeyWillChange(key, values[key]);
-//		}
-//	}
-//	
-//	protected void DidChangeValueForKey(string key) {
-//		foreach (KeyValueObserver observer in observers) {
-//			observer.OnValueForKeyDidChange(key, values[key]);
-//		}
-//	}
+	protected void DidChangeValueForKey(String key) {
+		if (this.observers.size() > 0)
+			for (KeyValueObserver observer : this.observers.get(key)) {
+				observer.OnValueForKeyDidChange(key, this.values.get(key), this);
+			}
+	}
 //
 //	public virtual void setValue(string forKey, object value) {
 //		if (values[forKey] != value) {
@@ -90,19 +86,26 @@ public class RMXObject extends EventListener implements KeyValueObserver {
 		return this.values.get(forKey);
 	}
 
-	public void AddObserver(KeyValueObserver observer) {
-		if (!this.observers.contains(observer))
-			this.observers.add(observer);
+	public void AddObserver(KeyValueObserver observer, String forKey) {
+		if (!this.observers.containsKey(forKey))
+			this.observers.put(forKey, new LinkedList<KeyValueObserver>());
+		if (!this.observers.get(forKey).contains(observer))
+			this.observers.get(forKey).add(observer);
 	}
 
+	public void RemoveObserver(KeyValueObserver observer, String forKey) {
+		if (this.observers.containsKey(forKey))
+			if (this.observers.get(forKey).contains(observer))
+				this.observers.get(forKey).remove(observer);
+	}
+	
 	public void RemoveObserver(KeyValueObserver observer) {
-		if (observers.contains(observer))
-			observers.remove(observer);
+		Set<String> keys = this.observers.keySet();
+		if (keys.size() > 0)
+			for (String key : keys) {
+				this.RemoveObserver(observer, key);
+		}
 	}
-
-
-//	public void OnValueForKeyWillChange(String key, Object value) {}
-//	public void OnValueForKeyDidChange (String key, Object value) {}
 
 	protected static String[] ListenerMethods = {
 		"OnEvent",
@@ -114,19 +117,19 @@ public class RMXObject extends EventListener implements KeyValueObserver {
 	@Override
 	public void OnEventDidStart(String theEvent, Object args){
 		String arg = args != null ? args.toString() : "N/A";
-        System.out.println(this.name() + " => Event Started: " + theEvent + ", with args: " + arg);
+        System.out.println(this.uniqueName() + " => Event Started: " + theEvent + " ("+ NotificationCenter.statusOf(theEvent) +"), with args: " + arg);
     }
 	
 	@Override
 	public void OnEventDidEnd(String theEvent, Object args){
 		String arg = args != null ? args.toString() : "N/A";
-        System.out.println(this.name() + " => Event Ended: " + theEvent + ", with args: " + arg);
+        System.out.println(this.uniqueName() + " => Event Ended: " + theEvent + " ("+ NotificationCenter.statusOf(theEvent) +"), with args: " + arg);
     }
 	
 	@Override
 	public void SendMessage(String message, Object args){
 		String arg = args != null ? args.toString() : "N/A";
-        System.out.println(this.name() + " => Message Received: " + message + ", with args: " + arg);
+        System.out.println(this.uniqueName() + " => Message Received: " + message + ", with args: " + arg);
     }
 	
 	public static boolean OneIn10() {
@@ -134,22 +137,30 @@ public class RMXObject extends EventListener implements KeyValueObserver {
 	}
 	
 
+	public String uniqueName() {
+		// TODO Auto-generated method stub
+		return this.getName() + " (" + this.id + ")";
+	}
+	public String getName() {
+		// TODO Auto-generated method stub
+		return (String) this.getValue("name");
+	}
+
+	public void setName(String name) {
+		this.WillChangeValueForKey("name");
+//		this.name = name;
+		this.values.put("name", name);
+		this.DidChangeValueForKey("name");
+	}
 	
-	public String name() {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public void OnValueForKeyWillChange(String key, Object value, RMXObject sender) {
+        System.out.println(this.uniqueName() + " >> " + sender.uniqueName() + " will change: " + key + ", from old value: " + value);
 	}
 
 	@Override
-	public void OnValueForKeyWillChange(String key, Object value) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void OnValueForKeyDidChange(String key, Object value) {
-		// TODO Auto-generated method stub
-		
+	public void OnValueForKeyDidChange(String key, Object value, RMXObject sender) {
+		System.out.println(this.uniqueName() + " >> " + sender.uniqueName() + " did change: " + key + ", to new value: " + value);
 	}
 
 	@Override
