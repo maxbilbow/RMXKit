@@ -4,6 +4,7 @@
 import rmx.NotificationCenter;
 import rmx.RMXObject;
 import rmx.StringFormatter;
+import rmx.db.Database;
 
 public class Main {
 
@@ -22,6 +23,8 @@ public class Main {
 		NotificationCenter.EventDidEnd("ReverseString", sf);
 		
 		System.out.println("\nDid all that...");
+		
+		Database.test();
 	}
 
 }
