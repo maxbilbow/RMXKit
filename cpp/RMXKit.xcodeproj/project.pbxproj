@@ -13,6 +13,21 @@
 		503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */; };
 		503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503A23C61B6A69BF008F89F6 /* EventListener.cpp */; };
 		504ECB071B6B61F100DE1DE8 /* Behaviour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */; };
+		505CD1DB1B84728B00368BEB /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 505CD1D91B84728B00368BEB /* Transform.cpp */; };
+		505CD1DC1B84728B00368BEB /* Transform.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 505CD1DA1B84728B00368BEB /* Transform.hpp */; };
+		505CD1DD1B8472D100368BEB /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 505CD1D91B84728B00368BEB /* Transform.cpp */; };
+		506E9C471B83AD4E00F91D9D /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506E9C451B83AD4E00F91D9D /* NodeComponent.cpp */; };
+		506E9C481B83AD4E00F91D9D /* NodeComponent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 506E9C461B83AD4E00F91D9D /* NodeComponent.hpp */; };
+		506E9C491B83AD7400F91D9D /* NodeComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 506E9C451B83AD4E00F91D9D /* NodeComponent.cpp */; };
+		508726AE1B8294E600E631BE /* test2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726AC1B8294E600E631BE /* test2.cpp */; };
+		508726B31B833CA500E631BE /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726B11B833CA500E631BE /* GameController.cpp */; };
+		508726B41B833CA500E631BE /* GameController.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 508726B21B833CA500E631BE /* GameController.hpp */; };
+		508726B91B83438600E631BE /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726B71B83438600E631BE /* GameView.cpp */; };
+		508726BA1B83438600E631BE /* GameView.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 508726B81B83438600E631BE /* GameView.hpp */; };
+		508726BB1B83573600E631BE /* GameView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726B71B83438600E631BE /* GameView.cpp */; };
+		508726BF1B835A0500E631BE /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726BD1B835A0500E631BE /* Node.cpp */; };
+		508726C01B835A0500E631BE /* Node.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 508726BE1B835A0500E631BE /* Node.hpp */; };
+		508726C11B835A4300E631BE /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 508726BD1B835A0500E631BE /* Node.cpp */; };
 		6C0DA6661B70EB4500A4325E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
 		6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		6C0DA6681B70EB9B00A4325E /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
@@ -57,6 +72,19 @@
 		503A23931B6A1F56008F89F6 /* Tools.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Tools.hpp; sourceTree = "<group>"; };
 		503A23C61B6A69BF008F89F6 /* EventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventListener.cpp; sourceTree = "<group>"; };
 		504ECB051B6B61F100DE1DE8 /* Behaviour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Behaviour.cpp; sourceTree = "<group>"; };
+		505CD1D91B84728B00368BEB /* Transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Transform.cpp; path = RMXKit/engine/Transform.cpp; sourceTree = "<group>"; };
+		505CD1DA1B84728B00368BEB /* Transform.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Transform.hpp; path = RMXKit/engine/Transform.hpp; sourceTree = "<group>"; };
+		506E9C451B83AD4E00F91D9D /* NodeComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NodeComponent.cpp; path = RMXKit/engine/NodeComponent.cpp; sourceTree = "<group>"; };
+		506E9C461B83AD4E00F91D9D /* NodeComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = NodeComponent.hpp; path = RMXKit/engine/NodeComponent.hpp; sourceTree = "<group>"; };
+		508726AC1B8294E600E631BE /* test2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test2.cpp; sourceTree = "<group>"; };
+		508726AD1B8294E600E631BE /* test2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test2.h; sourceTree = "<group>"; };
+		508726B11B833CA500E631BE /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
+		508726B21B833CA500E631BE /* GameController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameController.hpp; sourceTree = "<group>"; };
+		508726B51B833DB000E631BE /* RMXEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = RMXEngine.hpp; path = engine/RMXEngine.hpp; sourceTree = "<group>"; };
+		508726B71B83438600E631BE /* GameView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameView.cpp; path = engine/GameView.cpp; sourceTree = "<group>"; };
+		508726B81B83438600E631BE /* GameView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GameView.hpp; path = engine/GameView.hpp; sourceTree = "<group>"; };
+		508726BD1B835A0500E631BE /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Node.cpp; path = engine/Node.cpp; sourceTree = "<group>"; };
+		508726BE1B835A0500E631BE /* Node.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Node.hpp; path = engine/Node.hpp; sourceTree = "<group>"; };
 		509BC17D1B68A389007172B6 /* LinkedList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LinkedList.cpp; path = RMXKit/LinkedList.cpp; sourceTree = SOURCE_ROOT; };
 		509BC1891B68BBBE007172B6 /* Dictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Dictionary.cpp; path = RMXKit/Dictionary.cpp; sourceTree = SOURCE_ROOT; };
 		50C43C461B679E6500AD2FAC /* RMXKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,9 +162,27 @@
 			name = cpp;
 			sourceTree = "<group>";
 		};
+		508726BC1B8359D900E631BE /* engine */ = {
+			isa = PBXGroup;
+			children = (
+				508726B11B833CA500E631BE /* GameController.cpp */,
+				508726B21B833CA500E631BE /* GameController.hpp */,
+				508726B51B833DB000E631BE /* RMXEngine.hpp */,
+				508726B71B83438600E631BE /* GameView.cpp */,
+				508726B81B83438600E631BE /* GameView.hpp */,
+				508726BD1B835A0500E631BE /* Node.cpp */,
+				508726BE1B835A0500E631BE /* Node.hpp */,
+			);
+			name = engine;
+			sourceTree = "<group>";
+		};
 		50C43C3D1B679E6500AD2FAC = {
 			isa = PBXGroup;
 			children = (
+				505CD1D91B84728B00368BEB /* Transform.cpp */,
+				505CD1DA1B84728B00368BEB /* Transform.hpp */,
+				506E9C451B83AD4E00F91D9D /* NodeComponent.cpp */,
+				506E9C461B83AD4E00F91D9D /* NodeComponent.hpp */,
 				50C43C4B1B679E6500AD2FAC /* RMXKit */,
 				50C43C5D1B679E9200AD2FAC /* AiCubo */,
 				50C43C481B679E6500AD2FAC /* Frameworks */,
@@ -164,7 +210,10 @@
 		50C43C4B1B679E6500AD2FAC /* RMXKit */ = {
 			isa = PBXGroup;
 			children = (
+				508726BC1B8359D900E631BE /* engine */,
 				50C43C5E1B679E9200AD2FAC /* main.cpp */,
+				508726AC1B8294E600E631BE /* test2.cpp */,
+				508726AD1B8294E600E631BE /* test2.h */,
 				6C9EB1111B710DEA003F6156 /* Headers */,
 				503A239D1B6A3014008F89F6 /* cpp */,
 				50C43C521B679E6500AD2FAC /* Info.plist */,
@@ -222,10 +271,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506E9C481B83AD4E00F91D9D /* NodeComponent.hpp in Headers */,
 				6C9EB1271B710DEA003F6156 /* Tests.h in Headers */,
+				508726BA1B83438600E631BE /* GameView.hpp in Headers */,
 				6C9EB11F1B710DEA003F6156 /* Dictionary.h in Headers */,
 				6C9EB1231B710DEA003F6156 /* NotificationCenter.h in Headers */,
 				6C9EB1211B710DEA003F6156 /* LinkedList.h in Headers */,
+				508726B41B833CA500E631BE /* GameController.hpp in Headers */,
+				508726C01B835A0500E631BE /* Node.hpp in Headers */,
 				6C9EB1251B710DEA003F6156 /* RMXKit.h in Headers */,
 				6C9EB11D1B710DEA003F6156 /* ASingleton.h in Headers */,
 				6C9EB1201B710DEA003F6156 /* EventListener.h in Headers */,
@@ -233,6 +286,7 @@
 				6C9EB11E1B710DEA003F6156 /* Behaviour.h in Headers */,
 				6C9EB1261B710DEA003F6156 /* RMXKitPriv.hpp in Headers */,
 				503A23961B6A1F56008F89F6 /* Tools.hpp in Headers */,
+				505CD1DC1B84728B00368BEB /* Transform.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +333,9 @@
 		50C43C3E1B679E6500AD2FAC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Rattle Media Ltd";
@@ -316,11 +373,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */,
+				506E9C471B83AD4E00F91D9D /* NodeComponent.cpp in Sources */,
+				508726B31B833CA500E631BE /* GameController.cpp in Sources */,
 				6C0DA6681B70EB9B00A4325E /* LinkedList.cpp in Sources */,
 				6C0DA66A1B70EB9B00A4325E /* RMXKit.cpp in Sources */,
 				6C9EB10E1B710D87003F6156 /* Object.cpp in Sources */,
+				505CD1DB1B84728B00368BEB /* Transform.cpp in Sources */,
+				508726BF1B835A0500E631BE /* Node.cpp in Sources */,
 				6C0DA66B1B70EB9B00A4325E /* NotificationCenter.cpp in Sources */,
 				6C0DA66C1B70EB9B00A4325E /* EventListener.cpp in Sources */,
+				508726B91B83438600E631BE /* GameView.cpp in Sources */,
+				508726AE1B8294E600E631BE /* test2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,9 +391,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508726C11B835A4300E631BE /* Node.cpp in Sources */,
 				503A23C81B6A69BF008F89F6 /* EventListener.cpp in Sources */,
 				503A23C51B6A691E008F89F6 /* NotificationCenter.cpp in Sources */,
+				508726BB1B83573600E631BE /* GameView.cpp in Sources */,
 				6C9EB10F1B710D87003F6156 /* Object.cpp in Sources */,
+				506E9C491B83AD7400F91D9D /* NodeComponent.cpp in Sources */,
+				505CD1DD1B8472D100368BEB /* Transform.cpp in Sources */,
 				504ECB071B6B61F100DE1DE8 /* Behaviour.cpp in Sources */,
 				503A23A41B6A3434008F89F6 /* LinkedList.cpp in Sources */,
 				6C0DA6661B70EB4500A4325E /* main.cpp in Sources */,

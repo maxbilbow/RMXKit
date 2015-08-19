@@ -8,14 +8,13 @@
 
 #import <iostream>
 #import "Tests.h"
-#import "RMXKit.h"
+//#import "RMXKit.h"
 
+#import "RMXEngine.hpp"
 //#import "LinkedList.h"
 //#import "Dictionary.h"
 //#import "ASingleton.h"
 //#import "Object.h"
-
-
 
 
 //#import "OpenGLView.h"
@@ -30,12 +29,14 @@ using namespace rmx;
 
 int main(int argc, char * argv[]) {
 
-    RMXLinkedListTest();
-    RMXDictionaryTest();
-    RMXObjectCloneTest();
-    RMXEventListenerTest();
-    RMXPrintableTest();
-    RMXObjectCountInitAndDeinitTest();
+    GameController::getInstance()->run();
+//    runTest2();
+//    RMXLinkedListTest();
+//    RMXDictionaryTest();
+//    RMXObjectCloneTest();
+//    RMXEventListenerTest();
+//    RMXPrintableTest();
+//    RMXObjectCountInitAndDeinitTest();
 //    RMXBehaviourTest();
     
     return 0;

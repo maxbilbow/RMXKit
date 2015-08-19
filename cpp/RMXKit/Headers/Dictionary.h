@@ -39,11 +39,11 @@ namespace rmx {
     //typedef struct _KeyValuePair KeValuePair;
 
     template <typename Key, typename Value>
-    class Dictionary : public LinkedList<KeyValuePair<Key,Value> > {
+    class Dictionary : public LinkedList<KeyValuePair<Key, Value*> > {
         
     public:
-        typedef KeyValuePair<Key, Value> Pair;
-        typedef typename LinkedList<KeyValuePair<Key,Value> >::Node Node;
+        typedef KeyValuePair<Key, Value*> Pair;
+        typedef typename LinkedList<Pair >::Node Node;
 
         ///Returns the KeyValuePair that points to the entry
         Pair * getKeyValuePair(Key key) {
@@ -62,7 +62,7 @@ namespace rmx {
         Value * getValueForKey(Key key){
             Pair * node = this->getKeyValuePair(key);
             if (node != nullptr)
-                return node->value;
+                return *node->value;
             else
                 return nullptr;
         }
@@ -71,13 +71,13 @@ namespace rmx {
         Value * setValueForKey(Key key, Value * value) {
             Pair * pair = this->getKeyValuePair(key);
             if (pair != nullptr) {
-                Value * old = pair->value;
-                pair->value = value;
+                Value * old = *pair->value;
+                pair->value = &value;
                 return old;
             } else {
-                KeyValuePair<Key,Value> * newPair = new KeyValuePair<Key,Value>();
+                Pair * newPair = new Pair();
                 newPair->key = key;
-                newPair->value = value;
+                newPair->value = &value;
                 this->append(newPair);
                 return nullptr;
             }
