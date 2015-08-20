@@ -142,52 +142,49 @@ bool Transform::move(Move name, float scale, string message) {
     
 }
 
-//void Transform::translate(float x, float y, float z) {
+void Transform::translate(float x, float y, float z) {
 //    _localMatrix = GLKMatrix4Translate(_localMatrix,x,y,z);
-////    _localMatrix.m30 += x;
-////    _localMatrix.m31 += y;
-////    _localMatrix.m32 += z;
-//}
+    _localMatrix.m30 += x;
+    _localMatrix.m31 += y;
+    _localMatrix.m32 += z;
+}
 //
-//void Transform::translate(Vector3 v) {
+void Transform::translate(Vector3 v) {
 //    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v);
-////    _localMatrix.m30 += v.x;
-////    _localMatrix.m31 += v.y;
-////    _localMatrix.m32 += v.z;
-//}
+    _localMatrix.m30 += v.x;
+    _localMatrix.m31 += v.y;
+    _localMatrix.m32 += v.z;
+}
 
 bool Transform::translate(Move direction, float scale) {
-    Vector3 v;
     switch (direction) {
         case Forward:
-            scale *= -1;
-            v = this->forward();
+//            scale *= -1;
+            this->translate(this->forward() * scale);
             break;
         case Up:
             //			scale *= -1;
-            v = this->up();
+             this->translate(this->up() * scale);
             break;
         case Left:
-            scale *= -1;
-            v = this->left();
+//            scale *= -1;
+             this->translate(this->left() * scale);
             break;
         case X:
             //			scale *= -1;
-            v = GLKVector3Make(1,0,0);
+             this->translate(scale, 0,0);
             break;
         case Y:
             //			scale *= -1;
-            v = GLKVector3Make(0,1,0);
+            this->translate(0, scale,0);
             break;
         case Z:
             //			scale *= -1;
-            v = GLKVector3Make(0,0,1);
+            this->translate( 0,0, scale);
             break;
         default:
             return false;
     }
-    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v * scale);
-//    this->translate(v * scale);
     return true;
 }
 
@@ -220,25 +217,23 @@ bool Transform::rotate(Move direction, float scale) {
 }
 
 void Transform::rotate(float radians, Vector3 v) {
-    this->_localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, v);
+    this->rotate(radians,v.x,v.y,v.z);
     
 }
 
-//void Transform::rotate(float radians, float x, float y, float z) {
-//    
-//    this->_localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, x,y,z);
-
-//    Matrix4 rMatrix = new Matrix4();
-//    rMatrix.setIdentity();
-//    rMatrix.setRotation(new AxisAngle4f(x,y,z,radians * 0.2f ));//*  RMX.PI_OVER_180));
-//    //		_rMatrix.transpose();
-//    
-//    //		_quaternion.set(new AxisAngle4f(v.x,v.y,v.z,degrees * 0.1f));
-//    Vector3 p = this.position();
-//    this.mul(rMatrix);
-//    this.setPosition(p);
+void Transform::rotate(float radians, float x, float y, float z) {
+    Matrix4 rMatrix = GLKMatrix4MakeRotation(radians, x, y, z);
     
-//}
+    
+    //		_rMatrix.transpose();
+    
+    //		_quaternion.set(new AxisAngle4f(v.x,v.y,v.z,degrees * 0.1f));
+//    Vector3 p = this.position();
+    this->_localMatrix = GLKMatrix4Multiply(GLKMatrix4Transpose(this->_localMatrix), rMatrix);
+//    this.setPosition(p);
+//    this->_localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, v);
+    
+}
 
 
 

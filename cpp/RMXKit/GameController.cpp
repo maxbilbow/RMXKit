@@ -40,17 +40,21 @@ GameController * GameController::getInstance() {
 
 
 void GameController::initpov() {
-    GameNode * n = GameNode::getCurrent();
-    n->setPhysicsBody(new PhysicsBody());
-    cout << n->physicsBody() << endl;
-    n->physicsBody()->setMass(0.5f);
-//    n->addBehaviour(new SpriteBehaviour());
-    n->getTransform()->setScale(2.0f, 0.1f, 2.0f);
-    Scene::getCurrent()->rootNode()->addChild(n);
+    GameNode * cameraNode = GameNode::getCurrent();
+    cameraNode->addBehaviour(new SpriteBehaviour());
+    cameraNode->setPhysicsBody(new PhysicsBody());
+    cameraNode->physicsBody()->setMass(1);
+    cameraNode->getTransform()->setScale(2.0f, 0.1f, 2.0f);
+//    cameraNode->setGeometry(Geometry::Cube());
+    Scene::getCurrent()->rootNode()->addChild(cameraNode);
+    view->setPointOfView(cameraNode);
 }
 
 class BehaviourA : public Behaviour {
 public:
+    BehaviourA() {
+        this->setEnabled(false);
+    }
     void update() override {
         this->getNode()->getTransform()->move(Forward,0.1);
     }
@@ -58,6 +62,9 @@ public:
 
 class BehaviourB : public Behaviour {
 public:
+    BehaviourB() {
+        this->setEnabled(false);
+    }
     void update() override {
         this->getNode()->getTransform()->move(Yaw,   0.1);
         this->getNode()->getTransform()->move(Pitch, 0.1);
@@ -68,6 +75,9 @@ public:
 
 class BehaviourC : public Behaviour {
 public:
+    BehaviourC() {
+        this->setEnabled(false);
+    }
     void update() override {
         this->getNode()->getTransform()->move(Forward,0.5);
         this->getNode()->getTransform()->move(Yaw,  0.1);
@@ -83,7 +93,7 @@ void GameController::setup() {
     cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
         
         
-    GameNode * cube2 = GameNode::makeCube(0.2f, true, new BehaviourB());
+    GameNode * cube2 = GameNode::makeCube(0.2f, false, new BehaviourB());
         
     GameNode * cube3 = GameNode::makeCube(0.5f, true, new BehaviourC());
     cube3->getTransform()->setPosition(-10.0f,0.0f,10.0f);
@@ -162,11 +172,11 @@ void GameController::repeatedKeys(GLFWwindow * window) {
     }
     
     if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-        player->getTransform()->move(Yaw, 1.0f);
+        player->getTransform()->move(Yaw,-1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-        player->getTransform()->move(Yaw,-1.0f);
+        player->getTransform()->move(Yaw, 1.0f);
     }
     
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
@@ -185,7 +195,7 @@ void GameController::repeatedKeys(GLFWwindow * window) {
         player->getTransform()->move(Roll,-1.0f);
     }
     
-    cout << player->getTransform()->localMatrix();
+    cout << GameNode::getCurrent()->getTransform()->worldMatrix();
 }
 
 
@@ -212,9 +222,6 @@ void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int 
             case GLFW_KEY_ESCAPE:
                 glfwSetWindowShouldClose(window, GL_TRUE);
                 break;
-            case GLFW_KEY_W:
-                //			 Node.getCurrent().transform.moveForward(1);
-                break;
             case GLFW_KEY_M:
                 
                 if (gc->cursorLocked) {
@@ -226,6 +233,8 @@ void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int 
                 }
                 break;			 
         }
+    
+
 }
 
 void GameController::lockCursor(bool lock) {
@@ -239,7 +248,7 @@ double xpos ,ypos;
 bool restart = true;
 
 void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
-    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;;
+//    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;;
     GameController * gc = getInstance();
     
     if (!gc->cursorLocked)
@@ -257,7 +266,8 @@ void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
         ypos = y;
         Transform * t = gc->view->pointOfView()->getTransform();
         t->move(Pitch, dy);
-        t->move(Yaw,   dx);
+        t->move(Yaw,  -dx);
+//        cout << GameNode::getCurrent()->getTransform()->worldMatrix();
     }
     
     

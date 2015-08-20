@@ -32,6 +32,11 @@ void PhysicsWorld::setGravity(float x, float y, float z) {
 }
     
 void PhysicsWorld::updatePhysics(GameNode * rootNode) {
+    
+    //TODO: Check for collisions
+    
+    //TODO: Update relationships / joints
+    
     GameNodeList::Iterator * i = rootNode->getChildren()->getIterator();
     while (i->hasNext()) {
         GameNode * node = i->next();
@@ -54,6 +59,6 @@ void PhysicsWorld::applyGravityTo(GameNode * node) {
         t->setPosition(t->position() + this->gravity * framerate * mass);
         //		System.out.println(node.getName() + " >>  AFTER: " + m.position());
         //		m.translate(x, y, z);
-        if (t->position().y < ground)
+        if (t->localPosition().y < ground)
             t->setM(3 * 4 + 1, ground);
 }

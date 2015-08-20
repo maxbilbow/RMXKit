@@ -65,7 +65,10 @@ void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
     
     //		 glMultMatrixf(_modelView.buffer())
     Vector3 translation = RMXMatrix4Position(base);
-    
+//    glMultMatrixf();
+//    glMultMatrixf(
+//                 GLKMatrix4Multiply(node->getTransform()->worldMatrix(),base).m
+//                  );
     glTranslatef(
                  translation.z,
                  translation.y,

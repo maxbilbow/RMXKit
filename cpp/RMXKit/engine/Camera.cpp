@@ -116,6 +116,8 @@ Matrix4 Camera::modelViewMatrix() {
 //    cout << m << endl;
 //    m.negate();
 //    return m;
-    return GLKMatrix4Invert(m, new bool());
+//    m.m30 *= -1;m.m31 *= -1;m.m32 *= -1;
+    
+    return m;
 }
 

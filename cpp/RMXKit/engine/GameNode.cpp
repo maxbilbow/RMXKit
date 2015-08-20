@@ -132,9 +132,6 @@ GameNode * GameNode::newCameraNode() {
     cameraNode->setCamera(new Camera());
     if (_current == null)
         _current = cameraNode;
-    cameraNode->addBehaviour(new SpriteBehaviour());
-    cameraNode->setPhysicsBody(new PhysicsBody());
-    cameraNode->physicsBody()->setMass(1);
     return cameraNode;
 }
     

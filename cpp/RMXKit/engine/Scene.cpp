@@ -38,13 +38,12 @@ Scene * Scene::setCurrent(Scene * scene) {
     return old;
 }
 
-void Scene::setAsCurrent() {
-    setCurrent(this);
+Scene * Scene::setAsCurrent() {
+   return setCurrent(this);
 }
 
 
 void Scene::renderScene(Camera * camera) {
-//    this->_rootNode->draw(cam->modelViewMatrix());
     this->_rootNode->draw(camera->modelViewMatrix());
 }
 
