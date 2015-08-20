@@ -16,12 +16,77 @@
 
 //class Node;
 namespace rmx{
-    
-    class Transform {
+    enum RMXMoveMessage {
+        Forward, Left, Up, X, Y, Z,
+        Pitch, Yaw, Roll,
+        Jump
+    };
+    class Transform : public NodeComponent, public Unfinised{
+        Matrix4 _worldMatrix;
+        Matrix4 _axis;
+        Matrix4 _localMatrix;
+        Quaternion _quaternion;
+        Vector3 _eulerAngles;
+        Vector3 _scale;
+        
         ///Exists to thwart defauly constructor.
         Transform(){}
+        
     public:
-        Transform(Node * node){}
+        typedef RMXMoveMessage Move;
+        Transform(Node * node);
+        
+        void setScale(float x, float y, float z);
+        
+        void move(Move name, std::string args = "");
+        
+        void setPosition(float x, float y, float z);
+        
+        Vector3 scale();
+        
+        /**
+         * TODO: Test with children
+         * @return sum of all mass
+         */
+        float mass();
+        
+        void setM(int i, float value);
+        
+        void addM(int i, float value);
+        /**
+         * 
+         */
+        Matrix4 worldMatrix();
+        Transform * parent();
+        Vector3 localPosition();
+        Vector3 position();
+        Vector3 left();
+        Vector3 up();
+        Vector3 forward();
+        
+        void setPosition(Vector3 position);
+        
+        void translate(float x, float y, float z);
+        void translate(Vector3 v);
+        void translate(Vector4 v);
+        bool translate(Move direction, float scale);
+        bool rotate(Move direction, float scale);
+        void rotate(float radians,Vector3 v);
+        
+        Quaternion rotation();
+        
+        Quaternion localRotation();
+        
+        Vector3 eulerAngles();
+        
+        Vector3 localEulerAngles();
+        
+        
+        Matrix4 localMatrix();
+        
+        
+        Node * setNode(Node * node) override;
+    
     };
 
 }

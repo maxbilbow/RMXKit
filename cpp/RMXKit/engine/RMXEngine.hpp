@@ -12,31 +12,33 @@
 
 #endif /* RMXEngine_h */
 
-#import <GLUT/GLUT.h>
+#define _GLFW_COCOA         1
+#define _GLFW_USE_OPENGL    1
+
+
+
 
 #import "RMXKit.h"
+
+#import <GLKit/GLKMatrix4.h>
+#import <GLKit/GLKVector3.h>
+#import <GLKit/GLKVector4.h>
+
+typedef GLKMatrix4 Matrix4;
+typedef GLKVector3 Vector3;
+typedef GLKVector4 Vector4;
+typedef GLKQuaternion Quaternion;
+#import "RMXMath.hpp"
 #import "NodeComponent.hpp"
-namespace rmx {
-    
-    class Geometry{};// : public NodeComponent {};
-    class Scene {};
-    class Behaviour : public NodeComponent {};
-    class Camera : public NodeComponent{};
-    class PhysicsBody : public NodeComponent{};
-    class KeyCallback : public Object {};
-
-    class  RenderDelegate {
-        virtual void updateBeforeScene(){};
-        
-        virtual void updateAfterScene(){};
-        
-    };
-}
-
+#import "PhysicsWorld.hpp"
+#import "Geometry.hpp"
 #import "Node.hpp"
 #import "Transform.hpp"
-
-#import "Transform.hpp"
+#import "PhysicsBody.hpp"
+#import "Camera.hpp"
+#import "Behaviour.hpp"
+#import "Scene.hpp"
 #import "GameView.hpp"
 #import "GameController.hpp"
+
 

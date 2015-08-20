@@ -1,4 +1,3 @@
-//
 //  LinkedList.hpp
 //  JustForFun
 //
@@ -14,7 +13,7 @@
 #import <iostream>
 
 namespace rmx {
-
+    
     /*!
      *   @author Max Bilbow, 15-08-04 16:08:45
      *
@@ -28,50 +27,47 @@ namespace rmx {
     public:
         typedef struct _Node {
         public:
-            Value value;
+            Value * value;
             _Node * next;
-            /*!
-             *  @since 0.1.1
-             */
             _Node * prev; //Not Implemented
         } Node;
         
     private:
         int _count;
         Node * _head;
-
+        
     public:
         typedef struct _Iterator {
         protected:
-
+            //            Node * _prev;
             Node * currentNode;
             List * linkedList;
             int i;
-
+            
         public:
             _Iterator(List * list) {
                 this->currentNode = list->firstNode();
                 this->linkedList = list;
             }
-            bool hasValues() {
+//#ifdef __GNUC__
+//#define DEPRECATED(func) func __attribute__ ((deprecated))
+//#elif defined(_MSC_VER)
+//#define DEPRECATED(func) __declspec(deprecated) func
+//#else
+//#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
+            
+            bool hasValues() __attribute__((deprecated)) {
                 return this->currentNode != nullptr;
             }
-            Value  previous() {
-                if (this->currentNode == nullptr)
-                    throw std::out_of_range("CURRENT VALUE IS NULL: Count: " + std::to_string(this->i) + ", ListCount: " + std::to_string(this->count()));
-                Value  v = this->currentNode->value;
-                this->currentNode = this->currentNode->prev;
-                --this->i;
-                if (v != nullptr) {
-                    return v;
-                } else {
-                    return this->previous();
-                }
+            
+            bool hasNext () {
+                return this->currentNode != nullptr;
             }
-            Value  next() {
+            Value * next() {
+                //                Node * next = nullptr
                 if (this->currentNode == nullptr)
                     throw std::out_of_range("CURRENT VALUE IS NULL: Count: " + std::to_string(this->i) + ", ListCount: " + std::to_string(this->count()));
-                Value  v = this->currentNode->value;
+                Value * v = this->currentNode->value;
                 this->currentNode = this->currentNode->next;
                 ++this->i;
                 if (v != nullptr) {
@@ -92,24 +88,24 @@ namespace rmx {
         
         Node * lastNode();
         
-        Value first();
+        Value * first();
         
         Node * firstNode();
         
-        Value last();
+        Value * last();
         
         bool isEmpty();
         
-    //    ///Removes and returns the mathcing node
-    //    Node * removeNode(Node * node);
-       
+        //    ///Removes and returns the mathcing node
+        //    Node * removeNode(Node * node);
+        
         ///removes and returns value at index
-        Value removeValueAtIndex(int index);
-
+        Value * removeValueAtIndex(int index);
+        
         ///Removes and returns the node at index
         Node * removeNodeAtIndex(int index);
-
-    //     Node * insertValueAtIndex(int index);
+        
+        //     Node * insertValueAtIndex(int index);
         
         ///Necessary for reversing a list
         Node * asNodeArray();
@@ -124,45 +120,54 @@ namespace rmx {
         void deleteAll();
         
         ///Appends and returns appended value
+        Value * append(Value * value);
+        
+        ///Appends and returns appended value
         Value append(Value value);
         
         ///appends an array of given size (sizeof(array))
         void append(Value array[], __SIZE_TYPE__ size);
         
         ///Removes and returns the node containing the corresponding value
+        Node * removeNodeWithValue(Value * value);
+        
+        ///Removes and returns the node containing the corresponding value
         Node * removeNodeWithValue(Value value);
+        
+        ///Removes and returns the first matching value;
+        Value * removeValue(Value * value);
         
         ///Removes and returns the first matching value;
         Value removeValue(Value value);
         
-        Value getValue(int index);
+        Value * getValue(int index);
         
-        Node * getNodeWithValue(Value value);
+        Node * getNodeWithValue(Value * value);
         
         Node * getNode(int index);
         
         ///TODO: Test this method with primitives and pointers.
-        bool contains(Value value);
+        bool contains(Value * value);
         
         ///Returns previous value or throws error if out of range
-        Value setValue(int index);
-
+        Value * setValue(int index);
+        
         void print(void);
         
-        Value pop(Node ** head);
-       
+        Value * pop(Node ** head);
+        
         Iterator getIterator() {
             return Iterator(this);
         }
         
         LinkedList<Value> * reverse();
     };
-
+    
     template <typename Value>
     inline LinkedList<Value>::LinkedList() {
         this->_head = new Node();
     }
-
+    
     template <typename Value>
     inline LinkedList<Value>::~LinkedList() {
 #if DEBUG_MALLOC
@@ -172,9 +177,9 @@ namespace rmx {
         //    free(this);
         
     }
-
+    
     template <typename Value>
-    inline Value  LinkedList<Value>::append(Value value) {
+    inline Value * LinkedList<Value>::append(Value * value) {
         if (_count == 0 || this->_head == NULL) {
             if (_count != 0)
                 throw std::invalid_argument("Why is count not zero when _head == NULL?!");
@@ -195,30 +200,30 @@ namespace rmx {
 #endif
         return value;
     };
-
+    
     template <typename Value>
     bool LinkedList<Value>::isEmpty() {
         return this->_count == 0;
     }
-
-
-
+    
+    
+    
     template <typename Value> int LinkedList<Value>::count() {
         return this->_count;
     }
-
-    template <typename Value> Value LinkedList<Value>::first() {
+    
+    template <typename Value> Value * LinkedList<Value>::first() {
         return this->_head->value;
     }
-
+    
     template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::firstNode() {
         return this->_head;
     }
-
-    template <typename Value> Value LinkedList<Value>::last() {
+    
+    template <typename Value> Value * LinkedList<Value>::last() {
         return this->lastNode()->value;
     };
-
+    
     template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::lastNode() {
         if (this->_head == NULL) {
             return NULL;
@@ -229,15 +234,15 @@ namespace rmx {
         }
         return last;
     };
-
-
-
-
-//    template <typename Value> Value LinkedList<Value>::append(Value value) {
-//        return *this->append(&value);
-//    };
-
-    template <typename Value> Value  LinkedList<Value>::pop(Node ** head) {
+    
+    
+    
+    
+    template <typename Value> Value LinkedList<Value>::append(Value value) {
+        return *this->append(&value);
+    };
+    
+    template <typename Value> Value * LinkedList<Value>::pop(Node ** head) {
         int retval = -1;
         Node * next_node = NULL;
         
@@ -252,38 +257,38 @@ namespace rmx {
         
         return retval;
     };
-
-//    template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::removeNodeWithValue(Value  value) {
-//        if (value == nullptr) {
-//            throw std::invalid_argument("Cannot remove NULL (yet)");
-//        }
-//        if (this->_head->value == value) {
-//            Node * result = this->_head;
-//            this->_head = this->_head->next;
-//            --_count;
-//            return result;
-//        } else {
-//            Node * previous = this->_head;
-//            Node * current = this->_head->next;
-//            
-//            while (current->next != nullptr) {
-//                if (current->value == value) {
-//                    previous->next = current->next;
-//                    --_count;
-//                    return current;
-//                } else if (current == nullptr) {
-//                    return nullptr;
-//                } else {
-//                    previous = current;
-//                    current = current->next;
-//                }
-//            }
-//            return nullptr;
-//        }
-//    }
-
-    template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::removeNodeWithValue(Value value) {
+    
+    template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::removeNodeWithValue(Value * value) {
+        if (value == nullptr) {
+            throw std::invalid_argument("Cannot remove NULL (yet)");
+        }
         if (this->_head->value == value) {
+            Node * result = this->_head;
+            this->_head = this->_head->next;
+            --_count;
+            return result;
+        } else {
+            Node * previous = this->_head;
+            Node * current = this->_head->next;
+            
+            while (current->next != nullptr) {
+                if (current->value == value) {
+                    previous->next = current->next;
+                    --_count;
+                    return current;
+                } else if (current == nullptr) {
+                    return nullptr;
+                } else {
+                    previous = current;
+                    current = current->next;
+                }
+            }
+            return nullptr;
+        }
+    }
+    
+    template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::removeNodeWithValue(Value value) {
+        if (*this->_head->value == value) {
             Node * result = this->_head;
             this->_head = this->_head->next;
             --_count;
@@ -305,20 +310,20 @@ namespace rmx {
             return nullptr;
         }
     }
-
-    template <typename Value> Value  LinkedList<Value>::removeValue(Value value) {
+    
+    template <typename Value> Value * LinkedList<Value>::removeValue(Value * value) {
         if (value == nullptr)
             throw std::invalid_argument("Value cannot be NULL (yet)");
         Node * result = this->removeNodeWithValue(value);
         return result == nullptr ? nullptr : result->value;
     };
-
-//    template <typename Value> Value LinkedList<Value>::removeValue(Value value) {
-//        Node * result = this->removeNodeWithValue(value);
-//        return result == nullptr ? nullptr : *result->value;
-//    };
-
-    template <typename Value> Value  LinkedList<Value>::removeValueAtIndex(int index) {
+    
+    template <typename Value> Value LinkedList<Value>::removeValue(Value value) {
+        Node * result = this->removeNodeWithValue(value);
+        return result == nullptr ? nullptr : *result->value;
+    };
+    
+    template <typename Value> Value * LinkedList<Value>::removeValueAtIndex(int index) {
         try {
             Node * node = (Node*) removeNodeAtIndex(index);
             return node->value;
@@ -355,8 +360,8 @@ namespace rmx {
         }
         throw std::invalid_argument("Unknown index exception - index: " + std::to_string(index) + ", range: " + std::to_string(this->_count));
     };
-
-
+    
+    
     template <typename Value> void LinkedList<Value>::removeAll() {
         while (this->_count > 0) {
             this->removeNodeAtIndex(0);
@@ -365,19 +370,19 @@ namespace rmx {
     
     template <typename Value> void LinkedList<Value>::deleteAll() {
         while (this->_count > 0) {
-            Value  val = this->removeValueAtIndex(0);
+            Value * val = this->removeValueAtIndex(0);
             if (val != nullptr)
                 free(val);
-//                Object::Destroy(val);
-//            std::cout << this->count() << std::endl;
+            //                Object::Destroy(val);
+            //            std::cout << this->count() << std::endl;
             
             
         }
     }
-
-
-
-
+    
+    
+    
+    
     template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::getNode(int index) {
         Node * result = this->_head;
         for (int i = 0; i < index; ++i) {
@@ -385,18 +390,18 @@ namespace rmx {
         }
         return result;
     }
-
-
-    template <typename Value> Value  LinkedList<Value>::getValue(int index) {
+    
+    
+    template <typename Value> Value * LinkedList<Value>::getValue(int index) {
         Node * result = this->_head;
         for (int i = 0; i < index; ++i) {
             result = result->next;
         }
         return result->value;
     }
-
+    
     ///May cause error with result->next == null.
-    template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::getNodeWithValue(Value  value) {
+    template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::getNodeWithValue(Value * value) {
         Node * result = this->_head;
         for (int i = 0; i < _count; ++i) {
             if (value == result->value)
@@ -406,15 +411,15 @@ namespace rmx {
         }
         return nullptr;
     }
-
-
+    
+    
     ///Returns previous value or throws error if out of range
-    template <typename Value> Value  LinkedList<Value>::setValue(int index) {
+    template <typename Value> Value * LinkedList<Value>::setValue(int index) {
         return this->_head->value;
     }
-
-
-
+    
+    
+    
     template <typename Value> LinkedList<Value> * LinkedList<Value>::reverse() {
         Node * array = this->asNodeArray();
         int i = _count - 1;
@@ -431,9 +436,9 @@ namespace rmx {
         
         return this;
     }
-
-
-
+    
+    
+    
     template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::asNodeArray() {
         Node * nodes = new Node[_count];
         Node * current = this->_head;
@@ -444,7 +449,7 @@ namespace rmx {
         
         return nodes;
     }
-
+    
     template <typename Value> Value * LinkedList<Value>::asArray() {
         int count = this->count();
         Value (* values) = new Value[count];
@@ -455,16 +460,16 @@ namespace rmx {
         
         return values;
     }
-
-
+    
+    
     template <typename Value> void LinkedList<Value>::append(Value array[], size_t size) {
         for (int i = 0; i < size / sizeof(array[0]); ++i) {
             this->append(&array[i]);
         }
     };
-
+    
     ///TODO: Test this method
-    template <typename Value> bool LinkedList<Value>::contains(Value value) {
+    template <typename Value> bool LinkedList<Value>::contains(Value * value) {
         Node * current = this->_head;
         
         while (current->next != nullptr) {
@@ -475,8 +480,8 @@ namespace rmx {
         return false;
         
     };
-
-
+    
+    
     template <typename Value>
     inline void LinkedList<Value>::print()
     {
@@ -508,4 +513,3 @@ namespace rmx {
         
     }
 }
-    

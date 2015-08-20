@@ -14,29 +14,41 @@
 #endif /* GameView_h */
 
 
+#define END_OF_GAMELOOP "END_OF_GAMELOOP"
+
+#import <GLFW/glfw3.h>
+
+
+namespace rmx {
+    class RenderDelegate {
+    public:
+        virtual void updateBeforeScene(){};
+        
+        virtual void updateAfterScene(){};
+        
+    };
+}
+
 
 namespace rmx {
     
-    class GLView {};
     
-    class GLFWErrorCallback {};
-  
 
-class GameView : public GLView {
+class GameView : public Object {
     Node * _pointOfView;
 
     int _height = 720, _width = 1280;
     
-    
+    void errorCallback(int i,const char* c);
     // We need to strongly reference callback instances.
-    GLFWErrorCallback * _errorCallback;
-    KeyCallback   * _keyCallback;
+   
+
     
     // The window handle
-    long _window;
+    GLFWwindow * _window;
     
     
-    RenderDelegate * delegate = NULL;
+    RenderDelegate * delegate;
     
 public:
     void initGL();
@@ -47,18 +59,17 @@ public:
     
     
     bool setPointOfView(Node * pointOfView);
-    RenderDelegate getDelegate();
+    RenderDelegate * getDelegate();
    
     
-    void setDelegate(RenderDelegate delegate);
+    void setDelegate(RenderDelegate * delegate);
     
     
     
-    long window();
+    GLFWwindow * window();
     
-    GLFWErrorCallback * errorCallback();
     
-    KeyCallback * keyCallback();
+    
     
     int width();
     void setWidth(int width);

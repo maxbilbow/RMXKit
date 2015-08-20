@@ -6,203 +6,172 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#include "GameController.hpp"
+#import "RMXEngine.hpp"
+#import "GameController.hpp"
+
+using namespace std;
+using namespace rmx;
+
+GameController::GameController() {
+    this->setView(new GameView());
+}
+
+GameController * GameController::getInstance() {
+    if(_singleton == nullptr) {
+        _singleton = new GameController();
+    }
+    return _singleton;
+}
 
 
-class GameController : public RMXObject,  RenderDelegate  {
-    private GLView view;
-    
-    protected GameController() {
-        this.setView(new GameView());
-        
+void GameController::initpov() {
+    Node * n = Node::getCurrent();
+    n->setPhysicsBody(new PhysicsBody());
+    n->physicsBody()->setMass(0.5f);
+//    n->addBehaviour(new SpriteBehaviour());
+    n->getTransform()->setScale(2.0f, 0.1f, 2.0f);
+    Scene::getCurrent()->rootNode()->addChild(n);
+}
+
+class BehaviourA : public Behaviour {
+public:
+    void update() override {
+        this->getNode()->getTransform()->move(Forward,"0.1");
+    }
+};
+
+class BehaviourB : public Behaviour {
+public:
+    void update() override {
+        this->getNode()->getTransform()->move(Yaw,   "0.1");
+        this->getNode()->getTransform()->move(Pitch, "0.1");
+        this->getNode()->getTransform()->move(Roll,  "0.1");
     }
     
-    public static GameController getInstance() {
-        if(singleton == null) {
-            synchronized(GameController.class) {
-                if(singleton == null) {
-                    singleton = new GameController();
-                    singleton.setView(new GameView());
-                }
-            }
-        }
-        return singleton;
+};
+
+class BehaviourC : public Behaviour {
+public:
+    void update() override {
+        this->getNode()->getTransform()->move(Forward,"0.5");
+        this->getNode()->getTransform()->move(Yaw,  "0.1");
     }
     
-    private static GameController singleton = new GameController();
+};
+
+void GameController::setup() {
+    Scene * scene = Scene::getCurrent();
+    initpov();
     
-    private void initpov() {
-        Node n = Node.getCurrent();
-        n.setPhysicsBody(new PhysicsBody());
-        n.physicsBody().setMass(0.5f);
-        n.addBehaviour(new SpriteBehaviour());
-        n.transform.setScale(2f, 0.1f, 2f);
-        Scene.getCurrent().rootNode.addChild(n);
-    }
-    public void setup() {
-        Scene scene = Scene.getCurrent();
-        initpov();
+    Node * cube = Node::makeCube(0.5f, true, new BehaviourA());
+    cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
         
         
-        Node cube = Node.makeCube(0.5f, true, new Behaviour() {
-            
-            @Override
-            public void update() {
-                this.getNode().transform.move("forward:0.1");
-                
-            }
-            
-        });
-        cube.transform.setPosition(0,0,5);
+    Node * cube2 = Node::makeCube(0.2f, false, new BehaviourB());
         
+    Node * cube3 = Node::makeCube(0.5f, true, new BehaviourC());
+    cube3->getTransform()->setPosition(-10.0f,0.0f,10.0f);
+    cube3->addChild(cube2);
+    cube2->getTransform()->setPosition(0.0f,1.0f,0.0f);
         
-        Node cube2 = Node.makeCube(0.2f, false, new Behaviour() {
-            @Override
-            public void update() {
-                this.getNode().transform.move("yaw:0.1");
-                this.getNode().transform.move("pitch:0.1");
-                this.getNode().transform.move("roll:0.1");
-            }
-            
-        });
+    Node * floor = new Node();
+    floor->getTransform()->setPosition(0,0,0);
+    scene->rootNode()->addChild(floor);
         
-        
-        Node cube3 = Node.makeCube(0.5f, true, new Behaviour() {
-            @Override
-            public void update() {
-                this.getNode().transform.move("forward:0.5");
-                this.getNode().transform.move("yaw:0.1");
-            }
-            
-        });
-        cube3.transform.setPosition(-10,0,10);
-        cube3.addChild(cube2);
-        cube2.transform.setPosition(0f,1f,0f);
-        
-        Node floor = new Node();
-        floor.transform.setPosition(0,0,0);
-        scene.rootNode.addChild(floor);
-        
-        floor.setGeometry(new Geometry(4*3){
-            
-            @Override
-            protected void drawWithScale(float x, float y, float z) {
-                float inf = 99999;//Float.POSITIVE_INFINITY;
-                GL11.glBegin(GL11.GL_POLYGON);
-                GL11.glColor3f(0.8f,0.8f,0.8f);
-                GL11.glVertex3f( inf, -y,-inf);
-                GL11.glVertex3f(-inf, -y,-inf);
-                GL11.glVertex3f(-inf, -y, inf);
-                GL11.glVertex3f( inf, -y, inf);
-                GL11.glEnd();
-            }
-            
-        });
-        
-    }
+    floor->setGeometry(new Floor());
     
-    @Override
-    public void run() {
+}
+
+void GameController::run() {
         //
         //       System.out.println("Hello LWJGL " + Sys.getVersion() + "!");
         try {
             
-            this.setup();
-            SharedLibraryLoader.load();
+            this->setup();
+//            SharedLibraryLoader::load();
             
-            this.view.initGL();
-            this.view.enterGameLoop();
+            this->view->initGL();
+            this->view->enterGameLoop();
             
             // Release window and window callbacks
-            glfwDestroyWindow(view.window());
-            view.keyCallback().release();
-        } catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            // Terminate GLFW and release the GLFWerrorfun
+            glfwDestroyWindow(view->window());
+//            view->keyCallback().release();
+        } catch (exception e){
+//            e.printStackTrace();
+        }
+    // Terminate GLFW and release the GLFWerrorfun
             glfwTerminate();
-            view.errorCallback().release();
-        }
+//            view.errorCallback().release();
+    
+}
+    
+
+void GameController::updateBeforeScene() {
+    this->repeatedKeys();
+}
+
+
+void GameController::updateAfterScene() {
+    
+}
+
+void GameController::repeatedKeys() {
+    Node * player = Node::getCurrent();
+    
+    if (this->keys[GLFW_KEY_W]) {
+        player->getTransform()->move(Forward,"1");
     }
     
-    @Override
-    public void updateBeforeScene() {
-        this.repeatedKeys();
+    if (this->keys[GLFW_KEY_S]) {
+        player->getTransform()->move(Forward,"-1");
     }
     
-    @Override
-    public void updateAfterScene() {
-        
+    if (this->keys[GLFW_KEY_A]) {
+        player->getTransform()->move(Left,"1");
     }
     
-    public final KeyStates keys = new KeyStates();
-    
-    private void repeatedKeys() {
-        Node player = Node.getCurrent();
-        
-        if (this.keys.getOrDefault(GLFW_KEY_W, false)) {
-            player.broadcastMessage("move","forward:1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_S, false)) {
-            player.broadcastMessage("move","forward:-1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_A, false)) {
-            player.broadcastMessage("move","left:1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_D, false)) {
-            player.broadcastMessage("move","left:-1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_Q, false)) {
-            player.broadcastMessage("move","up:-1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_E, false)) {
-            player.broadcastMessage("move","up:1");
-        }
-        if (this.keys.getOrDefault(GLFW_KEY_SPACE, false)) {
-            player.broadcastMessage("jump");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_RIGHT, false)) {
-            player.broadcastMessage("move","yaw:1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_LEFT, false)) {
-            player.broadcastMessage("move","yaw:-1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_UP, false)) {
-            player.broadcastMessage("move","pitch:-1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_DOWN, false)) {
-            player.broadcastMessage("move","pitch:1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_X, false)) {
-            player.broadcastMessage("move","roll:1");
-        }
-        
-        if (this.keys.getOrDefault(GLFW_KEY_Z, false)) {
-            player.broadcastMessage("move","roll:-1");
-        }
+    if (this->keys[GLFW_KEY_D]) {
+        player->getTransform()->move(Left, "-1");
     }
     
-    
-    public void setView(GLView view) {
-        this.view = view;
-        this.view.setDelegate(this);
-    }
-    //	private Thread thread;
-    public void Start() {
-        //			thread = new Thread(this,"Game");
-        //			thread.start();
-        this.run();
+    if (this->keys[GLFW_KEY_Q]) {
+        player->getTransform()->move(Up,"-1");
     }
     
+    if (this->keys[GLFW_KEY_E]) {
+        player->getTransform()->move(Up,"1");
+    }
+    if (this->keys[GLFW_KEY_SPACE]) {
+        player->getTransform()->move(Jump);
+    }
     
+    if (this->keys[GLFW_KEY_RIGHT]) {
+        player->getTransform()->move(Yaw,"1");
+    }
+    
+    if (this->keys[GLFW_KEY_LEFT]) {
+        player->getTransform()->move(Yaw,"-1");
+    }
+    
+    if (this->keys[GLFW_KEY_UP]) {
+        player->getTransform()->move(Pitch,"-1");
+    }
+    
+    if (this->keys[GLFW_KEY_DOWN]) {
+        player->getTransform()->move(Pitch,"1");
+    }
+    
+    if (this->keys[GLFW_KEY_X]) {
+        player->getTransform()->move(Roll,"1");
+    }
+    
+    if (this->keys[GLFW_KEY_Z]) {
+        player->getTransform()->move(Roll,"-1");
+    }
+}
+
+
+void GameController::setView(GameView * view) {
+    this->view = view;
+    this->view->setDelegate(this);
 }

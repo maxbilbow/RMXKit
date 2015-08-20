@@ -124,6 +124,13 @@ namespace rmx {
          *  @since 0.1
          */
         std::string name;
+        
+        
+//        void didStartEvent(std::string event, void* args = nullptr);
+//        void didCauseEvent(char * event, void* args = nullptr) {
+//           
+//        }
+//        void didFinishEvent(std::string event, void* args = nullptr);
 
     public:
         
@@ -235,6 +242,9 @@ namespace rmx {
          */
         virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) { }
         
+        virtual void BroadcastMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) { }
+        
+        
 
         /*!
          *  @author Max Bilbow, 15-08-06 16:08:43
@@ -289,6 +299,8 @@ namespace rmx {
         template <class T> static void Destroy(T * object) {
             delete object; //TODO Dont destroy immediately.
         }
+        
+//        void stopListening();
         
         /* More unimplemented Unity GameObject based functions:
          

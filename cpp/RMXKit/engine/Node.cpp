@@ -18,7 +18,7 @@ using namespace std;
 
 Node::Node() {
     this->children = new LinkedList<Node*>();
-    this->transform = new Transform(this);
+    this->_transform = new Transform(this);
 }
 
 void Node::setCurrent(Node * node) {
@@ -26,7 +26,7 @@ void Node::setCurrent(Node * node) {
 }
     
 
-Node * Node::current() {
+Node * Node::getCurrent() {
         if (_current == NULL)
             _current = newCameraNode();
         return _current;
@@ -56,166 +56,165 @@ LinkedList<Node*> * Node::getChildren() {
 }
     
 void Node::addChild(Node * child) {
-    if (!this->children->contains(child)) {
+    if (!this->children->contains(&child)) {
         this->children->append(child);
         child->setParent(this);
     }
 }
     
-    public boolean removeChildNode(Node node) {
-        return this.children.remove(node);
+bool Node::removeChildNode(Node * node) {
+    return this->children->removeValue(node);
+}
+
+Node * Node::getChildWithName(string name) {
+    NodeList::Iterator i = this->children->getIterator();
+    while (i.hasNext()) {
+        Node * n = *i.next();
+        if (n->Name() == name)
+            return n;
+    }
+    return NULL;
+}
+
+    
+    
+Node::Node(string name) {
+    this->_transform = new Transform(this);
+    this->setName(name);
+}
+
+Camera * Node::camera() {
+    return (Camera*) this->getComponent(typeid(Camera).name());
+}
+    
+void Node::setCamera(Camera * camera) {
+    this->setComponent(camera);
+}
+    
+Node * Node::newCameraNode() {
+    Node * cameraNode = new Node("CameraNode");
+    cameraNode->setCamera(new Camera());
+    return cameraNode;
+}
+    
+    
+    
+Geometry * Node::geometry() {
+    return _geometry;// (Geometry) this.getComponent(Geometry.class);
+}
+    
+
+void Node::setGeometry(Geometry * geometry) {
+    _geometry = geometry;
+}
+    
+PhysicsBody * Node::physicsBody(){
+    return (PhysicsBody*) this->getComponent(typeid(PhysicsBody).name());
+}
+    
+void Node::setPhysicsBody(PhysicsBody * body) {
+    this->setComponent(body);
+}
+    
+void Node::updateLogic() {
+    Behaviours::Iterator bi = this->behaviours->getIterator();
+    while (bi.hasNext()) {
+        Behaviour * b = *bi.next();
+        if (b->isEnabled())
+            b->update();
+    }
+    NodeList::Iterator ci = this->children->getIterator();
+    while (ci.hasNext()) {
+        Node * n = *ci.next();
+        n->updateLogic();
     }
     
-    public Node getChildWithName(String name) {
-        for (Node child : this.children) {
-            if (child.getName() == name)
-                return child;
-        }
-        return null;
+    bi = this->behaviours->getIterator();
+    while (bi.hasNext()) {
+        Behaviour * b = *bi.next();
+        if (b->isEnabled())
+            b->lateUpdate();
     }
-    
-    public Node(){
-        this.transform = new Transform(this);
-        
+}
+
+void Node::draw(Matrix4 modelViewMatrix) {
+    if (this->_geometry != nullptr) {
+        this->_geometry->render(this, modelViewMatrix);
     }
-    
-    
-    public Node(String name) {
-        this.transform = new Transform(this);
-        this.setName(name);
+    NodeList::Iterator ci = this->children->getIterator();
+    while (ci.hasNext()) {
+        Node * n = *ci.next();
+        n->draw(modelViewMatrix);
     }
+}
+
     
-    public Camera camera() {
-        return (Camera) this.getComponent(Camera.class);
+    
+
+    
+Node * Node::getParent() {
+    return this->parent;
+}
+    
+void Node::setParent(Node * parent) {
+    if (this->parent != nullptr && parent != this->parent) {
+        this->parent->removeChildNode(this);
+        this->parent = parent;
     }
+}
+
+///TODO
+void Node::SendMessage(std::string message, void * args, SendMessageOptions options) {
+    //TODO
+}
+
+void Node::BroadcastMessage(std::string message, void * args, SendMessageOptions options) {
+    Object::BroadcastMessage(message, args, options);
+    Components::Iterator ci = this->components->getIterator();
+    while (ci.hasNext())
+        ci.next()->value->BroadcastMessage(message,args,options);
     
-    public void setCamera(Camera camera) {
-        this.setComponent(Camera.class, camera);
-    }
+    Behaviours::Iterator bi = this->behaviours->getIterator();
+    while (bi.hasNext())
+        (*bi.next())->BroadcastMessage(message,args,options);
+}
     
-    public static Node newCameraNode() {
-        Node cameraNode = new Node("CameraNode");
-        cameraNode.setCamera(new Camera());
-        return cameraNode;
-    }
-    
-    
-    
-    public Geometry geometry() {
-        return _geometry;// (Geometry) this.getComponent(Geometry.class);
-    }
-    
-    private Geometry _geometry;
-    public void setGeometry(Geometry geometry) {
-        _geometry = geometry;
-        //		this.setComponent(Geometry.class, geometry);
-    }
-    
-    public PhysicsBody physicsBody(){
-        return (PhysicsBody) this.getComponent(PhysicsBody.class);
-    }
-    
-    public void setPhysicsBody(PhysicsBody body) {
-        this.setComponent(PhysicsBody.class, body);
-    }
-    
-    public void updateLogic() {
-        for (Behaviour behaviour : this.behaviours) {
-            if (behaviour.isEnabled())
-                behaviour.update();
-        }
-        for (Node child : this.children)
-            child.updateLogic();
-        for (Behaviour behaviour : this.behaviours) {
-            if (behaviour.isEnabled())
-                behaviour.lateUpdate();
-        }
-    }
-    
-    public void draw(Matrix4 modelMatrix) {
-        if (this.geometry() != null) {
-            this.geometry().render(this, modelMatrix);
-        }
-        for (Node child : this.children) {
-            child.draw(modelMatrix);
-        }
-    }
-    
-    
-    
-    public static void test(String[] args) {
-        RMXObject o = new RMXObject();
-        o.setName("Parent");
-        Node o2 = Node.newCameraNode();
-        
-        try {
-            o.sendMessage("getCamera",null);
-            
-            o2.sendMessage("getCamera",null);
-            o.sendMessage("getCamera","Balls");
-            o2.sendMessage("getCamera","Balls");
-        }catch (SecurityException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        if (o2.geometry() == null)
-            Bugger.log("That's OK then");
-        if (o2.camera() != null)
-            Bugger.log("That's OK then");
-        
-        //		o2.addBehaviour(new ABehaviour());
-        
-        o2.updateLogic();
-    }
-    
-    
-    public Node getParent() {
-        return parent;
-    }
-    
-    public void setParent(Node parent) {
-        if (this.parent != null && parent != this.parent) {
-            this.parent.removeChildNode(this);
-            ;		}
-        this.parent = parent;
-    }
-    
-    @Override
-    public void broadcastMessage(String message) {
-        super.broadcastMessage(message);
-        for (NodeComponent c : this.components.values()) {
-            c.broadcastMessage(message);
-        }
-        for (Behaviour b : this.behaviours) {
-            b.broadcastMessage(message);
-        }
-    }
-    
-    @Override
-    public void broadcastMessage(String message, Object args) {
-        super.broadcastMessage(message, args);
-        for (NodeComponent c : this.components.values()) {
-            c.broadcastMessage(message, args);
-        }
-        for (Behaviour b : this.behaviours) {
-            b.broadcastMessage(message,args);
-        }
-        
-    }
-    
-    public static Node makeCube(float s,boolean body, Behaviour b) {
-        Node n = new Node("Cube");
-        n.setGeometry(Geometry.cube());
+Node * Node::makeCube(float s,bool body, Behaviour * b) {
+    Node * n = new Node("Cube");
+    n->setGeometry(Geometry::Cube());
         if (body)
-            n.setPhysicsBody(new PhysicsBody());
-        n.transform.setScale(s, s, s);
-        n.addBehaviour(b);
-        n.addToCurrentScene();
+            n->setPhysicsBody(new PhysicsBody());
+        n->getTransform()->setScale(s, s, s);
+        n->addBehaviour(b);
+        n->addToCurrentScene();
         return n;
     }
     
-    private void addToCurrentScene() {
-        Scene.getCurrent().rootNode.addChild(this);
+void Node::addToCurrentScene() {
+    Scene::getCurrent()->rootNode()->addChild(this);
+}
+
+void Node::setTransform(Transform *transform) {
+    if (_transform != nullptr)
+        throw invalid_argument("Transform can only be set once! " + this->ToString());
+    else
+        _transform = transform;
+}
+
+void Node::test() {
+    Object * o = new Object();
+    o->setName("Parent");
+    Node * o2 = Node::newCameraNode();
+    
+    try {
+        o->SendMessage("getCamera",nullptr);
+        
+        o2->SendMessage("getCamera",nullptr);
+        o->SendMessage("getCamera",new string("Hello 1"));
+        o2->SendMessage("getCamera",new string("Hello Node"));
+    } catch (exception e) {
+        // TODO Auto-generated catch block
+        cout << "ERROR: " << e.what() << endl;
     }
+    o2->updateLogic();
 }

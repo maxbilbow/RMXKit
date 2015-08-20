@@ -16,9 +16,19 @@
 #import "Node.hpp"
 namespace rmx {
     
-    class NodeComponent {
+    class NodeComponent : public Object {
+        Node * node;
+       
+        bool enabled;
     public:
-        Node * setNode(Node * node);
+        
+        virtual Node * setNode(Node * node);
+        Node * getNode();
+        
+        bool isEnabled();
+        void setEnabled(bool);
+        
+        Transform * getTransform();
     };
 
 }

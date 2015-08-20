@@ -23,11 +23,25 @@ CFStringRef RMXKitUUID(void);
 
 
 
+
+//#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
+
 #import "LinkedList.h"
 #import "Dictionary.h"
 #import "NotificationCenter.h"
 #import "Object.h"
 #import "ASingleton.h"
+namespace rmx {
+    class Unfinised {
+    protected:
+        void TODO() {
+            throw new std::invalid_argument("Method not yet implemented: " + this->ToString());
+        }
+        virtual std::string ToString(){ return "";}
+    };
+    
+    
+}
 //#import "Behaviour.hpp"
 
 /*

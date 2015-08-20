@@ -15,29 +15,35 @@
 
 namespace rmx {
 
-class KeyStates {};
+    typedef bool * KeyStates;
 
-class GameController : public Object,  RenderDelegate  {
-    GameView * view;
-    static GameController * singleton;
-    
-    void initpov();
-    void setup();
+    class GameController : public Object,  public RenderDelegate  {
+        GameView * view;
+        static GameController * _singleton;
+        
+        void initpov();
+        void setup();
 
-    GameController();
-    
-    
-public:
-    static GameController * getInstance();
-    
-    void run();
-    
-    const KeyStates keys;
-    
-    void repeatedKeys();
-    
-    void setView(GameView * view);
-    
-};
+        GameController();
+        
+        
+    public:
+        static GameController * getInstance();
+        
+        void run();
+        
+        KeyStates * keys = new KeyStates[500];
+        
+        void repeatedKeys();
+        
+        void setView(GameView * view);
+        
+        static void keyCallback(GLFWwindow* w,int a,int b,int c,int d);
+        
+        static void cursorCallback(GLFWwindow*,double,double);
+        void updateBeforeScene() override;
+        void updateAfterScene() override;
+        
+    };
 
 }

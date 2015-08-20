@@ -26,25 +26,34 @@ namespace rmx {
     class PhysicsBody;
     
     class Node : public Object {
-    
+    public:
+        typedef Dictionary<std::string, NodeComponent> Components;
+        typedef LinkedList<Behaviour*> Behaviours;
+        typedef LinkedList<Node*> NodeList;
+    private:
         static Node * _current;
         
         Node * parent;
         
-        rmx::Transform * transform;
+        Transform * _transform;
         
         Geometry * _geometry;
         
-        LinkedList<Node*> * children = new LinkedList<Node*>();
+        NodeList * children = new NodeList();
         
-        Dictionary<std::string, NodeComponent> * components = new Dictionary<std::string, NodeComponent>();
+        Components * components = new Components();
         
-        LinkedList<Behaviour*> * behaviours = new LinkedList<Behaviour*>();
+        Behaviours * behaviours = new Behaviours();
         
     public:
+        
+        void setTransform(Transform * transform);
+        
+        Transform * getTransform();
+        
         static void setCurrent(Node * node);
         
-        static Node * current();
+        static Node * getCurrent();
         
         
         
@@ -89,10 +98,10 @@ namespace rmx {
         
         void updateLogic();
         
-        void draw(Transform * transform);
+        void draw(Matrix4 modelViewMatrix);
         
         
-        static void test();
+        
         
         
         Node * getParent();
@@ -103,6 +112,10 @@ namespace rmx {
         
         void addToCurrentScene();
 
+        void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
+        void BroadcastMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) override;
+        
+        static void test();
     };
 
 }

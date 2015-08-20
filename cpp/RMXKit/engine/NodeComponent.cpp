@@ -10,4 +10,29 @@
 #import "RMXEngine.hpp"
 //#import "Object.h"
 //#import "Node.h"
-//#include "NodeComponent.hpp"
+#include "NodeComponent.hpp"
+
+using namespace rmx;
+using namespace std;
+
+bool NodeComponent::isEnabled() {
+    return this->enabled;
+}
+
+void NodeComponent::setEnabled(bool enabled) {
+    this->enabled = enabled;
+}
+
+Node * NodeComponent::setNode(Node * node) {
+    Node * oldNode = this->node;
+    this->node = node;
+    return oldNode;
+}
+
+Node * NodeComponent::getNode() {
+    return this->node;
+}
+
+Transform * NodeComponent::getTransform() {
+    return this->node->getTransform();
+}

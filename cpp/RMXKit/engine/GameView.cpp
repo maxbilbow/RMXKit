@@ -7,19 +7,28 @@
 //
 
 //#include "RMXKit.h"
-#include "RMXEngine.hpp"
-//#include "GameView.h"
+#import <GLFW/glfw3.h>
+#import "RMXEngine.hpp"
 
+#import "GameView.hpp"
+
+
+#define GLFW_INCLUDE_GLU
+
+
+
+//#import <Glut/Glut.h>
 using namespace rmx;
 using namespace std;
 
 void GameView::initGL() {
+    
     // Setup an error callback. The default implementation
     // will print the error message in System.err.
-    glfwSetErrorCallback(_errorCallback = errorCallbackPrint(System.err));
+//    glfwSetErrorCallback(_errorCallback);
     
     // Initialize GLFW. Most GLFW functions will not work before doing this.
-    if ( glfwInit() != GL11.GL_TRUE )
+    if ( glfwInit() != GL_TRUE )
         throw new invalid_argument("Unable to initialize GLFW");
     
     // Configure our window
@@ -32,19 +41,19 @@ void GameView::initGL() {
     // Create the window
     _window = glfwCreateWindow(_width, _height, "Hello World!", NULL, NULL);
     if ( _window == NULL )
-        throw new RuntimeException("Failed to create the GLFW window");
+        throw new invalid_argument("Failed to create the GLFW window");
     
     // Setup a key callback. It will be called every time a key is pressed, repeated or released.
-    glfwSetKeyCallback(_window, _keyCallback = KeyCallback.getInstance());
+    glfwSetKeyCallback(_window, GameController::keyCallback);
     
-    glfwSetCursorPosCallback(_window, CursorCallback.getInstance());
+    glfwSetCursorPosCallback(_window, GameController::cursorCallback);
     // Get the resolution of the primary monitor
-    ByteBuffer vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    const GLFWvidmode * vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     // Center our window
     glfwSetWindowPos(
                      _window,
-                     (GLFWvidmode.width(vidmode) - _width) / 2,
-                     (GLFWvidmode.height(vidmode) - _height) / 2
+                     (vidmode->width - _width) / 2,
+                     (vidmode->height - _height) / 2
                      );
     
     // Make the OpenGL context current
@@ -65,7 +74,8 @@ void GameView::enterGameLoop() {
     // LWJGL detects the context that is current in the current thread,
     // creates the ContextCapabilities instance and makes the OpenGL
     // bindings available for use.
-    GLContext.createFromCurrent();
+//    GLFWwindow * window =
+    glfwMakeContextCurrent(_window);
     
     
     // >> glEnableVertexAttribArray enables the generic vertex attribute array specified by index.
@@ -79,12 +89,12 @@ void GameView::enterGameLoop() {
     // Enable the vertex colour vertex attribute.;
     //        glEnableVertexAttribArray(VERTEX_COLOUR);
     
-    GL11.glEnable(GL11.GL_TEXTURE_2D);
-    GL11.glShadeModel(GL11.GL_SMOOTH);
-    GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    GL11.glClearDepth(1.0);
-    GL11.glEnable(GL11.GL_DEPTH_TEST);
-    GL11.glDepthFunc(GL11.GL_LEQUAL);
+    glEnable(GL_TEXTURE_2D);
+    glShadeModel(GL_SMOOTH);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearDepth(1.0);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
     
     //        GL11.glMatrixMode(GL11.GL_PROJECTION);
     //        GL11.glLoadIdentity();
@@ -111,108 +121,101 @@ void GameView::enterGameLoop() {
     // Run the rendering loop until the user has attempted to close
     // the window or has pressed the ESCAPE key.
     while ( glfwWindowShouldClose(_window) == GL_FALSE ) {
-        Scene scene = Scene.getCurrent();
-        Camera camera = pointOfView().camera();
+        Scene * scene = Scene::getCurrent();
+        Camera * camera = pointOfView()->camera();
         
-        if (this.delegate != null)
-            this.delegate.updateBeforeScene();
+        if (this->delegate != nullptr)
+            this->delegate->updateBeforeScene();
         
-        scene.updateSceneLogic();
+        scene->updateSceneLogic();
         
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        camera.perspective(this);
+        camera->makePerspective(this);
         
         
         
         glClearColor(0.3f, 0.3f, 0.3f, 0.3f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
         glMatrixMode(GL_MODELVIEW);
-        glHint(GL11.GL_PERSPECTIVE_CORRECTION_HINT, GL11.GL_NICEST);
-        GL11.glLoadIdentity();
+        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+        glLoadIdentity();
         
         //            camera.look();
-        scene.renderScene(camera);
+        scene->renderScene(camera);
         
         glfwSwapBuffers(_window);
         
         glMatrixMode(GL_PROJECTION);
         // swap the color buffers
-        if (this.delegate != null)
-            this.delegate.updateAfterScene();
+        if (this->delegate != nullptr)
+            this->delegate->updateAfterScene();
         
         // Poll for window events. The key callback above will only be
         // invoked during this call.
         glfwPollEvents();
-        this.didCauseEvent(END_OF_GAMELOOP);
+        NotificationCenter::eventDidOccur(END_OF_GAMELOOP);
+        
     }
 }
 
 
 
 bool GameView::setPointOfView(Node * pointOfView) {
-    if (pointOfView.camera() == null) {
-        throw new IllegalArgumentException("PointOfView musy have a camera != NULL");
+    if (_pointOfView->camera() == nullptr) {
+        throw new invalid_argument("PointOfView musy have a camera != NULL");
     } else if (_pointOfView == pointOfView)
         return false;
-    else if (_pointOfView != null)
-        _pointOfView.camera().stopListening();
+//    else if (_pointOfView != nullptr)
+//        _pointOfView->camera()->StopListening();
     
     _pointOfView = pointOfView;
-    _pointOfView.camera().startListening();
+//    _pointOfView->camera()->StartListening();
     return true;
 }
 
-public RenderDelegate getDelegate() {
-    return this.delegate;
-}
-
-@Override
-public void setDelegate(RenderDelegate delegate) {
-    this.delegate = delegate;
+RenderDelegate * GameView::getDelegate() {
+    return this->delegate;
 }
 
 
+void GameView::setDelegate(RenderDelegate * delegate) {
+    this->delegate = delegate;
+}
 
 
-@Override
-public long window() {
+
+
+GLFWwindow * GameView::window() {
     // TODO Auto-generated method stub
     return _window;
 }
 
-@Override
-public GLFWErrorCallback errorCallback() {
-    // TODO Auto-generated method stub
-    return _errorCallback;
+void GameView::errorCallback(int i, const char *c) {
+    cout << "there was an error: " << c << endl;
 }
 
-@Override
-public GLFWKeyCallback keyCallback() {
-    // TODO Auto-generated method stub
-    return _keyCallback;
-}
 
-public int width() {
+
+int GameView::width() {
     return _width;
 }
 
-public void setWidth(int width) {
-    this._width = width;
+void GameView::setWidth(int width) {
+    this->_width = width;
 }
 
-public int height() {
+int GameView::height() {
     return _height;
 }
 
-public void setHeight(int height) {
-    this._height = height;
+void GameView::setHeight(int height) {
+    this->_height = height;
 }
 
-@Override
-public Node pointOfView() {
-    if (_pointOfView != null || this.setPointOfView(Node.getCurrent()))
+Node * GameView::pointOfView() {
+    if (_pointOfView != nullptr || this->setPointOfView(Node::getCurrent()))
         return _pointOfView;
-    Bugger.logAndPrint("ERROR: Could Not Set _pointOfView", true);
-    return null;
+//    Bugger.logAndPrint("ERROR: Could Not Set _pointOfView", true);
+    return nullptr;
 }
