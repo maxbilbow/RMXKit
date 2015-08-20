@@ -30,7 +30,7 @@ std::ostream& operator<<(std::ostream &strm,  rmx::Printable & a) {
 
 unsigned int Object::_count = 0;
 //unsigned int Object::_deleted = 0;
-LinkedList<Object> * _allObjects = new LinkedList<Object>();
+LinkedList<Object*> * _allObjects = new LinkedList<Object*>();
 
 Object::Object(std::string name){
     this->_id = Object::_count++; //this->IncrementCount();
@@ -81,7 +81,7 @@ Object::~Object() {
     }
 }
 
-LinkedList<Object>::Iterator Object::ObjectIterator() {
+LinkedList<Object>::Iterator * Object::ObjectIterator() {
     return Object::_allObjects.getIterator();
 }
 

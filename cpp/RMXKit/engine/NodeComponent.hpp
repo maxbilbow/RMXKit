@@ -21,7 +21,7 @@ namespace rmx {
        
         bool enabled;
        
-   
+        
         
     public:
         NodeComponent();

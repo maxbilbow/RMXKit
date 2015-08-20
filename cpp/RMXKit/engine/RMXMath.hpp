@@ -13,7 +13,7 @@
 
 #endif /* RMXMath_hpp */
 
-#define PI 3.147f
+#define PI 3.14159265359f
 #define PI_OVER_180 (PI/180)
 
 Vector3 RMXMatrix4Position(Matrix4 m);
@@ -33,3 +33,11 @@ void operator/=(Vector3& lhs,  Vector3 rhs);
 
 void operator*=(Vector3& lhs,  float rhs);
 void operator/=(Vector3& lhs,  float rhs);
+
+std::ostream& operator<<(std::ostream& in,  Matrix4 m);
+
+std::string operator+(std::string lhs, float rhs);
+
+std::string operator+(float lhs, std::string rhs);
+
+std::string& operator+=(std::string& lhs, float rhs);

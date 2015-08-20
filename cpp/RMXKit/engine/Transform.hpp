@@ -41,7 +41,7 @@ namespace rmx{
         
         void setScale(float x, float y, float z);
         
-        void move(Move name, std::string args = "");
+        bool move(Move name, float scale = 1, std::string args = "");
         
         void setPosition(float x, float y, float z);
         

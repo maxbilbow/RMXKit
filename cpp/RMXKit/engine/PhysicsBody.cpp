@@ -12,17 +12,19 @@
 #import "Includes.h"
 
 
-//#import "GameNode.hpp"
 //
-//#import "NodeComponent.hpp"
-//#import "Transform.hpp"
+#import "NodeComponent.hpp"
+
+#import "Transform.hpp"
 #import "PhysicsBody.hpp"
+#import "GameNode.hpp"
 
 
 using namespace rmx;
 
 PhysicsBody::PhysicsBody() {
-    this->mass = 0;
+    NodeComponent::NodeComponent();
+    this->mass = 1;
     this->setName("PhysicsBody");
 }
 

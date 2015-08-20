@@ -21,6 +21,11 @@ typedef GLKVector3 Vector3;
 typedef GLKVector4 Vector4;
 typedef GLKQuaternion Quaternion;
 typedef Vector3 EulerAngles;
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+//typedef nullptr null;
+#define null nullptr
 #import "RMXKit.h"
 #import "RMXMath.hpp"
 
@@ -48,6 +53,6 @@ namespace rmx {
     class RenderDelegate;
     class GameController;
     typedef Dictionary<std::string, NodeComponent> GameNodeComponents;
-    typedef LinkedList<Behaviour&> GameNodeBehaviours;
-    typedef LinkedList<GameNode&> GameNodeList;
+    typedef LinkedList<Behaviour> GameNodeBehaviours;
+    typedef LinkedList<GameNode> GameNodeList;
 }

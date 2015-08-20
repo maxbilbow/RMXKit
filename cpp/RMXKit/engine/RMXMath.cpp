@@ -10,7 +10,7 @@
 //#import "RMXMath.hpp"
 //#import <GLKit/GLKVector3.h>
 #include "Includes.h"
-
+using namespace std;
 Vector3 RMXMatrix4Position(Matrix4 m) {
     return GLKVector3Make(m.m30, m.m31, m.m32);
 }
@@ -74,3 +74,29 @@ void operator/=(Vector3& lhs,  float rhs) {
     lhs.y /= rhs;
     lhs.z /= rhs;
 }
+
+string operator+(string lhs, float rhs) {
+    return lhs + to_string(rhs);
+}
+
+string operator+(float lhs, string rhs) {
+    return to_string(lhs) + rhs;
+}
+
+string& operator+=(string& lhs, float rhs) {
+    return lhs += to_string(rhs);
+}
+
+string S(float f) {
+    return to_string(f);
+}
+
+std::ostream& operator<<(std::ostream& in,  Matrix4 m) {
+    string s = "Matrix:\n";
+    s += S(m.m00) + ", " + m.m01 + ", " + m.m02 + ", " + m.m03 + "\n";
+    s += S(m.m10) + ", " + m.m11 + ", " + m.m12 + ", " + m.m13 + "\n";
+    s += S(m.m20) + ", " + m.m21 + ", " + m.m22 + ", " + m.m23 + "\n";
+    s += S(m.m30) + ", " + m.m31 + ", " + m.m32 + ", " + m.m33 + "\n";
+    return in << s;
+}
+

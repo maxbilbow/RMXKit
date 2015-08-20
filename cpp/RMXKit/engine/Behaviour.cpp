@@ -8,5 +8,8 @@
 
 
 #import "Includes.h"
-//#import "Behaviour.hpp"
+#import "NodeComponent.hpp"
+#import "GameNode.hpp"
+#import "Transform.hpp"
+#import "Behaviour.hpp"
 

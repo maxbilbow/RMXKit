@@ -43,14 +43,9 @@ void Scene::setAsCurrent() {
 }
 
 
-
-void Scene::renderScene(Camera * cam) {
-    //		cam.look();
-    Transform * rootTransform = cam->getTransform();    //modelMatrix.negate();
-    GameNodeList::Iterator i = this->_rootNode->getChildren()->getIterator();
-    while (i.hasNext()) {
-        (*i.next())->draw(rootTransform);
-    }
+void Scene::renderScene(Camera * camera) {
+//    this->_rootNode->draw(cam->modelViewMatrix());
+    this->_rootNode->draw(camera->modelViewMatrix());
 }
 
 

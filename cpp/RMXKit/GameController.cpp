@@ -7,11 +7,15 @@
 //
 
 #import "Includes.h"
-#import "PhysicsBody.hpp"
+
 #import "Scene.hpp"
-#import "Behaviour.hpp"
+
 #import "GameNode.hpp"
+
 #import "Delegates.hpp"
+#import "Transform.hpp"
+#import "Behaviour.hpp"
+#import "PhysicsBody.hpp"
 //#import <GLFW/glfw3.h>
 #import "GameView.hpp"
 #import "Geometry.hpp"
@@ -48,16 +52,16 @@ void GameController::initpov() {
 class BehaviourA : public Behaviour {
 public:
     void update() override {
-        this->getNode()->getTransform()->move(Forward,"0.1");
+        this->getNode()->getTransform()->move(Forward,0.1);
     }
 };
 
 class BehaviourB : public Behaviour {
 public:
     void update() override {
-        this->getNode()->getTransform()->move(Yaw,   "0.1");
-        this->getNode()->getTransform()->move(Pitch, "0.1");
-        this->getNode()->getTransform()->move(Roll,  "0.1");
+        this->getNode()->getTransform()->move(Yaw,   0.1);
+        this->getNode()->getTransform()->move(Pitch, 0.1);
+        this->getNode()->getTransform()->move(Roll,  0.1);
     }
     
 };
@@ -65,8 +69,8 @@ public:
 class BehaviourC : public Behaviour {
 public:
     void update() override {
-        this->getNode()->getTransform()->move(Forward,"0.5");
-        this->getNode()->getTransform()->move(Yaw,  "0.1");
+        this->getNode()->getTransform()->move(Forward,0.5);
+        this->getNode()->getTransform()->move(Yaw,  0.1);
     }
     
 };
@@ -79,14 +83,14 @@ void GameController::setup() {
     cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
         
         
-    GameNode * cube2 = GameNode::makeCube(0.2f, false, new BehaviourB());
+    GameNode * cube2 = GameNode::makeCube(0.2f, true, new BehaviourB());
         
     GameNode * cube3 = GameNode::makeCube(0.5f, true, new BehaviourC());
     cube3->getTransform()->setPosition(-10.0f,0.0f,10.0f);
     cube3->addChild(cube2);
     cube2->getTransform()->setPosition(0.0f,1.0f,0.0f);
         
-    GameNode * floor = new GameNode();
+    GameNode * floor = new GameNode("Floor");
     floor->getTransform()->setPosition(0,0,0);
     scene->rootNode()->addChild(floor);
         
@@ -118,81 +122,143 @@ void GameController::run() {
 }
     
 
-void GameController::updateBeforeScene() {
-    this->repeatedKeys();
+void GameController::updateBeforeScene(GLFWwindow * window) {
+    this->repeatedKeys(window);
 }
 
 
-void GameController::updateAfterScene() {
+void GameController::updateAfterScene(GLFWwindow * window) {
     
 }
 
-void GameController::repeatedKeys() {
-    GameNode * player = GameNode::getCurrent();
+void GameController::repeatedKeys(GLFWwindow * window) {
+    GameNode * player = this->view->pointOfView();//GameNode::getCurrent();
     
-    if (this->keys[GLFW_KEY_W]) {
-        player->getTransform()->move(Forward,"1");
-    }
-    
-    if (this->keys[GLFW_KEY_S]) {
-        player->getTransform()->move(Forward,"-1");
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+        player->getTransform()->move(Forward, 1.0f);
     }
     
-    if (this->keys[GLFW_KEY_A]) {
-        player->getTransform()->move(Left,"1");
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+        player->getTransform()->move(Forward,-1.0f);
     }
     
-    if (this->keys[GLFW_KEY_D]) {
-        player->getTransform()->move(Left, "-1");
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+        player->getTransform()->move(Left, 1.0f);
     }
     
-    if (this->keys[GLFW_KEY_Q]) {
-        player->getTransform()->move(Up,"-1");
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+        player->getTransform()->move(Left, -1.0f);
     }
     
-    if (this->keys[GLFW_KEY_E]) {
-        player->getTransform()->move(Up,"1");
-    }
-    if (this->keys[GLFW_KEY_SPACE]) {
-        player->getTransform()->move(Jump);
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
+        player->getTransform()->move(Up,-1.0f);
     }
     
-    if (this->keys[GLFW_KEY_RIGHT]) {
-        player->getTransform()->move(Yaw,"1");
+    if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+        player->getTransform()->move(Up, 1.0f);
+    }
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+        player->BroadcastMessage("jump");
     }
     
-    if (this->keys[GLFW_KEY_LEFT]) {
-        player->getTransform()->move(Yaw,"-1");
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+        player->getTransform()->move(Yaw, 1.0f);
     }
     
-    if (this->keys[GLFW_KEY_UP]) {
-        player->getTransform()->move(Pitch,"-1");
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+        player->getTransform()->move(Yaw,-1.0f);
     }
     
-    if (this->keys[GLFW_KEY_DOWN]) {
-        player->getTransform()->move(Pitch,"1");
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+        player->getTransform()->move(Pitch,1.0f);
     }
     
-    if (this->keys[GLFW_KEY_X]) {
-        player->getTransform()->move(Roll,"1");
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
+        player->getTransform()->move(Pitch, -1.0f);
     }
     
-    if (this->keys[GLFW_KEY_Z]) {
-        player->getTransform()->move(Roll,"-1");
+    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS) {
+        player->getTransform()->move(Roll, 1.0f);
     }
+    
+    if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS) {
+        player->getTransform()->move(Roll,-1.0f);
+    }
+    
+    cout << player->getTransform()->localMatrix();
 }
 
 
 void GameController::setView(GameView * view) {
     this->view = view;
     this->view->setDelegate(this);
+//    this->keys = new int[600];
 }
 
-
-void GameController::keyCallback(GLFWwindow *w, int a, int b, int c, int d) {
+int GameController::keys[600] = {0};
+void GameController::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods) {
+//    cout << "  KEYS: " << key << ", " << scancode << ", " << action << ", " << mods << endl;
+    GameController * gc = getInstance();
+    if (action == GLFW_PRESS) {
+        gc->keys[key] = action;
+        cout << "Key Down: " << (char) key << " " << scancode << " " << action << " " << mods << endl;
+    } else if (action == GLFW_RELEASE) {
+        gc->keys[key] = action;
+        cout << "  Key Up: " << (char) key << " " << scancode << " " << action << " " << mods << endl;
+    }
     
+    if (action == GLFW_RELEASE)
+        switch (key) {
+            case GLFW_KEY_ESCAPE:
+                glfwSetWindowShouldClose(window, GL_TRUE);
+                break;
+            case GLFW_KEY_W:
+                //			 Node.getCurrent().transform.moveForward(1);
+                break;
+            case GLFW_KEY_M:
+                
+                if (gc->cursorLocked) {
+                    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+                    gc->lockCursor(false);
+                } else {
+                    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                    gc->lockCursor(true);
+                }
+                break;			 
+        }
 }
+
+void GameController::lockCursor(bool lock) {
+    this->cursorLocked = lock;
+}
+bool GameController::isCursorLocked() {
+    return this->cursorLocked;
+}
+
+double xpos ,ypos;
+bool restart = true;
 
 void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
+    cout << "CURSOR: " << w << ", " << x << ", " << y << endl;;
+    GameController * gc = getInstance();
+    
+    if (!gc->cursorLocked)
+        return;
+    if (restart) {
+        xpos = x;
+        ypos = y;
+        restart = false;
+        return;
+    } else {
+        double dx = x - xpos;
+        double dy = y - ypos;
+        dx *= 0.1; dy *= 0.1;
+        xpos = x;
+        ypos = y;
+        Transform * t = gc->view->pointOfView()->getTransform();
+        t->move(Pitch, dy);
+        t->move(Yaw,   dx);
+    }
+    
     
 }

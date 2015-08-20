@@ -8,10 +8,14 @@
 
 
 #import "Includes.h"
-#import "PhysicsBody.hpp"
+
 #import "Scene.hpp"
-#import "Behaviour.hpp"
+
+#import "Transform.hpp"
+#import "NodeComponent.hpp"
 #import "GameNode.hpp"
+#import "Behaviour.hpp"
+#import "PhysicsBody.hpp"
 #import "Delegates.hpp"
 //#import <GLFW/glfw3.h>
 #import "GameController.hpp"
@@ -27,7 +31,7 @@ using namespace rmx;
 using namespace std;
 
 GameView::GameView(){
-    this->setPointOfView(GameNode::getCurrent());
+    this->setPointOfView(GameNode::newCameraNode());
 }
 
 void GameView::initGL() {
@@ -134,7 +138,7 @@ void GameView::enterGameLoop() {
         Camera * camera = pointOfView()->getCamera();
         
         if (this->delegate != null)
-            this->delegate->updateBeforeScene();
+            this->delegate->updateBeforeScene(_window);
         
         scene->updateSceneLogic();
         
@@ -150,7 +154,7 @@ void GameView::enterGameLoop() {
         glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
         glLoadIdentity();
         
-        //            camera.look();
+//            camera.look();
         scene->renderScene(camera);
         
         glfwSwapBuffers(_window);
@@ -158,7 +162,7 @@ void GameView::enterGameLoop() {
         glMatrixMode(GL_PROJECTION);
         // swap the color buffers
         if (this->delegate != null)
-            this->delegate->updateAfterScene();
+            this->delegate->updateAfterScene(_window);
         
         // Poll for window events. The key callback above will only be
         // invoked during this call.
@@ -171,7 +175,7 @@ void GameView::enterGameLoop() {
 
 
 bool GameView::setPointOfView(GameNode * pointOfView) {
-    if (this->_pointOfView->getCamera() == null) {
+    if (!pointOfView->hasCamera()) {
         throw new invalid_argument("PointOfView musy have a camera != null");//pointOfView->setCamera(new Camera());//
     } else if (_pointOfView == pointOfView)
         return false;

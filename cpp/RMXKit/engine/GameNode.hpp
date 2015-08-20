@@ -28,17 +28,20 @@ namespace rmx {
         
         Transform * _transform = null;
         
+        BOOL _hasCamera = FALSE;
         Camera * camera = null;
         
+        BOOL _hasPhysicsBody = FALSE;
         PhysicsBody * _physicsBody = null;
         
+        BOOL _hasGeometry = FALSE;
         Geometry * _geometry = null;
         
         GameNodeList children = GameNodeList();
         
         GameNodeComponents components __deprecated_enum_msg("Avoid using until safer key-value mapping implemented") = GameNodeComponents();
         
-        GameNodeBehaviours behaviours;// = GameNodeBehaviours();
+        GameNodeBehaviours * behaviours = new GameNodeBehaviours();
 
     protected:
         void onLoad();
@@ -46,6 +49,7 @@ namespace rmx {
     public:
         GameNode();
         GameNode(std::string name);
+        
         
 
         void setTransform(Transform * transform);
@@ -80,6 +84,7 @@ namespace rmx {
         
         Camera * getCamera();
         
+        bool hasCamera();
         void setCamera(Camera * camera);
         
         static GameNode * newCameraNode();
@@ -87,16 +92,18 @@ namespace rmx {
         
         Geometry * geometry();
         
-
+        
+        bool hasGeometry();
         void setGeometry(Geometry * geometry);
         
         PhysicsBody * physicsBody();
         
+        bool hasPhysicsBody();
         void setPhysicsBody(PhysicsBody * body);
         
         void updateLogic();
         
-        void draw(Transform * rootTransform);
+        void draw(Matrix4 rootTransform);
         
         
         

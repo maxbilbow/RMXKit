@@ -242,7 +242,9 @@ namespace rmx {
          */
         virtual void SendMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) { }
         
-        virtual void BroadcastMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) { }
+        virtual void BroadcastMessage(std::string message, void * args = nullptr, SendMessageOptions options = DoesNotRequireReceiver) {
+            this->SendMessage(message, args, options);
+        }
         
         
 
@@ -253,7 +255,7 @@ namespace rmx {
          *  @return A LinkedList<Object>:Iterator containing all available Objects in the system.
          *  @since 0.1
          */
-        static LinkedList<Object>::Iterator ObjectIterator() __deprecated_enum_msg("possibly unessecary and dangerous");
+        static LinkedList<Object>::Iterator * ObjectIterator() __deprecated_enum_msg("possibly unessecary and dangerous");
         
         
         /*!

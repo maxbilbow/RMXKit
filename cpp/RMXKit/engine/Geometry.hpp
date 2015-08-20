@@ -20,8 +20,8 @@ namespace rmx {
         static Geometry * _cube;
         int * _vertexData = null, * _indexData = null;
         int _size = 0, _count = 0;
-        bool vertexMode;
-        void pushMatrix(GameNode *, Transform *);
+        BOOL vertexMode = FALSE;
+        void pushMatrix(GameNode *, Matrix4);
         void popMatrix();
     protected:
         virtual void drawWithScale(float x, float y, float z) {
@@ -30,7 +30,7 @@ namespace rmx {
     public:
         bool isVertexMode();
         void setVertexMode(bool vertexMode);
-        void render(GameNode * GameNode, Transform * root);
+        void render(GameNode * GameNode, Matrix4 root);
         
         static Geometry * Cube();
         
@@ -47,12 +47,7 @@ namespace rmx {
     
     };
     
-    class Cube : public Geometry {
-    protected:
-         void drawWithScale(float x, float y, float z) override;
-    public:
-        Cube():Geometry(6*3*4){}
-    };
+    
 
     class Floor : public Geometry {
         

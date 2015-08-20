@@ -56,7 +56,7 @@ void Geometry::addVertex(float x, float y, float z)  {
     
 }
 
-void Geometry::pushMatrix(GameNode * node, Transform * base) {
+void Geometry::pushMatrix(GameNode * node, Matrix4 base) {
     
     EulerAngles modelA = node->getTransform()->eulerAngles() / PI_OVER_180;
     
@@ -64,7 +64,8 @@ void Geometry::pushMatrix(GameNode * node, Transform * base) {
     
     
     //		 glMultMatrixf(_modelView.buffer())
-    Vector3 translation = base->getTransform()->position();
+    Vector3 translation = RMXMatrix4Position(base);
+    
     glTranslatef(
                  translation.z,
                  translation.y,
@@ -95,7 +96,7 @@ void Geometry::popMatrix() {
     
     glPopMatrix();
 }
-void Geometry::render(GameNode * node, Transform * rootTransform) {
+void Geometry::render(GameNode * node, Matrix4 rootTransform) {
     if (vertexMode) {
         cout << "WARNING: Vertex Mode enabled but may not be fully implemented yet." << endl;
         return;
@@ -158,15 +159,12 @@ void _render() {
 //    return _cube;
 //}
 
-Geometry * Geometry::_cube =   null;
-Geometry * Geometry::Cube() {
-    if (_cube ==   null)
-        _cube = new rmx::Cube();
-    return _cube;
-}
+class ACube : public Geometry {
 
-
-void Cube::drawWithScale(float X, float Y, float Z) {
+public:
+    ACube():Geometry(6*3*4){}
+protected:
+    void drawWithScale(float X, float Y, float Z)override {
         glBegin(GL_QUADS);
         glColor3f(1.0f,1.0f,0.0f);
         glVertex3f( X, Y,-Z);
@@ -199,5 +197,17 @@ void Cube::drawWithScale(float X, float Y, float Z) {
         glVertex3f( X,-Y, Z);
         glVertex3f( X,-Y,-Z);
         glEnd();
+    }
+
+};
+
+Geometry * Geometry::_cube =   null;
+Geometry * Geometry::Cube() {
+    if (_cube ==   null)
+        _cube = new ACube();
+    return _cube;
 }
+
+
+
 

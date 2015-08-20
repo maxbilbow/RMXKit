@@ -25,19 +25,19 @@ namespace rmx {
     template <typename Value> class LinkedList {
         typedef LinkedList<Value> List;
     public:
-        typedef struct _Node {
+        class Node {
         public:
             Value * value;
-            _Node * next;
-            _Node * prev; //Not Implemented
-        } Node;
+            Node * next = nullptr;
+            Node * prev = nullptr; //Not Implemented
+        };
         
     private:
-        int _count;
+        int _count = 0;
         Node * _head;
         
     public:
-        typedef struct _Iterator {
+        class Iterator {
         protected:
             //            Node * _prev;
             Node * currentNode;
@@ -45,13 +45,22 @@ namespace rmx {
             int i = 0;
             
         public:
-            _Iterator(List * list) {
-                this->currentNode = list->firstNode();
+            Iterator(List * list) {
                 this->linkedList = list;
+                this->Iterator::begin();
+            }
+            
+            void begin() {
+                this->currentNode = this->linkedList->firstNode();
+                this->i = 0;
+            
             }
             
             bool hasNext () {
-                return this->currentNode != nullptr && this->currentNode->next != nullptr;
+//                std::cout << this->currentNode->value << ": " << this->i << "/" << this->linkedList->_count << std::endl;
+                return //this->i < this->count() &&
+                this->currentNode != nullptr &&
+                this->currentNode->value != nullptr;
             }
             
             Value * next() {
@@ -59,6 +68,7 @@ namespace rmx {
                 if (this->currentNode == nullptr)
                     throw std::out_of_range("CURRENT VALUE IS NULL: Count: " + std::to_string(this->i) + ", ListCount: " + std::to_string(this->count()));
                 Value * v = this->currentNode->value;
+//                free(this->currentNode);
                 this->currentNode = this->currentNode->next;
                 ++this->i;
                 if (v != nullptr) {
@@ -70,8 +80,11 @@ namespace rmx {
             int count() {
                 return this->linkedList->count();
             }
-        }Iterator;
+        };
         
+    private:
+        Iterator * iterator;
+    public:
         LinkedList();
         ~LinkedList();
         
@@ -147,8 +160,9 @@ namespace rmx {
         
         Value * pop(Node ** head);
         
-        Iterator getIterator() {
-            return Iterator(this);
+        Iterator * getIterator() {
+            this->iterator->begin();
+            return this->iterator;
         }
         
         LinkedList<Value> * reverse();
@@ -157,6 +171,7 @@ namespace rmx {
     template <typename Value>
     inline LinkedList<Value>::LinkedList() {
         this->_head = new Node();
+        this->iterator = new Iterator(this);
     }
     
     template <typename Value>

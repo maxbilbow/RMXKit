@@ -22,7 +22,7 @@ CFStringRef RMXKitUUID(void);
 #define as_string(x) #x
 
 
-#define null nullptr
+
 
 //#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
 

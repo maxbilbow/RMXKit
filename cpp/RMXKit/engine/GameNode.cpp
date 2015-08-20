@@ -12,16 +12,12 @@
 #import "NodeComponent.hpp"
 #import "Transform.hpp"
 #import "Geometry.hpp"
-#import "Behaviour.hpp"
+
 #import "Scene.hpp"
 #import "Camera.hpp"
 #import "PhysicsBody.hpp"
+#import "Behaviour.hpp"
 #import "GameNode.hpp"
-
-
-
-
-
 
 
 using namespace rmx;
@@ -42,16 +38,14 @@ GameNode::GameNode(string name) {
 
 
 void GameNode::onLoad() {
-//    this->children = GameNodeList();
-//    this->behaviours = GameNodeBehaviours();
-//    this->components = GameNodeComponents();
+    this->_hasGeometry = this->_hasPhysicsBody = FALSE;
 //    this->camera = new Camera();
     this->_transform = new Transform(this);
     this->afterLoad();
 }
 
 void GameNode::setCurrent(GameNode * node) {
-    _current = node;
+    GameNode::_current = node;
 }
     
 Transform * GameNode::getTransform() {
@@ -72,8 +66,8 @@ NodeComponent * GameNode::setComponent(NodeComponent * component)  {
 }
 
 void GameNode::addBehaviour(Behaviour * behaviour) {
-    if (behaviour != null) {
-        this->behaviours.append(behaviour);
+    if (behaviour != null && !this->behaviours->contains(behaviour)) {
+        this->behaviours->append(behaviour);
         behaviour->setNode(this);
     }
 }
@@ -88,7 +82,7 @@ GameNodeList * GameNode::getChildren() {
 }
     
 void GameNode::addChild(GameNode * child) {
-    if (!this->children.contains(&child)) {
+    if (!this->children.contains(child)) {
         this->children.append(child);
         child->setParent(this);
     }
@@ -99,9 +93,9 @@ bool GameNode::removeChildNode(GameNode * node) {
 }
 
 GameNode * GameNode::getChildWithName(string name) {
-    GameNodeList::Iterator i = this->children.getIterator();
-    while (i.hasNext()) {
-        GameNode * n = *i.next();
+    GameNodeList::Iterator * i = this->children.getIterator();
+    while (i->hasNext()) {
+        GameNode * n = i->next();
         if (n->Name() == name)
             return n;
     }
@@ -110,8 +104,8 @@ GameNode * GameNode::getChildWithName(string name) {
     
 
 Camera * GameNode::getCamera() {
-    cout << this << endl;
-    return GameNode::getCurrent()->camera;// new Camera();// this->camera;
+//    cout << this << endl;
+    return this->camera;// GameNode::getCurrent()->camera;// new Camera();// this->camera;
 //    if (this->camera != null)
 //        return this->camera;//(Camera*) this->getComponent(typeid(Camera).name());
 //    else {
@@ -123,72 +117,95 @@ Camera * GameNode::getCamera() {
 //    return this->camera;
 }
 
+bool GameNode::hasCamera() {
+    return this->_hasCamera;
+}
 void GameNode::setCamera(Camera * camera) {
 //    this->setComponent(camera);
-    camera->NodeComponent::setNode(this);
+    camera->setNode(this);
     this->camera = camera;
+    this->_hasCamera = TRUE;
 }
     
 GameNode * GameNode::newCameraNode() {
     GameNode * cameraNode = new GameNode("CameraNode");
     cameraNode->setCamera(new Camera());
+    if (_current == null)
+        _current = cameraNode;
+    cameraNode->addBehaviour(new SpriteBehaviour());
+    cameraNode->setPhysicsBody(new PhysicsBody());
+    cameraNode->physicsBody()->setMass(1);
     return cameraNode;
 }
     
 Geometry * GameNode::geometry() {
-    return _geometry;// (Geometry) this.getComponent(Geometry.class);
+    return this->_geometry;// (Geometry) this.getComponent(Geometry.class);
 }
-    
+
+bool GameNode::hasGeometry() {
+    return this->_hasGeometry;
+}
 
 void GameNode::setGeometry(Geometry * geometry) {
     this->_geometry = geometry;
+    this->_hasGeometry = TRUE;
 }
     
 PhysicsBody * GameNode::physicsBody(){
 //    PhysicsBody * body = (PhysicsBody*) this->getComponent(typeid(PhysicsBody).name());
 //    if (body ==   null)
 //        cout << "WARNING: null returned when requesting physicsBody in GameNode" << endl;
-    if (this->_physicsBody != null)
+//    if (this->_physicsBody != null)
         return this->_physicsBody;
-    else
-        return null;
+//    else
+//        return null;
 }
-    
+
+bool GameNode::hasPhysicsBody() {
+    return this->_hasPhysicsBody;
+}
+
 void GameNode::setPhysicsBody(PhysicsBody * body) {
 //    this->setComponent(body);
     this->_physicsBody = body;
     body->setNode(this);
+    this->_hasPhysicsBody = TRUE;
 }
     
 void GameNode::updateLogic() {
-    GameNodeBehaviours::Iterator bi = this->behaviours.getIterator();
-    while (bi.hasNext()) {
-        Behaviour * b = *bi.next();
-        if (b->isEnabled())
-            b->update();
-    }
-    GameNodeList::Iterator ci = this->children.getIterator();
-    while (ci.hasNext()) {
-        GameNode * n = *ci.next();
-        n->updateLogic();
-    }
-    
-    bi = this->behaviours.getIterator();
-    while (bi.hasNext()) {
-        Behaviour * b = *bi.next();
-        if (b->isEnabled())
-            b->lateUpdate();
-    }
+//    bool isBEmpty = this->behaviours->isEmpty();
+    GameNodeBehaviours::Iterator * bi = this->behaviours->getIterator();
+//    if (!isBEmpty)
+        while (bi->hasNext()) {
+            Behaviour * b = bi->next();
+            if (b->isEnabled())
+                b->update();
+        }
+//    if (!this->children.isEmpty()) {
+        GameNodeList::Iterator * ci = this->children.getIterator();
+        while (ci->hasNext()) {
+            GameNode * n = ci->next();
+            if (n != null)
+                n->updateLogic();
+        }
+//    }
+//    if (!isBEmpty) {
+        bi->begin();
+        while (bi->hasNext()) {
+            Behaviour * b = bi->next();
+            if (b->isEnabled())
+                b->lateUpdate();
+        }
+//    }
 }
 
-void GameNode::draw(Transform * rootTransform) {
-    if (this->_geometry !=   null) {
+void GameNode::draw(Matrix4 rootTransform) {
+    if (this->_hasGeometry) {
         this->_geometry->render(this, rootTransform);
     }
-    GameNodeList::Iterator ci = this->children.getIterator();
-    while (ci.hasNext()) {
-        GameNode * n = *ci.next();
-        n->draw(rootTransform);
+    GameNodeList::Iterator * i = this->children.getIterator();
+    while (i->hasNext()) {
+        i->next()->draw(rootTransform);
     }
 }
 
@@ -213,14 +230,9 @@ void GameNode::SendMessage(std::string message, void * args, SendMessageOptions 
 }
 
 void GameNode::BroadcastMessage(std::string message, void * args, SendMessageOptions options) {
-    Object::BroadcastMessage(message, args, options);
-//    GameNodeComponents::Iterator ci = this->components->getIterator();
-//    while (ci.hasNext())
-//        ci.next()->value->BroadcastMessage(message,args,options);
-    
-    GameNodeBehaviours::Iterator bi = this->behaviours.getIterator();
-    while (bi.hasNext())
-        (*bi.next())->BroadcastMessage(message,args,options);
+    GameNodeBehaviours::Iterator * i = this->behaviours->getIterator();
+    while (i->hasNext())
+        i->next()->SendMessage(message,args,options);
 }
     
 GameNode * GameNode::makeCube(float s,bool body, Behaviour * b) {

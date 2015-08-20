@@ -99,20 +99,23 @@ void Camera::makePerspective(GameView * view) {
 }
 
 Matrix4 Camera::modelViewMatrix() {
-    Transform * t = this->getNode()->getTransform();
-    Vector3 eye = t->position();
-    Vector3 up = t->up();
-    Vector3 center = t->position() + t->forward();
+//    Transform * t = this->getNode()->getTransform();
+//    Vector3 eye = t->position();
+//    Vector3 up = t->up();
+//    Vector3 center = t->position() + t->forward();
+//    
+//    return GLKMatrix4Multiply(t->worldMatrix(), GLKMatrix4MakeLookAt(
+//                                eye.x, eye.y, eye.z,
+//                                center.x, center.y, center.z,
+//                                up.x, up.y, up.z
+//                                )
+//                              );
     
-    return GLKMatrix4Multiply(t->worldMatrix(), GLKMatrix4MakeLookAt(
-                                eye.x, eye.y, eye.z,
-                                center.x, center.y, center.z,
-                                up.x, up.y, up.z
-                                )
-                              );
-                
-//     this->getNode()->getTransform()->worldMatrix();
+    Matrix4 m = this->getNode()->getTransform()->worldMatrix();
+
+//    cout << m << endl;
 //    m.negate();
 //    return m;
+    return GLKMatrix4Invert(m, new bool());
 }
 

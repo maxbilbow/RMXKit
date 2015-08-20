@@ -17,11 +17,14 @@
 //#import "Object.h"
 
 #import "Includes.h"
-#import "PhysicsBody.hpp"
+
 #import "Scene.hpp"
-#import "Behaviour.hpp"
+
 #import "GameNode.hpp"
 #import "Delegates.hpp"
+#import "PhysicsBody.hpp"
+#import "Transform.hpp"
+#import "Behaviour.hpp"
 #import "glfw3.h"
 #import "GameView.hpp"
 #import "Geometry.hpp"

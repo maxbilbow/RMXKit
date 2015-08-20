@@ -32,10 +32,10 @@ void PhysicsWorld::setGravity(float x, float y, float z) {
 }
     
 void PhysicsWorld::updatePhysics(GameNode * rootNode) {
-    GameNodeList::Iterator i = rootNode->getChildren()->getIterator();
-    while (i.hasNext()) {
-        GameNode * node = *i.next();
-        if (node->physicsBody() != null) {
+    GameNodeList::Iterator * i = rootNode->getChildren()->getIterator();
+    while (i->hasNext()) {
+        GameNode * node = i->next();
+        if (node->hasPhysicsBody()) {
             this->applyGravityTo(node);
         }
     }
@@ -47,13 +47,13 @@ float getCurrentFramerate() {
     
 void PhysicsWorld::applyGravityTo(GameNode * node) {
         Transform * t = node->getTransform();
-        float g = 0;
+        float ground = t->scale().y;
         float mass = node->getTransform()->mass();
         float framerate = getCurrentFramerate();
         //		System.out.println(node.getName() + " >> BEFORE: " + m.position());t.
-    t->setPosition(t->position() + this->gravity * framerate * mass);
+        t->setPosition(t->position() + this->gravity * framerate * mass);
         //		System.out.println(node.getName() + " >>  AFTER: " + m.position());
         //		m.translate(x, y, z);
-        if (t->position().y < g)
-            t->setM(3 * 4 + 1 - 1, g);
+        if (t->position().y < ground)
+            t->setM(3 * 4 + 1, ground);
 }

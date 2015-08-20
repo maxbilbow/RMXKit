@@ -7,8 +7,8 @@
 //
 #import "Includes.h"
 #import "GameNode.hpp"
-#import "PhysicsBody.hpp"
 #import "NodeComponent.hpp"
+#import "PhysicsBody.hpp"
 
 #import "Transform.hpp"
 
@@ -53,11 +53,10 @@ void Transform::setScale(float x, float y, float z) {
  * @return
  */
 float Transform::mass() {
-    return 1;
-    float mass = 0;//this->getNode()->physicsBody() != null ? this->getNode()->physicsBody()->getMass() : 0.0f;
+    float mass = this->getNode()->physicsBody() != null ? this->getNode()->physicsBody()->getMass() : 0.0f;
     GameNodeList::Iterator i = getNode()->getChildren();
     while (i.hasNext())
-        mass += (*i.next())->getTransform()->mass();
+        mass += i.next()->getTransform()->mass();
     return mass;
 }
 
@@ -107,6 +106,7 @@ void Transform::setPosition(Vector3 position) {
     this->_localMatrix.m30 = position.x;
     this->_localMatrix.m31 = position.y;
     this->_localMatrix.m32 = position.z;
+//    cout << _localMatrix;
 }
 
 void Transform::setPosition(float x, float y, float z) {
@@ -132,39 +132,29 @@ string * readMessage(string message) {
 
 
 
-void Transform::move(Move name, string message) {
-    if (message.empty()) {
-        cout << name << " Message not implemented" << endl;
-    } else {
-        return;
-        string* args = readMessage(message);
-        cout << message << args[0] << endl;
-        try {
-            float scale = stof(args[0]) * 0.1;
-            if (this->translate(name, scale)
-                || this->rotate(name, scale))
-                cout << "Successfully read message: " << name << ":" << message << endl;
-        } catch (invalid_argument e) {
-            cout << "FAILED to read message: " << name << ":" << message << " because: " << e.what() << endl;
-        }
+bool Transform::move(Move name, float scale, string message) {
+
+   return (this->translate(name, scale)
+           || this->rotate(name, scale));
+//        cout << "Successfully read message: " << name << ":" << message << endl;
     
-//    else
-//        Bugger.logAndPrint("Warning: \"" + args + "\" was not recognised", true);
-    }
+
     
 }
 
-void Transform::translate(float x, float y, float z) {
-    _localMatrix.m30 += x;
-    _localMatrix.m31 += y;
-    _localMatrix.m32 += z;
-}
-
-void Transform::translate(Vector3 v) {
-    _localMatrix.m30 += v.x;
-    _localMatrix.m31 += v.y;
-    _localMatrix.m32 += v.z;
-}
+//void Transform::translate(float x, float y, float z) {
+//    _localMatrix = GLKMatrix4Translate(_localMatrix,x,y,z);
+////    _localMatrix.m30 += x;
+////    _localMatrix.m31 += y;
+////    _localMatrix.m32 += z;
+//}
+//
+//void Transform::translate(Vector3 v) {
+//    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v);
+////    _localMatrix.m30 += v.x;
+////    _localMatrix.m31 += v.y;
+////    _localMatrix.m32 += v.z;
+//}
 
 bool Transform::translate(Move direction, float scale) {
     Vector3 v;
@@ -196,7 +186,8 @@ bool Transform::translate(Move direction, float scale) {
         default:
             return false;
     }
-    this->translate(v * scale);
+    _localMatrix = GLKMatrix4TranslateWithVector3(_localMatrix, v * scale);
+//    this->translate(v * scale);
     return true;
 }
 
@@ -206,7 +197,7 @@ bool Transform::rotate(Move direction, float scale) {
     Vector3 v;
     switch (direction) {
         case Pitch:
-            //			scale *= -1;
+//           scale *= -1;
             v = this->left();
             break;
         case Yaw:
@@ -220,7 +211,7 @@ bool Transform::rotate(Move direction, float scale) {
         default:
             return false;
     }
-    this->rotate(scale,v);
+    this->rotate(scale * PI_OVER_180,v);
     //				v.x * scale,
     //				v.y * scale,
     //				v.z * scale
@@ -230,6 +221,7 @@ bool Transform::rotate(Move direction, float scale) {
 
 void Transform::rotate(float radians, Vector3 v) {
     this->_localMatrix = GLKMatrix4RotateWithVector3(_localMatrix, radians, v);
+    
 }
 
 //void Transform::rotate(float radians, float x, float y, float z) {
