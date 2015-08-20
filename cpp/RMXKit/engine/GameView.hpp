@@ -19,15 +19,7 @@
 //#import <GLFW/glfw3.h>
 
 
-namespace rmx {
-    class RenderDelegate {
-    public:
-        virtual void updateBeforeScene(){};
-        
-        virtual void updateAfterScene(){};
-        
-    };
-}
+
 
 
 namespace rmx {
@@ -35,7 +27,7 @@ namespace rmx {
     
 
 class GameView : public Object {
-    Node * _pointOfView;
+    GameNode * _pointOfView = null;
 
     int _height = 720, _width = 1280;
     
@@ -45,12 +37,13 @@ class GameView : public Object {
 
     
     // The window handle
-    GLFWwindow * _window;
+    GLFWwindow * _window =   null;
     
     
-    RenderDelegate * delegate;
+    RenderDelegate * delegate =   null;
     
 public:
+    GameView();
     void initGL();
     
     void enterGameLoop();
@@ -58,7 +51,7 @@ public:
     
     
     
-    bool setPointOfView(Node * pointOfView);
+    bool setPointOfView(GameNode * pointOfView);
     RenderDelegate * getDelegate();
    
     
@@ -78,7 +71,7 @@ public:
     
     void setHeight(int height);
     
-    Node * pointOfView();
+    GameNode * pointOfView();
 };
 
 }

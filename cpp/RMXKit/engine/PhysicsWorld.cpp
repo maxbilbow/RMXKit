@@ -6,8 +6,11 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#import "RMXEngine.hpp"
-//#import "PhysicsWorld.hpp"
+#import "Includes.h"
+#import "GameNode.hpp"
+#import "NodeComponent.hpp"
+#import "Transform.hpp"
+#import "PhysicsWorld.hpp"
 
 using namespace std;
 using namespace rmx;
@@ -28,11 +31,11 @@ void PhysicsWorld::setGravity(float x, float y, float z) {
         this->gravity.z = z;
 }
     
-void PhysicsWorld::updatePhysics(Node * rootNode) {
-    Node::NodeList::Iterator i = rootNode->getChildren()->getIterator();
+void PhysicsWorld::updatePhysics(GameNode * rootNode) {
+    GameNodeList::Iterator i = rootNode->getChildren()->getIterator();
     while (i.hasNext()) {
-        Node * node = *i.next();
-        if (node->physicsBody() != nullptr) {
+        GameNode * node = *i.next();
+        if (node->physicsBody() != null) {
             this->applyGravityTo(node);
         }
     }
@@ -42,7 +45,7 @@ float getCurrentFramerate() {
     return 0.1667;
 }
     
-void PhysicsWorld::applyGravityTo(Node * node) {
+void PhysicsWorld::applyGravityTo(GameNode * node) {
         Transform * t = node->getTransform();
         float g = 0;
         float mass = node->getTransform()->mass();

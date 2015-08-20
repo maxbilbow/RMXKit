@@ -27,10 +27,10 @@ namespace rmx {
     template <typename Key, typename Value>
     class KeyValuePair {
     public:
-        ~KeyValuePair() {
-            if (this->value != nullptr)
-                free(this->value);
-        }
+//        ~KeyValuePair() {
+//            if (this->value != nullptr)
+//                free(this->value);
+//        }
         Key key;
         Value * value;
     };

@@ -6,8 +6,14 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#import "RMXEngine.hpp"
-//#import "Camera.hpp"
+#import "Includes.h"
+
+#import "NodeComponent.hpp"
+#import "Transform.hpp"
+//#import <GLFW/glfw3.h>
+#import "GameView.hpp"
+#import "GameNode.hpp"
+#import "Camera.hpp"
 #import <math.h>
 
 
@@ -20,11 +26,14 @@ using namespace std;
 
 
 Camera::Camera() {
+    NodeComponent::NodeComponent();
     this->_projectionMatrix = GLKMatrix4Identity;
-    this->fovX = this->fovY = 45;
+    this->fovX = 45;
+    this->fovY = 45;
     this->nearZ = 1;
     this->farZ = 2000;
-    this->aspect = 16/9;
+    this->aspect = 16.0/9.0f;
+    this->setName("Camera");
     
 }
 

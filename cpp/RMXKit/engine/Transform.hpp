@@ -14,28 +14,30 @@
 #endif /* Transform_hpp */
 //#import "Node.hpp"
 
-//class Node;
+
 namespace rmx{
     enum RMXMoveMessage {
         Forward, Left, Up, X, Y, Z,
         Pitch, Yaw, Roll,
         Jump
     };
-    
-    class Transform : public NodeComponent, public Unfinised{
-        Matrix4 _worldMatrix;
+   
+    class Transform : public NodeComponent, public Unfinised {
+//        Matrix4 _worldMatrix;
         Matrix4 _axis;
         Matrix4 _localMatrix;
-        Quaternion _quaternion;
-        Vector3 _eulerAngles;
+//        Quaternion _quaternion;
+//        Vector3 _eulerAngles;
         Vector3 _scale;
         
         ///Exists to thwart defauly constructor.
-        Transform(){}
+        Transform();
         
     public:
+        Transform(GameNode * node);
         typedef RMXMoveMessage Move;
-        Transform(Node * node);
+//        Transform(Node * node);
+        Transform * New(GameNode * node);
         
         void setScale(float x, float y, float z);
         
@@ -86,7 +88,7 @@ namespace rmx{
         Matrix4 localMatrix();
         
         
-        Node * setNode(Node * node) override;
+        GameNode * setNode(GameNode * node) override;
     
     };
 

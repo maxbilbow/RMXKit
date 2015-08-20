@@ -6,19 +6,28 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#import "RMXEngine.hpp"
-//#import "Scene.hpp"
+#import "Includes.h"
+
+
+#import "NodeComponent.hpp"
+#import "Transform.hpp"
+#import "Camera.hpp"
+#import "GameNode.hpp"
+#import "PhysicsWorld.hpp"
+#import "Scene.hpp"
 
 
 using namespace rmx;
 using namespace std;
 
+Scene * Scene::_current =   null;
 
-
-
+Scene::Scene() {
+    this->_rootNode = new GameNode("rootNode");
+}
 //	private static Scene current;
 Scene * Scene::getCurrent() {
-    if (Scene::_current == nullptr)
+    if (Scene::_current ==   null)
         _current = new Scene();
     return _current;
 }
@@ -37,11 +46,10 @@ void Scene::setAsCurrent() {
 
 void Scene::renderScene(Camera * cam) {
     //		cam.look();
-    Matrix4 modelMatrix = cam->modelViewMatrix();
-    //modelMatrix.negate();
-    Node::NodeList::Iterator i = this->_rootNode->getChildren()->getIterator();
+    Transform * rootTransform = cam->getTransform();    //modelMatrix.negate();
+    GameNodeList::Iterator i = this->_rootNode->getChildren()->getIterator();
     while (i.hasNext()) {
-        (*i.next())->draw(modelMatrix);
+        (*i.next())->draw(rootTransform);
     }
 }
 
@@ -49,4 +57,8 @@ void Scene::renderScene(Camera * cam) {
 void Scene::updateSceneLogic() {
     this->_physicsWorld->updatePhysics(this->_rootNode);
     this->_rootNode->updateLogic();
+}
+
+GameNode * Scene::rootNode() {
+    return _rootNode;
 }

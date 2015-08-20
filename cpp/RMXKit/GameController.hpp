@@ -15,7 +15,7 @@
 
 namespace rmx {
 
-    typedef bool * KeyStates;
+    typedef bool KeyStates;
 
     class GameController : public Object,  public RenderDelegate  {
         GameView * view;
@@ -32,7 +32,7 @@ namespace rmx {
         
         void run();
         
-        KeyStates * keys = new KeyStates[500];
+        KeyStates keys[500];// = new KeyStates[500];
         
         void repeatedKeys();
         

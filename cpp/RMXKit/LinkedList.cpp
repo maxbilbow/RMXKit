@@ -39,7 +39,7 @@ void TestRemoveAt(rmx::LinkedList<int> * list, int index) {
         list->print();
 #endif
     } catch (invalid_argument e) {
-        cout << e.what() << endl;
+        cout << "LnkedList.cpp: " << e.what() << endl;
     }
 
 }

@@ -6,15 +6,26 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#import <iostream>
+//#import <iostream>
 //#import "Tests.h"
 //#import "RMXKit.h"
 
-#import "RMXEngine.hpp"
+//#import "RMXEngine.hpp"
 //#import "LinkedList.h"
 //#import "Dictionary.h"
 //#import "ASingleton.h"
 //#import "Object.h"
+
+#import "Includes.h"
+#import "PhysicsBody.hpp"
+#import "Scene.hpp"
+#import "Behaviour.hpp"
+#import "GameNode.hpp"
+#import "Delegates.hpp"
+#import "glfw3.h"
+#import "GameView.hpp"
+#import "Geometry.hpp"
+#import "GameController.hpp"
 
 
 //#import "OpenGLView.h"

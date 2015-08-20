@@ -67,7 +67,7 @@ EventStatus NotificationCenter::statusOf(EventType theEvent) {
     try {
         return *NotificationCenter::events->getValueForKey(theEvent);
     } catch (exception e) {
-        cout << e.what() << ": setting new event as Idle" << endl;
+        cout << typeid(NotificationCenter).name() << ": " << e.what() << ": setting new event as Idle" << endl;
         NotificationCenter::events->setValueForKey(theEvent, EVENT_STATUS_IDLE);
         return EVENT_STATUS_IDLE;
     }

@@ -6,11 +6,16 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-//#include "RMXKit.h"
 
-#import "RMXEngine.hpp"
-
-//#import "GameView.hpp"
+#import "Includes.h"
+#import "PhysicsBody.hpp"
+#import "Scene.hpp"
+#import "Behaviour.hpp"
+#import "GameNode.hpp"
+#import "Delegates.hpp"
+//#import <GLFW/glfw3.h>
+#import "GameController.hpp"
+#import "GameView.hpp"
 
 
 #define GLFW_INCLUDE_GLU
@@ -20,6 +25,10 @@
 //#import <Glut/Glut.h>
 using namespace rmx;
 using namespace std;
+
+GameView::GameView(){
+    this->setPointOfView(GameNode::getCurrent());
+}
 
 void GameView::initGL() {
     
@@ -39,8 +48,8 @@ void GameView::initGL() {
     
     
     // Create the window
-    _window = glfwCreateWindow(_width, _height, "Hello World!", NULL, NULL);
-    if ( _window == NULL )
+    _window = glfwCreateWindow(_width, _height, "Hello World!", null, null);
+    if ( _window == null )
         throw new invalid_argument("Failed to create the GLFW window");
     
     // Setup a key callback. It will be called every time a key is pressed, repeated or released.
@@ -122,9 +131,9 @@ void GameView::enterGameLoop() {
     // the window or has pressed the ESCAPE key.
     while ( glfwWindowShouldClose(_window) == GL_FALSE ) {
         Scene * scene = Scene::getCurrent();
-        Camera * camera = pointOfView()->camera();
+        Camera * camera = pointOfView()->getCamera();
         
-        if (this->delegate != nullptr)
+        if (this->delegate != null)
             this->delegate->updateBeforeScene();
         
         scene->updateSceneLogic();
@@ -148,7 +157,7 @@ void GameView::enterGameLoop() {
         
         glMatrixMode(GL_PROJECTION);
         // swap the color buffers
-        if (this->delegate != nullptr)
+        if (this->delegate != null)
             this->delegate->updateAfterScene();
         
         // Poll for window events. The key callback above will only be
@@ -161,16 +170,12 @@ void GameView::enterGameLoop() {
 
 
 
-bool GameView::setPointOfView(Node * pointOfView) {
-    if (_pointOfView->camera() == nullptr) {
-        throw new invalid_argument("PointOfView musy have a camera != NULL");
+bool GameView::setPointOfView(GameNode * pointOfView) {
+    if (this->_pointOfView->getCamera() == null) {
+        throw new invalid_argument("PointOfView musy have a camera != null");//pointOfView->setCamera(new Camera());//
     } else if (_pointOfView == pointOfView)
         return false;
-//    else if (_pointOfView != nullptr)
-//        _pointOfView->camera()->StopListening();
-    
-    _pointOfView = pointOfView;
-//    _pointOfView->camera()->StartListening();
+    this->_pointOfView = pointOfView;
     return true;
 }
 
@@ -213,9 +218,9 @@ void GameView::setHeight(int height) {
     this->_height = height;
 }
 
-Node * GameView::pointOfView() {
-    if (_pointOfView != nullptr || this->setPointOfView(Node::getCurrent()))
+GameNode * GameView::pointOfView() {
+    if (_pointOfView != null || this->setPointOfView(GameNode::getCurrent()))
         return _pointOfView;
-//    Bugger.logAndPrint("ERROR: Could Not Set _pointOfView", true);
-    return nullptr;
+    throw invalid_argument("ERROR: Could Not Set _pointOfView");
+    return   null;
 }

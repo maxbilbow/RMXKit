@@ -13,12 +13,17 @@
 
 #endif /* Behaviour_hpp */
 
+
+
 namespace rmx {
     class Behaviour : public NodeComponent {
     protected:
         bool enabled;
     public:
        
+        Behaviour() {
+            this->enabled = true;
+        }
         
         bool isEnabled(){
             return this->enabled;

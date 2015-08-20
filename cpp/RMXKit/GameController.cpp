@@ -6,18 +6,29 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#import "RMXEngine.hpp"
-//#import "GameController.hpp"
+#import "Includes.h"
+#import "PhysicsBody.hpp"
+#import "Scene.hpp"
+#import "Behaviour.hpp"
+#import "GameNode.hpp"
+#import "Delegates.hpp"
+//#import <GLFW/glfw3.h>
+#import "GameView.hpp"
+#import "Geometry.hpp"
+#import "GameController.hpp"
 
 using namespace std;
 using namespace rmx;
 
 GameController::GameController() {
-    this->setView(new GameView());
+    this->view = new GameView();
+    this->view->setDelegate(this);
+//    this->setView(new GameView());
 }
 
+GameController * GameController::_singleton = new GameController();
 GameController * GameController::getInstance() {
-    if(_singleton == nullptr) {
+    if(_singleton ==   null) {
         _singleton = new GameController();
     }
     return _singleton;
@@ -25,8 +36,9 @@ GameController * GameController::getInstance() {
 
 
 void GameController::initpov() {
-    Node * n = Node::getCurrent();
+    GameNode * n = GameNode::getCurrent();
     n->setPhysicsBody(new PhysicsBody());
+    cout << n->physicsBody() << endl;
     n->physicsBody()->setMass(0.5f);
 //    n->addBehaviour(new SpriteBehaviour());
     n->getTransform()->setScale(2.0f, 0.1f, 2.0f);
@@ -63,18 +75,18 @@ void GameController::setup() {
     Scene * scene = Scene::getCurrent();
     initpov();
     
-    Node * cube = Node::makeCube(0.5f, true, new BehaviourA());
+    GameNode * cube = GameNode::makeCube(0.5f, true, new BehaviourA());
     cube->getTransform()->setPosition(0.0f,0.0f,5.0f);
         
         
-    Node * cube2 = Node::makeCube(0.2f, false, new BehaviourB());
+    GameNode * cube2 = GameNode::makeCube(0.2f, false, new BehaviourB());
         
-    Node * cube3 = Node::makeCube(0.5f, true, new BehaviourC());
+    GameNode * cube3 = GameNode::makeCube(0.5f, true, new BehaviourC());
     cube3->getTransform()->setPosition(-10.0f,0.0f,10.0f);
     cube3->addChild(cube2);
     cube2->getTransform()->setPosition(0.0f,1.0f,0.0f);
         
-    Node * floor = new Node();
+    GameNode * floor = new GameNode();
     floor->getTransform()->setPosition(0,0,0);
     scene->rootNode()->addChild(floor);
         
@@ -85,8 +97,8 @@ void GameController::setup() {
 void GameController::run() {
         //
         //       System.out.println("Hello LWJGL " + Sys.getVersion() + "!");
-        try {
-            
+//        try {
+    
             this->setup();
 //            SharedLibraryLoader::load();
             
@@ -96,9 +108,9 @@ void GameController::run() {
             // Release window and window callbacks
             glfwDestroyWindow(view->window());
 //            view->keyCallback().release();
-        } catch (exception e){
-//            e.printStackTrace();
-        }
+//        } catch (exception e){
+//            cout << typeid(this).name() << ": " << e.what() << endl;
+//        }
     // Terminate GLFW and release the GLFWerrorfun
             glfwTerminate();
 //            view.errorCallback().release();
@@ -116,7 +128,7 @@ void GameController::updateAfterScene() {
 }
 
 void GameController::repeatedKeys() {
-    Node * player = Node::getCurrent();
+    GameNode * player = GameNode::getCurrent();
     
     if (this->keys[GLFW_KEY_W]) {
         player->getTransform()->move(Forward,"1");
@@ -174,4 +186,13 @@ void GameController::repeatedKeys() {
 void GameController::setView(GameView * view) {
     this->view = view;
     this->view->setDelegate(this);
+}
+
+
+void GameController::keyCallback(GLFWwindow *w, int a, int b, int c, int d) {
+    
+}
+
+void GameController::cursorCallback(GLFWwindow * w, double x, double y) {
+    
 }

@@ -7,11 +7,12 @@
 //
 
 #import "Includes.h"
-#import "Node.hpp"
+#import "GameNode.hpp"
 #import "NodeComponent.hpp"
 #import "Transform.hpp"
+#import "glfw3.h"
 #import "Geometry.hpp"
-//#import <GLFW/glfw3.h>
+
 
 using namespace rmx;
 using namespace std;
@@ -54,33 +55,12 @@ void Geometry::addVertex(float x, float y, float z)  {
     _vertexData[_count++] = z;
     
 }
-void Geometry::prepare() {
-   
-}
 
-void Geometry::pushMatrx(Node * node, Transform * base) {
-    //		Matrix4 m = (Matrix4) modelViewMatrix.clone();
-//    Matrix4 m = node->getTransform()->worldMatrix();
-    //		AxisAngle4f baseA = new AxisAngle4f();
-    //		baseA.set(base);
-    //		AxisAngle4f modelA = new AxisAngle4f();
-    //		modelA.set(_modelView);
+void Geometry::pushMatrix(GameNode * node, Transform * base) {
     
-//    EulerAngles baseA = base->eulerAngles();// / PI_OVER_180;
     EulerAngles modelA = node->getTransform()->eulerAngles() / PI_OVER_180;
     
-//    modelA /= PI_OVER_180;
     glPushMatrix();
-    
-    
-    //		glRotatef(baseA.angle, baseA.x, baseA.y, baseA.z);
-    //		glRotatef(modelA.angle, modelA.x, modelA.y, modelA.z);
-    
-    //		glRotatef(baseA.x, 1,0,0);
-    //        glRotatef(baseA.y, 0,1,0);
-    //        glRotatef(baseA.z, 0,0,1);
-    
-    
     
     
     //		 glMultMatrixf(_modelView.buffer())
@@ -102,26 +82,20 @@ void Geometry::pushMatrx(Node * node, Transform * base) {
     glRotatef(modelA.z, 0,0,1);
     
     
-    
-    //		Bugger.logAndPrint("\n BASEA: "+ baseA, false);
-    //		Bugger.logAndPrint("\nMODELA: "+ modelA, false);
-    
-    
-    
-    
-    
 }
+
 
 //	private void enableTexture() {
 //		 glEnable(GL_TEXTURE_2D); //Enable texture
 ////         glBindTexture(GL_TEXTURE_2D,text2D);//Binding texture
 //	}
+
 void Geometry::popMatrix() {
     //		 glDisable(GL_TEXTURE_2D);//TODO perhaps?
     
     glPopMatrix();
 }
-void Geometry::render(Node * node, Transform * rootTransform) {
+void Geometry::render(GameNode * node, Transform * rootTransform) {
     if (vertexMode) {
         cout << "WARNING: Vertex Mode enabled but may not be fully implemented yet." << endl;
         return;
@@ -129,7 +103,7 @@ void Geometry::render(Node * node, Transform * rootTransform) {
     //		 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //		         glLoadIdentity();
     
-    this->pushMatrx(node, rootTransform);
+    this->pushMatrix(node, rootTransform);
     float X = node->getTransform()->scale().x;
     float Y = node->getTransform()->scale().y;
     float Z = node->getTransform()->scale().z;
@@ -184,9 +158,9 @@ void _render() {
 //    return _cube;
 //}
 
-
+Geometry * Geometry::_cube =   null;
 Geometry * Geometry::Cube() {
-    if (_cube == nullptr)
+    if (_cube ==   null)
         _cube = new rmx::Cube();
     return _cube;
 }

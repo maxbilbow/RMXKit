@@ -42,27 +42,18 @@ namespace rmx {
             //            Node * _prev;
             Node * currentNode;
             List * linkedList;
-            int i;
+            int i = 0;
             
         public:
             _Iterator(List * list) {
                 this->currentNode = list->firstNode();
                 this->linkedList = list;
             }
-//#ifdef __GNUC__
-//#define DEPRECATED(func) func __attribute__ ((deprecated))
-//#elif defined(_MSC_VER)
-//#define DEPRECATED(func) __declspec(deprecated) func
-//#else
-//#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
-            
-            bool hasValues() __attribute__((deprecated)) {
-                return this->currentNode != nullptr;
-            }
             
             bool hasNext () {
-                return this->currentNode != nullptr;
+                return this->currentNode != nullptr && this->currentNode->next != nullptr;
             }
+            
             Value * next() {
                 //                Node * next = nullptr
                 if (this->currentNode == nullptr)
@@ -170,10 +161,14 @@ namespace rmx {
     
     template <typename Value>
     inline LinkedList<Value>::~LinkedList() {
+        try {
 #if DEBUG_MALLOC
         std::cout << "~DELETING LinkedList of " << typeid(Value).name() << std::endl;
 #endif
-        this->removeAll();
+//        this->removeAll();
+        } catch (std::exception e) {
+            std::cout << "ERROR errasing linkedlist: " << e.what() << std::endl;
+        }
         //    free(this);
         
     }
@@ -225,11 +220,11 @@ namespace rmx {
     };
     
     template <typename Value> typename LinkedList<Value>::Node * LinkedList<Value>::lastNode() {
-        if (this->_head == NULL) {
-            return NULL;
+        if (this->_head == nullptr) {
+            return  nullptr;
         }
         Node * last = this->_head;
-        while (last->next != NULL) {
+        while (last->next != nullptr) {
             last = last->next;
         }
         return last;
@@ -244,9 +239,9 @@ namespace rmx {
     
     template <typename Value> Value * LinkedList<Value>::pop(Node ** head) {
         int retval = -1;
-        Node * next_node = NULL;
+        Node * next_node = nullptr;
         
-        if (*head == NULL) {
+        if (*head == nullptr) {
             return -1;
         }
         

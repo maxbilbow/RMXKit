@@ -20,11 +20,16 @@ void EventListener::init(bool add) {
 }
 
 EventListener::~EventListener(){
-    NotificationCenter::removeListener(this);
-//    Object::~Object();
+    try {
+        NotificationCenter::removeListener(this);
+        //    Object::~Object();
 #if DEBUG_MALLOC
-    cout << "~DELETING EventListener: " << *this << endl;
+        cout << "~DELETING EventListener: " << *this << endl;
 #endif
+    } catch (exception e) {
+        cout << "ERROR deleting Listener: " << e.what() << endl;
+    }
+   
 }
 
 EventListener * EventListener::clone() {

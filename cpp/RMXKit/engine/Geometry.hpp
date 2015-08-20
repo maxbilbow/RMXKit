@@ -15,19 +15,22 @@
 
 
 namespace rmx {
+ 
     class Geometry{
         static Geometry * _cube;
-        int * _vertexData, * _indexData;
+        int * _vertexData = null, * _indexData = null;
         int _size = 0, _count = 0;
         bool vertexMode;
-        void pushMatrx(Node * node, Transform * base);
+        void pushMatrix(GameNode *, Transform *);
         void popMatrix();
     protected:
-        virtual void drawWithScale(float x, float y, float z) {}
+        virtual void drawWithScale(float x, float y, float z) {
+             throw std::invalid_argument("drawWithScale(float x, float y, float z) must be overriden");
+        }
     public:
         bool isVertexMode();
         void setVertexMode(bool vertexMode);
-        void render(Node * node, Transform * root);
+        void render(GameNode * GameNode, Transform * root);
         
         static Geometry * Cube();
         

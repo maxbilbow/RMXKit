@@ -5,25 +5,35 @@
 //  Created by Max Bilbow on 19/08/2015.
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
-#import "RMXEngine.hpp"
-//#include "RMXNode.h"
-//#import "Transform.hpp"
+#import "Includes.h"
+#import "GameNode.hpp"
+#import "PhysicsBody.hpp"
+#import "NodeComponent.hpp"
+
+#import "Transform.hpp"
+
 #import <math.h>
-//#import "GLKit/GLKVector3.h"
-//#import "GLKit/GLKMatrix4.h"
+
 
 using namespace rmx;
 using namespace std;
 
-Transform::Transform(Node * node){
-    this->setNode(node);
-    node->setComponent(this);
-    _worldMatrix = GLKMatrix4Identity;
+Transform * Transform::New(GameNode * node) {
+    return new Transform(node);
+}
+
+Transform::Transform(){
+    NodeComponent::NodeComponent();
+    throw invalid_argument("Not allowed to use construct without node");
+}
+
+Transform::Transform(GameNode * node) {
+    NodeComponent::NodeComponent();
+    this->node = node;
     _axis = GLKMatrix4Identity;
     _localMatrix = GLKMatrix4Identity;
-    _quaternion = GLKQuaternionIdentity;
-    _eulerAngles = GLKVector3Make(0, 0, 0);
     _scale = GLKVector3Make(1,1,1);
+    this->setName("Transform");
 }
 
 Vector3 Transform::scale() {
@@ -43,8 +53,9 @@ void Transform::setScale(float x, float y, float z) {
  * @return
  */
 float Transform::mass() {
-    float mass = this->getNode()->physicsBody() != nullptr ? this->getNode()->physicsBody()->getMass() : 0.0f;
-    Node::NodeList::Iterator i = getNode()->getChildren();
+    return 1;
+    float mass = 0;//this->getNode()->physicsBody() != null ? this->getNode()->physicsBody()->getMass() : 0.0f;
+    GameNodeList::Iterator i = getNode()->getChildren();
     while (i.hasNext())
         mass += (*i.next())->getTransform()->mass();
     return mass;
@@ -57,18 +68,16 @@ float Transform::mass() {
  */
 Matrix4 Transform::worldMatrix() {
     Transform * parent = this->parent();
-    if (parent != nullptr && parent->parent() != nullptr) {
-        _worldMatrix = this->_localMatrix;
-        GLKMatrix4Multiply(_worldMatrix, parent->worldMatrix());
-        return _worldMatrix;
+    if (parent !=   null && parent->parent() !=   null) {
+        return GLKMatrix4Multiply(this->_localMatrix, parent->worldMatrix());
     } else {
         return this->_localMatrix;
     }
 }
 
 Transform * Transform::parent() {
-    Node * parentNode = this->getNode()->getParent();
-    return parentNode != nullptr ? parentNode->getParent()->getTransform() : nullptr;
+    GameNode * parentNode = this->getNode()->getParent();
+    return parentNode !=   null ? parentNode->getParent()->getTransform() :   null;
 }
 
 Vector3 Transform::localPosition() {
@@ -80,7 +89,7 @@ Vector3 Transform::localPosition() {
 
 Vector3 Transform::position() {
     Transform * parent = this->parent();
-    if (parent != nullptr && parent->parent() != nullptr) {
+    if (parent !=   null && parent->parent() !=   null) {
         return this->localPosition() + parent->position();
     }
     return this->localPosition();
@@ -110,12 +119,13 @@ void Transform::setPosition(float x, float y, float z) {
     
 string * readMessage(string message) {
     string * args = new string[message.length() / 3];
-    int n = 0;
+    int n = 0, j=0;
+    cout<<message<<endl;
     for (int i = 0; i<message.length();++i){
-        if (message[i] == ':')
-            n++;
-        else
-            args[n] += message[i];
+        if (message[i] == ':') {
+            n++; j=0;
+        } else
+            args[n][j++] = message[i];
     }
     return args;
 }
@@ -124,14 +134,20 @@ string * readMessage(string message) {
 
 void Transform::move(Move name, string message) {
     if (message.empty()) {
-        TODO();
+        cout << name << " Message not implemented" << endl;
     } else {
-    string* args = readMessage(message);
-    
-    float scale = stof(args[0]) * 0.1;
-    if (this->translate(name, scale)
-        || this->rotate(name, scale))
         return;
+        string* args = readMessage(message);
+        cout << message << args[0] << endl;
+        try {
+            float scale = stof(args[0]) * 0.1;
+            if (this->translate(name, scale)
+                || this->rotate(name, scale))
+                cout << "Successfully read message: " << name << ":" << message << endl;
+        } catch (invalid_argument e) {
+            cout << "FAILED to read message: " << name << ":" << message << " because: " << e.what() << endl;
+        }
+    
 //    else
 //        Bugger.logAndPrint("Warning: \"" + args + "\" was not recognised", true);
     }
@@ -300,9 +316,10 @@ Matrix4 Transform::localMatrix() {
 
 
 
-Node * Transform::setNode(Node * node) {
-    if (this->getNode() != nullptr && this->getNode() != node)
-        throw new invalid_argument("Transform can only be assigned once");
-    return NodeComponent::setNode(node);
+GameNode * Transform::setNode(GameNode * node) {
+//    if (this->getNode() != null)// && this->getNode() != node)
+        throw new invalid_argument("Transform can only be assigned once: " + this->Object::ToString());
+//    node->setTransform(this);
+//    return   null;
 }
 

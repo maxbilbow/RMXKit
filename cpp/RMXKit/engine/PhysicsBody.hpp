@@ -13,22 +13,28 @@
 
 #endif /* PhysicsBody_hpp */
 
+#ifndef GameNode_hpp
+#import "GameNode.hpp"
+#endif
+
+#ifndef NodeComponent_hpp
+#import "NodeComponent.hpp"
+#endif
+
+#ifndef Transform_hpp
+#import "Transform.hpp"
+#endif
 
 namespace rmx {
-    class PhysicsBody : public NodeComponent{
+    class PhysicsBody : public NodeComponent {
         float mass = 0;
     public:
-        void setMass(float mass) {
-            this->mass = mass;
-        }
-        float getMass() {
-            return this->mass;
-        }
+        PhysicsBody();
+        void setMass(float mass);
+
+        float getMass();
         
-        float TotalMass() {
-            return this->getNode()->getTransform()->mass();
-        }
-        
+        float TotalMass();
     
 
     };

@@ -25,9 +25,9 @@ namespace rmx {
         
         void setGravity(float x, float y, float z);
         
-        void updatePhysics(Node * rootNode);
+        void updatePhysics(GameNode * rootNode);
         
-        void applyGravityTo(Node * node);
+        void applyGravityTo(GameNode * node);
         
     };
 

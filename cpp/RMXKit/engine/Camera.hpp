@@ -15,11 +15,12 @@
 //#import "GameView.hpp"
 namespace rmx {
     
-    class Camera : public NodeComponent {
+    class Camera : public NodeComponent { //, public _Camera {
         float fovX, fovY, nearZ, farZ, aspect;
         Matrix4 _projectionMatrix;
     public:
         Camera();
+//        Camera(std::string name):NodeComponent(name){}
         void makePerspective(GameView * view);
         Matrix4 modelViewMatrix();
         

@@ -13,22 +13,34 @@
 
 #endif /* NodeComponent_hpp */
 
-//#import "Node.hpp"
 namespace rmx {
     
-    class NodeComponent : public Object {
-        Node * node;
+    class NodeComponent : public Object { //, public _NodeComponent {
+    protected:
+        GameNode * node;
        
         bool enabled;
-    public:
+       
+   
         
-        virtual Node * setNode(Node * node);
-        Node * getNode();
+    public:
+        NodeComponent();
+//        NodeComponent(std::string name):Object(name){}
+        
+        virtual GameNode * setNode(GameNode * node) {
+            GameNode * oldNode = this->node;
+            this->node = node;
+//            this->setName(this->Name() + "::" + node->Name());
+            return oldNode;
+        }
+        
+        GameNode * getNode();
         
         bool isEnabled();
         void setEnabled(bool);
         
         Transform * getTransform();
+        
     };
 
 }

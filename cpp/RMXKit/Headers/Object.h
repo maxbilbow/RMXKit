@@ -104,7 +104,7 @@ namespace rmx {
          *  @see LinkedList<Value>
          *  @since 0.1
          */
-        static LinkedList<Object> _allObjects;
+        static LinkedList<Object> _allObjects __deprecated_enum_msg("possibly unessecary and dangerous");
         
         /*!
          *  @author Max Bilbow, 15-08-06 17:08:13
@@ -148,7 +148,7 @@ namespace rmx {
          *  @return A LinkedList containing all available Objects.
          *  @since 0.1
          */
-        static LinkedList<Object> * AllObjects() {
+        static LinkedList<Object> * AllObjects() __deprecated_enum_msg("possibly unessecary and dangerous") {
             return &Object::_allObjects;
         }
         
@@ -253,7 +253,7 @@ namespace rmx {
          *  @return A LinkedList<Object>:Iterator containing all available Objects in the system.
          *  @since 0.1
          */
-        static LinkedList<Object>::Iterator ObjectIterator();
+        static LinkedList<Object>::Iterator ObjectIterator() __deprecated_enum_msg("possibly unessecary and dangerous");
         
         
         /*!
@@ -299,37 +299,6 @@ namespace rmx {
         template <class T> static void Destroy(T * object) {
             delete object; //TODO Dont destroy immediately.
         }
-        
-//        void stopListening();
-        
-        /* More unimplemented Unity GameObject based functions:
-         
-        ///	Should the object be hidden, saved with the scene or modifiable by the user?
-        bool hideFlags = false;
-         
-        /// Destroys the object obj immediately. You are strongly recommended to use Destroy instead.
-        /// TODO: Additonal functionality may be needed later
-        static void DestroyImmediate(Object * object) {
-            delete object;
-        }
-        
-        /// TODO: Makes the object target not be destroyed automatically when loading a new scene.
-        static void DontDestroyOnLoad(Object * object){
-            //TODO
-        }
-        
-        /// TODO: Returns the first active loaded object of Type type.
-        static Object * FindObjectOfType(typeof(Object) object){
-            //TODO
-            return nullptr;
-        }
-        
-        /// TODO: Returns a list of all active loaded objects of Type type.
-        static Object ** FindObjectsOfType(typeof(Object) object){
-            //TODO
-            return nullptr;
-        }
-        */
         
     };
     

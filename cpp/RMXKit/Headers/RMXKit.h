@@ -22,7 +22,7 @@ CFStringRef RMXKitUUID(void);
 #define as_string(x) #x
 
 
-
+#define null nullptr
 
 //#pragma message("WARNING: You need to implement DEPRECATED for this compiler")
 
@@ -32,12 +32,12 @@ CFStringRef RMXKitUUID(void);
 #import "Object.h"
 #import "ASingleton.h"
 namespace rmx {
-    class Unfinised {
+    class Unfinised : public Printable{
     protected:
         void TODO() {
             throw new std::invalid_argument("Method not yet implemented: " + this->ToString());
         }
-        virtual std::string ToString(){ return "";}
+//        virtual std::string ToString(){ return "";}
     };
     
     

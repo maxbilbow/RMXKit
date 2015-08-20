@@ -13,16 +13,33 @@
 
 #endif /* Scene_hpp */
 
+#ifndef GameNode_hpp
+#import "GameNode.hpp"
+#endif
+
+#ifndef NodeComponent_hpp
+#import "NodeComponent.hpp"
+#endif
+
+#ifndef Camera_hpp
+#import "Camera.hpp"
+#endif
+
+#ifndef PhysicsWorld_hpp
+#import "PhysicsWorld.hpp"
+#endif
+
+
 namespace rmx {
 
     class Scene : public Object, public Unfinised {
         static Scene * _current;
-        Node * _rootNode = new Node("rootNode");
+        GameNode * _rootNode =   null;
         PhysicsWorld * _physicsWorld = new PhysicsWorld();
 
     public:
-        
-        Node * rootNode();
+        Scene();
+        GameNode * rootNode();
         static Scene * getCurrent();
         static Scene * setCurrent(Scene * scene);
         void updateSceneLogic();

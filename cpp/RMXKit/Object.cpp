@@ -19,7 +19,7 @@ LinkedList<Object> Object::_allObjects = LinkedList<Object>();
 
 std::ostream& operator<<(std::ostream &strm,  rmx::Printable * a) {
     if (a == nullptr)
-        return strm << "WARNING: Object was deleted!";
+        return strm << "WARNING: Printable Object is null!";
     else
         return strm << a->ToString();
 }
@@ -35,7 +35,7 @@ LinkedList<Object> * _allObjects = new LinkedList<Object>();
 Object::Object(std::string name){
     this->_id = Object::_count++; //this->IncrementCount();
     this->name = !name.empty() ? name : "Unnamed Object";
-    Object::_allObjects.append(this);
+//    Object::_allObjects.append(this);
 #if DEBUG_MALLOC
     std::cout << "~INITIALIZING Object: " << *this << std::endl;
 #endif
@@ -62,18 +62,23 @@ string Object::ToString()  {
 }
 
 unsigned int Object::Count() {
-    return Object::_allObjects.count(); //_count - Object::_deleted;
+    return _count;
+//    return Object::_allObjects.count(); //_count - Object::_deleted;
 }
 
 Object::~Object() {
+    try {
 #if DEBUG_MALLOC
     std::cout << "~DELETING Object: " << *this;
 #endif
 //    Object::_deleted++;
-    Object::_allObjects.removeValue(this);
+//    Object::_allObjects.removeValue(this);
 #if DEBUG_MALLOC
     std::cout << ", Remainig: " << Object::Count() << std::endl;
 #endif
+    } catch (exception e) {
+        cout << "Deleting Object caused exception: " << e.what() << endl;
+    }
 }
 
 LinkedList<Object>::Iterator Object::ObjectIterator() {
@@ -87,7 +92,7 @@ Object * Object::clone() {
     o->_id = _count++;
     if (o->name.find("CLONE of \"") == std::string::npos)
         o->setName("CLONE of \"" + this->name + "\"");// + std::to_string(this->getID()) + ")");
-    Object::_allObjects.append(o);
+//    Object::_allObjects.append(o);
 #if DEBUG_MALLOC
     std::cout << "~INITIALIZING CLONE: " << *o << std::endl;
 #endif
@@ -187,11 +192,11 @@ class AnObject : public Object {
 void RMXObjectCountInitAndDeinitTest() {
     std::cout << "\n\n******** BEGIN TEST: Objec Count & Deinint ********\n" << std::endl;
 #if DEBUG_THIS || D_ObjectCountInitAndDeinitTest
-    cout << "List Count: " << Object::AllObjects()->count() << ", Object count: " << Object::Count() << endl;
+//    cout << "List Count: " << Object::AllObjects()->count() << ", Object count: " << Object::Count() << endl;
 #endif
-    Object::AllObjects()->deleteAll();
+//    Object::AllObjects()->deleteAll();
 #if DEBUG_THIS || D_ObjectCountInitAndDeinitTest
-    cout << "List Count: " << Object::AllObjects()->count() << ", Object count: " << Object::Count() << endl;
+//    cout << "List Count: " << Object::AllObjects()->count() << ", Object count: " << Object::Count() << endl;
 #endif
 
     
