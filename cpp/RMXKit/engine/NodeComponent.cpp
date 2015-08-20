@@ -10,7 +10,7 @@
 #import "RMXEngine.hpp"
 //#import "Object.h"
 //#import "Node.h"
-#include "NodeComponent.hpp"
+//#include "NodeComponent.hpp"
 
 using namespace rmx;
 using namespace std;

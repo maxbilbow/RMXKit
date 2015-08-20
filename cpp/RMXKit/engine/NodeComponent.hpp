@@ -13,7 +13,7 @@
 
 #endif /* NodeComponent_hpp */
 
-#import "Node.hpp"
+//#import "Node.hpp"
 namespace rmx {
     
     class NodeComponent : public Object {

@@ -16,17 +16,23 @@
 
 namespace rmx {
     class Geometry{
-        static Geometry _cube;
+        static Geometry * _cube;
         int * _vertexData, * _indexData;
-        int _e = 0;
-
-    public:
-        
+        int _size = 0, _count = 0;
+        bool vertexMode;
+        void pushMatrx(Node * node, Transform * base);
+        void popMatrix();
+    protected:
         virtual void drawWithScale(float x, float y, float z) {}
-        void render(Node * node, Matrix4 modelViewMatrix);
+    public:
+        bool isVertexMode();
+        void setVertexMode(bool vertexMode);
+        void render(Node * node, Transform * root);
+        
         static Geometry * Cube();
         
-        
+        int * vertexData();
+        int * indexData();
         
         Geometry(int size);
         void addVertex(Vector3 v);
@@ -34,15 +40,15 @@ namespace rmx {
         void addVertex(float x, float y, float z);
         void prepare();
         
-        void pushMatrx(Node * node, Matrix4 base);
-      
-        void popMatrix();     
+        
     
     };
     
     class Cube : public Geometry {
-    public:
+    protected:
          void drawWithScale(float x, float y, float z) override;
+    public:
+        Cube():Geometry(6*3*4){}
     };
 
     class Floor : public Geometry {

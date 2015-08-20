@@ -18,27 +18,23 @@
 
 
 
-#import "RMXKit.h"
 
-#import <GLKit/GLKMatrix4.h>
-#import <GLKit/GLKVector3.h>
-#import <GLKit/GLKVector4.h>
 
-typedef GLKMatrix4 Matrix4;
-typedef GLKVector3 Vector3;
-typedef GLKVector4 Vector4;
-typedef GLKQuaternion Quaternion;
-#import "RMXMath.hpp"
-#import "NodeComponent.hpp"
-#import "PhysicsWorld.hpp"
-#import "Geometry.hpp"
+#import "Includes.h"
+
+
+
+
 #import "Node.hpp"
+#import "NodeComponent.hpp"
+#import "Geometry.hpp"
 #import "Transform.hpp"
 #import "PhysicsBody.hpp"
-#import "Camera.hpp"
+#import "PhysicsWorld.hpp"
 #import "Behaviour.hpp"
 #import "Scene.hpp"
 #import "GameView.hpp"
+#import "Camera.hpp"
 #import "GameController.hpp"
 
 

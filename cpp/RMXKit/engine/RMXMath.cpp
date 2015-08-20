@@ -7,7 +7,7 @@
 //
 
 #import "RMXEngine.hpp"
-#import "RMXMath.hpp"
+//#import "RMXMath.hpp"
 //#import <GLKit/GLKVector3.h>
 
 
@@ -37,4 +37,40 @@ Vector3 operator*(Vector3 lhs,  float rhs) {
 
 Vector3 operator/(Vector3 lhs,  float rhs) {
     return GLKVector3DivideScalar(lhs, rhs);
+}
+
+void operator+=(Vector3& lhs,  Vector3 rhs){
+    lhs.x += rhs.x;
+    lhs.y += rhs.y;
+    lhs.z += rhs.z;
+}
+
+void operator-=(Vector3& lhs,  Vector3 rhs) {
+    lhs.x -= rhs.x;
+    lhs.y -= rhs.y;
+    lhs.z -= rhs.z;
+}
+
+void operator*=(Vector3& lhs,  Vector3 rhs){
+    lhs.x *= rhs.x;
+    lhs.y *= rhs.y;
+    lhs.z *= rhs.z;
+}
+
+void operator/=(Vector3& lhs,  Vector3 rhs) {
+    lhs.x /= rhs.x;
+    lhs.y /= rhs.y;
+    lhs.z /= rhs.z;
+}
+
+void operator*=(Vector3& lhs,  float rhs) {
+    lhs.x *= rhs;
+    lhs.y *= rhs;
+    lhs.z *= rhs;
+}
+
+void operator/=(Vector3& lhs,  float rhs) {
+    lhs.x /= rhs;
+    lhs.y /= rhs;
+    lhs.z /= rhs;
 }

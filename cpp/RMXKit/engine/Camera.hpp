@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 #endif /* Camera_hpp */
-#import "GameView.hpp"
+//#import "GameView.hpp"
 namespace rmx {
     
     class Camera : public NodeComponent {

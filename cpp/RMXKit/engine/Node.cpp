@@ -5,9 +5,14 @@
 //  Created by Max Bilbow on 18/08/2015.
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
-#include <iostream>
+#import <iostream>
 
-#include "RMXEngine.hpp"
+#import "Includes.h"
+#import "Transform.hpp"
+#import "NodeComponent.hpp"
+
+#import "Geometry.hpp"
+#import "Node.hpp"
 
 
 

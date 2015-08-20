@@ -6,11 +6,15 @@
 //  Copyright © 2015 Rattle Media Ltd. All rights reserved.
 //
 
-#import "RMXEngine.hpp"
+#import "Includes.h"
+#import "Node.hpp"
+#import "NodeComponent.hpp"
+#import "Transform.hpp"
 #import "Geometry.hpp"
-#import <GLFW/glfw3.h>
+//#import <GLFW/glfw3.h>
 
 using namespace rmx;
+using namespace std;
 
 void Floor::drawWithScale(float x, float y, float z) {
     float inf = 99999;//Float.POSITIVE_INFINITY;
@@ -31,7 +35,7 @@ Geometry::Geometry(int size) {
     _indexData = new int[sizeof(int) * size / 3];
 }
 
-int * Geometry::vertices() {
+int * Geometry::vertexData() {
     return _vertexData;
 }
 
@@ -39,38 +43,33 @@ int * Geometry::indexData() {
     return _indexData;
 }
 void Geometry::addVertex(Vector3 v) {
-    _cube.addVertex(v.x, v.y, v.z);
+    this->addVertex(v.x, v.y, v.z);
 }
 
 void Geometry::addVertex(float x, float y, float z)  {
-    if (_e >= _elements.capacity())
-        System.out.println("ERROR: TOO MANY ELEMENTS");
-    _elements.put((byte) x);
-    _elements.put((byte) y);
-    _elements.put((byte) z);
-    //		_elements[_e++] = x;
-    //		_elements[_e++] = y;
-    //		_elements[_e++] = z;
+    if (_count >= _size)
+        throw new invalid_argument("ERROR: TOO MANY VERTICES");
+    _vertexData[_count++] = x;
+    _vertexData[_count++] = y;
+    _vertexData[_count++] = z;
     
 }
 void Geometry::prepare() {
-    _elements.flip();
-    _indexData.flip();
+   
 }
 
-void Geometry::pushMatrx(Node node, Matrix4 base) {
+void Geometry::pushMatrx(Node * node, Transform * base) {
     //		Matrix4 m = (Matrix4) modelViewMatrix.clone();
-    _modelView.set(node.transform.worldMatrix());
+//    Matrix4 m = node->getTransform()->worldMatrix();
     //		AxisAngle4f baseA = new AxisAngle4f();
     //		baseA.set(base);
     //		AxisAngle4f modelA = new AxisAngle4f();
     //		modelA.set(_modelView);
     
-    EulerAngles baseA = base.eulerAngles();
-    EulerAngles modelA = _modelView.eulerAngles();
-    baseA.scale(1 / click.rmx.RMX.PI_OVER_180);
-    modelA.scale(1 / click.rmx.RMX.PI_OVER_180);
+//    EulerAngles baseA = base->eulerAngles();// / PI_OVER_180;
+    EulerAngles modelA = node->getTransform()->eulerAngles() / PI_OVER_180;
     
+//    modelA /= PI_OVER_180;
     glPushMatrix();
     
     
@@ -85,17 +84,18 @@ void Geometry::pushMatrx(Node node, Matrix4 base) {
     
     
     //		 glMultMatrixf(_modelView.buffer())
+    Vector3 translation = base->getTransform()->position();
     glTranslatef(
-                 base.m30,
-                 base.m31,
-                 base.m32
+                 translation.z,
+                 translation.y,
+                 translation.z
                  );
     
-    
+    Vector3 m_translation = node->getTransform()->getTransform()->position();
     glTranslatef(
-                 _modelView.m30,
-                 _modelView.m31,
-                 _modelView.m32
+                 m_translation.z,
+                 m_translation.y,
+                 m_translation.z
                  );
     glRotatef(modelA.x, 1,0,0);
     glRotatef(modelA.y, 0,1,0);
@@ -121,21 +121,24 @@ void Geometry::popMatrix() {
     
     glPopMatrix();
 }
-void Geometry::render(Node node, Matrix4 modelMatrix) {
+void Geometry::render(Node * node, Transform * rootTransform) {
+    if (vertexMode) {
+        cout << "WARNING: Vertex Mode enabled but may not be fully implemented yet." << endl;
+        return;
+    }
     //		 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //		         glLoadIdentity();
     
-    this.pushMatrx(node, modelMatrix);
-    float
-    X = node.transform.scale().x,
-    Y = node.transform.scale().y,
-    Z = node.transform.scale().z;
+    this->pushMatrx(node, rootTransform);
+    float X = node->getTransform()->scale().x;
+    float Y = node->getTransform()->scale().y;
+    float Z = node->getTransform()->scale().z;
     drawWithScale(X, Y, Z);
     
-    this.popMatrix();
+    this->popMatrix();
 }
 
-void Geometry::_render() {
+void _render() {
     //this.pushMatrx();
     //		glVertex3dv(_elements);
     //glColor3f(0.0f,0.0f,1.0f);
@@ -178,18 +181,18 @@ void Geometry::_render() {
      _cube.addVertex( 1.0f,-1.0f,-1.0f);
      _cube.prepare();
      }*/
-    return _cube;
-}
+//    return _cube;
+//}
 
 
-Geometry::Cube() {
+Geometry * Geometry::Cube() {
     if (_cube == nullptr)
-        _cube = new Cube();
+        _cube = new rmx::Cube();
     return _cube;
 }
 
 
-Cube::drawWithScale(float X, float Y, float Z) {
+void Cube::drawWithScale(float X, float Y, float Z) {
         glBegin(GL_QUADS);
         glColor3f(1.0f,1.0f,0.0f);
         glVertex3f( X, Y,-Z);
@@ -223,3 +226,4 @@ Cube::drawWithScale(float X, float Y, float Z) {
         glVertex3f( X,-Y,-Z);
         glEnd();
 }
+

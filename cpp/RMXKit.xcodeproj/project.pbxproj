@@ -262,6 +262,7 @@
 		50AF763A1B85465D0000714D /* PhysicsBody.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PhysicsBody.hpp; path = engine/PhysicsBody.hpp; sourceTree = "<group>"; };
 		50AF763D1B85467C0000714D /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = engine/Camera.cpp; sourceTree = "<group>"; };
 		50AF763E1B85467C0000714D /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Camera.hpp; path = engine/Camera.hpp; sourceTree = "<group>"; };
+		50AF76461B85630B0000714D /* Includes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Includes.h; path = RMXKit/engine/Includes.h; sourceTree = "<group>"; };
 		50C43C461B679E6500AD2FAC /* RMXKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMXKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C43C491B679E6500AD2FAC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		50C43C501B679E6500AD2FAC /* RMXKit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RMXKit.cpp; sourceTree = "<group>"; };
@@ -622,6 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				5076A8581B850C9E008A07AF /* Geometry.cpp */,
+				50AF76461B85630B0000714D /* Includes.h */,
 				5076A8591B850C9E008A07AF /* Geometry.hpp */,
 				505CD1D91B84728B00368BEB /* Transform.cpp */,
 				505CD1DA1B84728B00368BEB /* Transform.hpp */,

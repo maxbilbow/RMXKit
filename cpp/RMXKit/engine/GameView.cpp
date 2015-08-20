@@ -7,10 +7,10 @@
 //
 
 //#include "RMXKit.h"
-#import <GLFW/glfw3.h>
+
 #import "RMXEngine.hpp"
 
-#import "GameView.hpp"
+//#import "GameView.hpp"
 
 
 #define GLFW_INCLUDE_GLU

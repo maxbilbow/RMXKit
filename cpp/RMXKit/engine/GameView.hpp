@@ -16,7 +16,7 @@
 
 #define END_OF_GAMELOOP "END_OF_GAMELOOP"
 
-#import <GLFW/glfw3.h>
+//#import <GLFW/glfw3.h>
 
 
 namespace rmx {

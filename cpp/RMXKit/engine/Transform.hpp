@@ -21,6 +21,7 @@ namespace rmx{
         Pitch, Yaw, Roll,
         Jump
     };
+    
     class Transform : public NodeComponent, public Unfinised{
         Matrix4 _worldMatrix;
         Matrix4 _axis;
