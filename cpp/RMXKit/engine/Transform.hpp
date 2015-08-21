@@ -75,7 +75,6 @@ namespace rmx{
         bool translate(Move direction, float scale);
         bool rotate(Move direction, float scale);
         void rotate(float radians,Vector3 v);
-        void rotate(float radians, float x, float y, float z);
         
         Quaternion rotation();
         

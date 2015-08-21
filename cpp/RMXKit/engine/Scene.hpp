@@ -45,7 +45,7 @@ namespace rmx {
         void updateSceneLogic();
         void renderScene(Camera * camera);
         
-        Scene * setAsCurrent();
+        void setAsCurrent();
     };
 
 }
