@@ -54,6 +54,7 @@
 		50AF76421B854DB10000714D /* PhysicsBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50AF76391B85465D0000714D /* PhysicsBody.cpp */; };
 		50AF76431B8552890000714D /* Geometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5076A8581B850C9E008A07AF /* Geometry.cpp */; };
 		50AF76451B8552AD0000714D /* RMXMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 505840171B851BF800EB1EB1 /* RMXMath.cpp */; };
+		50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50C811591B8744700001FBFE /* libglfw3.a */; };
 		6C0DA6661B70EB4500A4325E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50C43C5E1B679E9200AD2FAC /* main.cpp */; };
 		6C0DA6671B70EB9B00A4325E /* Dictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC1891B68BBBE007172B6 /* Dictionary.cpp */; };
 		6C0DA6681B70EB9B00A4325E /* LinkedList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 509BC17D1B68A389007172B6 /* LinkedList.cpp */; };
@@ -73,6 +74,212 @@
 		6C9EB1261B710DEA003F6156 /* RMXKitPriv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB11B1B710DEA003F6156 /* RMXKitPriv.hpp */; };
 		6C9EB1271B710DEA003F6156 /* Tests.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9EB11C1B710DEA003F6156 /* Tests.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50C811581B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 996AC33FC54B4C819772D8C6;
+			remoteInfo = glfw;
+		};
+		50C8115A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6178F54F8FA34FBFA3BB38DF;
+			remoteInfo = Boing;
+		};
+		50C8115C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5F1C0B02C4664C1F86A951DA;
+			remoteInfo = Gears;
+		};
+		50C8115E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5AA1D814DB641EF8F89D95E;
+			remoteInfo = Heightmap;
+		};
+		50C811601B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0F75809C91344D9F8173BE44;
+			remoteInfo = Particles;
+		};
+		50C811621B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D540C05B477A4FE69E6DBD65;
+			remoteInfo = Simple;
+		};
+		50C811641B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1C6E12B6D57245DE86A834D3;
+			remoteInfo = SplitView;
+		};
+		50C811661B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84125CCF158842A7A378DCAA;
+			remoteInfo = Wave;
+		};
+		50C811681B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6CD1DE2CD69C4AF8864360D9;
+			remoteInfo = accuracy;
+		};
+		50C8116A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 079E23018A6941CFB654D803;
+			remoteInfo = clipboard;
+		};
+		50C8116C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C4E08048EC5649428B373C18;
+			remoteInfo = cursor;
+		};
+		50C8116E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DD6B86A015CB43F98445A054;
+			remoteInfo = cursoranim;
+		};
+		50C811701B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE76A0EE3CB04932A6C4C59C;
+			remoteInfo = defaults;
+		};
+		50C811721B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CFBDDB2FBF5041FFB5F962DA;
+			remoteInfo = empty;
+		};
+		50C811741B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D3E4797E0AD45B3A4D5C0A3;
+			remoteInfo = events;
+		};
+		50C811761B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9BCFC6CBAE474439BAD8B544;
+			remoteInfo = fsaa;
+		};
+		50C811781B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57F32E65185D44E690D20CE4;
+			remoteInfo = gamma;
+		};
+		50C8117A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 771D162A24E7451389447165;
+			remoteInfo = glfwinfo;
+		};
+		50C8117C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8B4C71EB9CC24230A848E71E;
+			remoteInfo = iconify;
+		};
+		50C8117E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AFC9ADC27F7143579BC9A2BD;
+			remoteInfo = joysticks;
+		};
+		50C811801B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A44E6E919B254E3198665451;
+			remoteInfo = monitors;
+		};
+		50C811821B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA23E4DC2592404BBC807781;
+			remoteInfo = peter;
+		};
+		50C811841B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C6DF259E2B945ACA38F291D;
+			remoteInfo = reopen;
+		};
+		50C811861B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A79EF03780534CE19DAAE789;
+			remoteInfo = sharing;
+		};
+		50C811881B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 82B0764A1CE24413A39CAD15;
+			remoteInfo = tearing;
+		};
+		50C8118A1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C2817C8FB66452296C09D23;
+			remoteInfo = threads;
+		};
+		50C8118C1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 30FAC0D390C447AAB7E02A4F;
+			remoteInfo = title;
+		};
+		50C8118E1B8744700001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB3AAEF3867742C0A996A621;
+			remoteInfo = windows;
+		};
+		50C811901B8744790001FBFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 50B02DD8DBC64912945DF1E2;
+			remoteInfo = glfw;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		50C43C5A1B679E9200AD2FAC /* CopyFiles */ = {
@@ -276,6 +483,7 @@
 		50C43C5C1B679E9200AD2FAC /* AiCubo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AiCubo; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C43C5E1B679E9200AD2FAC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../AiCubo/main.cpp; sourceTree = "<group>"; };
 		50C43C641B67A00600AD2FAC /* NotificationCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NotificationCenter.cpp; sourceTree = "<group>"; };
+		50C811351B87446F0001FBFE /* GLFW.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GLFW.xcodeproj; path = glfw3/GLFW.xcodeproj; sourceTree = "<group>"; };
 		50D026731B69633800895093 /* OpenGLView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenGLView.cpp; path = ../OpenGLView.cpp; sourceTree = "<group>"; };
 		50D026741B69633800895093 /* OpenGLView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = OpenGLView.hpp; path = ../OpenGLView.hpp; sourceTree = "<group>"; };
 		50D0267A1B69653300895093 /* Shapes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shapes.hpp; sourceTree = "<group>"; };
@@ -309,6 +517,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50C811921B87447F0001FBFE /* libglfw3.a in Frameworks */,
 				5008469E1B85EB4F003D2470 /* IOKit.framework in Frameworks */,
 				5008469C1B85EB35003D2470 /* CoreVideo.framework in Frameworks */,
 				5008469A1B85EB2E003D2470 /* Cocoa.framework in Frameworks */,
@@ -639,6 +848,7 @@
 		50C43C3D1B679E6500AD2FAC = {
 			isa = PBXGroup;
 			children = (
+				50C811351B87446F0001FBFE /* GLFW.xcodeproj */,
 				50C43C4B1B679E6500AD2FAC /* RMXKit */,
 				50C43C5D1B679E9200AD2FAC /* AiCubo */,
 				50C43C481B679E6500AD2FAC /* Frameworks */,
@@ -691,6 +901,41 @@
 				50D026771B69653300895093 /* headers */,
 			);
 			path = AiCubo;
+			sourceTree = "<group>";
+		};
+		50C811361B87446F0001FBFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50C811591B8744700001FBFE /* libglfw3.a */,
+				50C8115B1B8744700001FBFE /* Boing.app */,
+				50C8115D1B8744700001FBFE /* Gears.app */,
+				50C8115F1B8744700001FBFE /* Heightmap.app */,
+				50C811611B8744700001FBFE /* Particles.app */,
+				50C811631B8744700001FBFE /* Simple.app */,
+				50C811651B8744700001FBFE /* SplitView.app */,
+				50C811671B8744700001FBFE /* Wave.app */,
+				50C811691B8744700001FBFE /* accuracy.app */,
+				50C8116B1B8744700001FBFE /* clipboard */,
+				50C8116D1B8744700001FBFE /* cursor */,
+				50C8116F1B8744700001FBFE /* cursoranim.app */,
+				50C811711B8744700001FBFE /* defaults */,
+				50C811731B8744700001FBFE /* empty.app */,
+				50C811751B8744700001FBFE /* events */,
+				50C811771B8744700001FBFE /* fsaa */,
+				50C811791B8744700001FBFE /* gamma */,
+				50C8117B1B8744700001FBFE /* glfwinfo */,
+				50C8117D1B8744700001FBFE /* iconify */,
+				50C8117F1B8744700001FBFE /* joysticks */,
+				50C811811B8744700001FBFE /* monitors */,
+				50C811831B8744700001FBFE /* peter */,
+				50C811851B8744700001FBFE /* reopen */,
+				50C811871B8744700001FBFE /* sharing.app */,
+				50C811891B8744700001FBFE /* tearing.app */,
+				50C8118B1B8744700001FBFE /* threads.app */,
+				50C8118D1B8744700001FBFE /* title.app */,
+				50C8118F1B8744700001FBFE /* windows.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		50D026771B69653300895093 /* headers */ = {
@@ -792,6 +1037,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				50C811911B8744790001FBFE /* PBXTargetDependency */,
 			);
 			name = AiCubo;
 			productName = AiCubo;
@@ -830,6 +1076,12 @@
 			mainGroup = 50C43C3D1B679E6500AD2FAC;
 			productRefGroup = 50C43C471B679E6500AD2FAC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 50C811361B87446F0001FBFE /* Products */;
+					ProjectRef = 50C811351B87446F0001FBFE /* GLFW.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				50C43C451B679E6500AD2FAC /* RMXKit */,
@@ -837,6 +1089,205 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		50C811591B8744700001FBFE /* libglfw3.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libglfw3.a;
+			remoteRef = 50C811581B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8115B1B8744700001FBFE /* Boing.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Boing.app;
+			remoteRef = 50C8115A1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8115D1B8744700001FBFE /* Gears.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Gears.app;
+			remoteRef = 50C8115C1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8115F1B8744700001FBFE /* Heightmap.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Heightmap.app;
+			remoteRef = 50C8115E1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811611B8744700001FBFE /* Particles.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Particles.app;
+			remoteRef = 50C811601B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811631B8744700001FBFE /* Simple.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Simple.app;
+			remoteRef = 50C811621B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811651B8744700001FBFE /* SplitView.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SplitView.app;
+			remoteRef = 50C811641B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811671B8744700001FBFE /* Wave.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Wave.app;
+			remoteRef = 50C811661B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811691B8744700001FBFE /* accuracy.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = accuracy.app;
+			remoteRef = 50C811681B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8116B1B8744700001FBFE /* clipboard */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = clipboard;
+			remoteRef = 50C8116A1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8116D1B8744700001FBFE /* cursor */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = cursor;
+			remoteRef = 50C8116C1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8116F1B8744700001FBFE /* cursoranim.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = cursoranim.app;
+			remoteRef = 50C8116E1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811711B8744700001FBFE /* defaults */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = defaults;
+			remoteRef = 50C811701B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811731B8744700001FBFE /* empty.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = empty.app;
+			remoteRef = 50C811721B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811751B8744700001FBFE /* events */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = events;
+			remoteRef = 50C811741B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811771B8744700001FBFE /* fsaa */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fsaa;
+			remoteRef = 50C811761B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811791B8744700001FBFE /* gamma */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = gamma;
+			remoteRef = 50C811781B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8117B1B8744700001FBFE /* glfwinfo */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = glfwinfo;
+			remoteRef = 50C8117A1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8117D1B8744700001FBFE /* iconify */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = iconify;
+			remoteRef = 50C8117C1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8117F1B8744700001FBFE /* joysticks */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = joysticks;
+			remoteRef = 50C8117E1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811811B8744700001FBFE /* monitors */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = monitors;
+			remoteRef = 50C811801B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811831B8744700001FBFE /* peter */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = peter;
+			remoteRef = 50C811821B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811851B8744700001FBFE /* reopen */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = reopen;
+			remoteRef = 50C811841B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811871B8744700001FBFE /* sharing.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = sharing.app;
+			remoteRef = 50C811861B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C811891B8744700001FBFE /* tearing.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tearing.app;
+			remoteRef = 50C811881B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8118B1B8744700001FBFE /* threads.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = threads.app;
+			remoteRef = 50C8118A1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8118D1B8744700001FBFE /* title.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = title.app;
+			remoteRef = 50C8118C1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		50C8118F1B8744700001FBFE /* windows.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = windows.app;
+			remoteRef = 50C8118E1B8744700001FBFE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		50C43C421B679E6500AD2FAC /* Sources */ = {
@@ -891,6 +1342,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50C811911B8744790001FBFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = glfw;
+			targetProxy = 50C811901B8744790001FBFE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		50C43C531B679E6500AD2FAC /* Debug */ = {
